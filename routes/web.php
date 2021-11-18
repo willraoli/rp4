@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
+Route::post('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'store'])->name('cadastroAvaliador');
