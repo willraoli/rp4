@@ -26,3 +26,5 @@ Route::post('/avaliador/create', [App\Http\Controllers\AvaliadorController::clas
 Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);
 Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit']);
 Route::post('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'update'])->name('editarAvaliador');
+Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete']);
+Route::post('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'destroy'])->name('excluirAvaliador');

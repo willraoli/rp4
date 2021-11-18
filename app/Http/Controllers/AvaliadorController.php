@@ -48,4 +48,18 @@ class AvaliadorController extends Controller
 
         return "Informações do Avaliador atualizadas com sucesso!";
     }
+
+    public function delete($id){
+
+        $avaliador = Avaliador::findOrFail($id);
+        return view('avaliador.delete', ['avaliador' => $avaliador]);
+    }
+
+    public function destroy($id){
+
+        $avaliador = Avaliador::findOrFail($id);
+        $avaliador->delete();
+
+        return "Avaliador excluído com sucesso!";
+    }
 }
