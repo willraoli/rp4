@@ -28,4 +28,24 @@ class AvaliadorController extends Controller
         $avaliador = Avaliador::findOrFail($id);
         return view('avaliador.show', ['avaliador' => $avaliador]);
     }
+
+    public function edit($id){
+
+        $avaliador = Avaliador::findOrFail($id);
+        return view('avaliador.edit', ['avaliador' => $avaliador]);
+    }
+
+    public function update(Request $request, $id){
+
+        $avaliador = Avaliador::findOrFail($id);
+
+        $avaliador->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'endereco' => $request->endereco,
+            'telefone' => $request->telefone,
+        ]);
+
+        return "Informações do Avaliador atualizadas com sucesso!";
+    }
 }
