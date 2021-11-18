@@ -23,3 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
 Route::post('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'store'])->name('cadastroAvaliador');
+Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);

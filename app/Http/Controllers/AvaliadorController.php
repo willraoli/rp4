@@ -22,4 +22,10 @@ class AvaliadorController extends Controller
 
         return "Avaliador cadastrado com sucesso!";
     }
+
+    public function show($id){
+
+        $avaliador = Avaliador::findOrFail($id);
+        return view('avaliador.show', ['avaliador' => $avaliador]);
+    }
 }
