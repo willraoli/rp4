@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Repository;
 
 use Illuminate\Http\Request;
 use App\Models\Avaliador;
 
-class AvaliadorController extends Controller
+class AvaliadorController
 {
     public function store(Request $request){
         
