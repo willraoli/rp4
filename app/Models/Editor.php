@@ -1,10 +1,18 @@
 <?php
-    class Editor{
 
-        protected $fillable = [
-            'nomeEditor',
-            'dataContratacao',
-            'dataDemissao',  
-        ];
-    }
-?>
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Editor extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'dataContratacao',
+        'dataDemissao',
+     ];
+
+}
