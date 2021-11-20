@@ -19,12 +19,6 @@ class AutorRepository
         return "Autor cadastrado com sucesso!";
     }
 
-    public function show($id) // repository
-    {
-        $autor = Autor::findOrFail($id);
-        return view('autor.mostrar', ['autor' => $autor]);
-    }
-
     public function update(Request $request, $id) // repository
     {
         $autor = Autor::findOrFail($id);

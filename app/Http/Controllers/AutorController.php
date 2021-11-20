@@ -23,4 +23,10 @@ class AutorController extends Controller
         $autor = Autor::findOrFail($id);
         return view('autor.deletar', ['autor' => $autor]);
     }
+
+    public function show($id) // repository
+    {
+        $autor = Autor::findOrFail($id);
+        return view('autor.mostrar', ['autor' => $autor]);
+    }
 }
