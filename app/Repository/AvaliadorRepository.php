@@ -40,4 +40,4 @@ class AvaliadorRepository
 
         return "Avaliador excluído com sucesso!";
     }
-}
+} //AQ

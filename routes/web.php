@@ -47,3 +47,4 @@ Route::post('/autor/editar/{id}', [App\Repository\AutorRepository::class, 'updat
 Route::post('/autor/cadastro', [App\Repository\AutorRepository::class, 'store'])->name('cadastro_autor');
 Route::post('/autor/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
 
+//TESTE
