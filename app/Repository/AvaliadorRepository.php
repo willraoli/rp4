@@ -5,7 +5,7 @@ namespace App\Repository;
 use Illuminate\Http\Request;
 use App\Models\Avaliador;
 
-class AvaliadorController
+class AvaliadorRepository
 {
     public function store(Request $request){
         
