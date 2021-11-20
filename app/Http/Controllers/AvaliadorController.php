@@ -11,18 +11,6 @@ class AvaliadorController extends Controller
         return view('avaliador.create');
     }
 
-    public function store(Request $request){
-        
-        Avaliador::create([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
-        ]);
-
-        return "Avaliador cadastrado com sucesso!";
-    }
-
     public function show($id){
 
         $avaliador = Avaliador::findOrFail($id);
@@ -35,17 +23,11 @@ class AvaliadorController extends Controller
         return view('avaliador.edit', ['avaliador' => $avaliador]);
     }
 
-    public function update(Request $request, $id){
+    public function delete($id){
 
         $avaliador = Avaliador::findOrFail($id);
-
-        $avaliador->update([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
-        ]);
-
-        return "Informações do Avaliador atualizadas com sucesso!";
+        return view('avaliador.delete', ['avaliador' => $avaliador]);
     }
+
+    
 }
