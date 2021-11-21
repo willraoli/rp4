@@ -33,3 +33,7 @@ Route::post('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::cl
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
