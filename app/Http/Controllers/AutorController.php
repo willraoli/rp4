@@ -30,4 +30,3 @@ class AutorController extends Controller
         return view('autor.mostrar', ['autor' => $autor]);
     }
 }
-//AQ
