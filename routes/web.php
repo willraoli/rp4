@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');})->name('index');
 
+
+Route::get('/pop', [App\Http\Controllers\Utils\PopulateTables::class, 'index'])->name('popular.tabelas');
+
 // Revista
 Route::get('/form/create/revista', function() {return view('revista\create');})->name('create.revista.view');
 Route::post('/create/revista', [App\Http\Controllers\Revista\RevistaController::class, 'create'])->name('create.revista');

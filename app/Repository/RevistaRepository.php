@@ -23,7 +23,7 @@ class RevistaRepository{
 
    
     public function show(){
-        return Revista::all();
+        return Revista::paginate(10);
     }
 
     public function getByID($id){
