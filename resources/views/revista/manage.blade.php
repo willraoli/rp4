@@ -38,7 +38,7 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-danger" href="{{ route('delete.revista', $revista->id) }}">
+                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
@@ -46,5 +46,28 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo deletar a revista ?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Título: {{ $revista->tituloRevista }}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" >
+                <a href="{{ route('delete.revista', $revista->id) }}" style="color: white;text-decoration: none;">
+                   Sim
+                </a>    
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+        </div>
+        </div>
+    </div>
     </div>
 @endsection
