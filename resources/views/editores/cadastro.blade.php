@@ -20,6 +20,7 @@
         <input type='text' name='dataDemissao'>
         <button>Salvar</button>
     </form>
+    <x-footer/>
 </body>
 
 </html>

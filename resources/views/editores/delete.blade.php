@@ -21,6 +21,8 @@
         <label for=>Tem certeza que deseja excluir esse editor?</label></br>
         <button>Sim</button></br>
     </form>
+    <x-footer/>
+
 </body>
 
 </html>
