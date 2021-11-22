@@ -101,5 +101,5 @@
     document.getElementById('periodicidade').value = "{{ $revista->periodicidade }}";
     document.getElementById('areas').value = "{{ $revista->area_id }}";
 </script>
-
+<x-footer/>
 @endsection

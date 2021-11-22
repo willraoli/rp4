@@ -16,4 +16,6 @@
     <label for="">Telefone</label><br>
     <input type="number" name="telefone" value="{{ $autor->telefone }}"><br>
 </body>
+
+<x-footer/>
 </html>
