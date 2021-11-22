@@ -39,12 +39,27 @@ public function manage(Request $request){
 
 }
 
+public function select(Request $request){
+    $this->business = new RevistaBusiness;
+    $revista = $this->business->selectRevista($request);
+
+    return view('revista\edit', compact('revista'));
+}
+
+
+public function update(Request $request){
+    $this->business = new RevistaBusiness;
+    $request = $this->business->updateRevista($request);
+
+    return redirect()->route('list.revista.mgmt');
+}
+
 public function delete(Request $request){
 
     $this->business = new RevistaBusiness;
     $request = $this->business->deleteRevista($request);
 
-    return $request === True ? redirect()->route('list.revista.mgmt',) : redirect()->route('list.revista.mgmt', 'err');
+    return $request === True ? redirect()->route('list.revista.mgmt') : redirect()->route('list.revista.mgmt', 'err');
 }
 
 

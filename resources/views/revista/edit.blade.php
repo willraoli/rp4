@@ -9,36 +9,28 @@
     <div  class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="col-md-12">
-                <form class="form" action="{{ route('create.revista')}}" method="POST">
+                <form class="form" action="{{ route('update.revista', $revista->id )}}" method="POST">
                     @csrf
-                    <h3 class="text-center">Cadastro de Nova Revista</h3>
+                    <h3 class="text-center">Atualizando Revista {{ $revista->tituloRevista }}<nome-aqui> </h3>
                     <?php 
                         if(isset($_GET['err'])){
-                            echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao cadastrar nova revista!</small></h6>';
+                            echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao atualizar revista!</small></h6>';
                         }
                     ?>
                     <div class="form-group mb-2">
                         <label for="titulo" class="ms-3" m>Título<span id="obrigatorio">*</span></label><br>
-                        <input type="text" name="titulo" id="titulo" class="form-control" required>
+                        <input type="text" name="titulo" id="titulo" class="form-control" placeholder="" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="editor" class="ms-3">Editor<span id="obrigatorio">*</span></label><br>
                         <select class="form-control" name="editor" id="editor" required>
-                            <option value="...">-</option>
-                            <?php
-                                  
-                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){
-   
-                                if(!empty($editor))
-                                   echo '<option value="...">-</option>';
-         
-                                   
+                            <option value="" disabled>-</option>
+                            <?php                                  
+                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){   
                                 foreach($editors as $editor){
                                     echo '<option value='.$editor->id.'>'.$editor->nome.'</option>';
                                 }  
                                 });
-
-
                             ?>
                         </select>
 
@@ -56,7 +48,7 @@
                         <div class="form-group mb-2 col-5 me-5">
                             <label for="periodicidade" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
                             <select class="form-control" name="periodicidade" id="periodicidade">
-                                <option disabled>-</option>    
+                                <option value="" disabled>-</option>
                                 <option>Diária</option>
                                 <option>Semanal</option>
                                 <option>Bissemanal</option>
@@ -77,25 +69,37 @@
                         
                         <select class="form-control" name="areas" id="areas">
                             <option value="" disabled>-</option>
-                            <?php                                  
+                            <?php
                                   $areas = DB::table('areas')->get();
                                   foreach($areas as $area){
                                       echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
-                                  }                                    
+                                  }                                   
                             ?>
                         </select>
                     </div>
                     </div>
-
+                    
                     <div class="row">
-                        <div class="col-3 form-group pt-2">
-                            <input type="submit" name="submit" class="btn btn-success btn-md" style="color:white;" value="Cadastrar">
+                        <div class="col form-group pt-2 align-self-start text-start">
+                            <input type="submit" name="submit" class="btn btn-success btn-md col-6" style="color:white;" value="Finalizar">
                         </div>
-       
+                        <div class="col form-group pt-2 align-self-end text-end">
+                            <a href="{{ route('list.revista.mgmt') }}" name="cancel" style="color:red; text-decoration:none;">Cancelar</a>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('titulo').value = "{{ $revista->tituloRevista }}";
+    document.getElementById('editor').value = "{{ $revista->editor_id }}";
+    document.getElementById('issn').value = "{{ $revista->ISSNRevista }}";
+    document.getElementById('limite').value = "{{ $revista->limiteArtigo }}";
+    document.getElementById('periodicidade').value = "{{ $revista->periodicidade }}";
+    document.getElementById('areas').value = "{{ $revista->area_id }}";
+</script>
+
 @endsection

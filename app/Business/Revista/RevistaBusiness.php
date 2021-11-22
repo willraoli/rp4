@@ -39,9 +39,24 @@ class RevistaBusiness{
 
 
     public function deleteRevista(Request $request){
+        //verificar quantidade de edições antes de deletar
+
         $this->repository = new RevistaRepository;
         return $this->repository->delete($request->id);
 
+    }
+
+    public function selectRevista(Request $request){
+        
+        $this->repository = new RevistaRepository;
+        $revista = $this->repository->getByID($request->id);
+
+        return $revista;
+    }
+
+    public function updateRevista(Request $request){
+        $this->repository = new RevistaRepository;
+        return $this->repository->update($request); 
     }
 
     //Mover pra repository?

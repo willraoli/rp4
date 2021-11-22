@@ -24,29 +24,24 @@
                 @foreach($revistas as $revista)
                 <tr scope="row">
 
-                    <td><?php echo $revista->id ?></td>
-                    <td><?php echo $revista->tituloRevista ?></td>
-                    <td><?php echo $revista->editor->nome ?></td>
-                    <td><?php echo $revista->ISSNRevista ?></td>
-                    <td><?php echo $revista->limiteArtigo ?></td>
-                    <td><?php echo $revista->area->descricaoArea ?></td>
-                    <td><?php echo $revista->periodicidade ?></td>
+                    <td>{{ $revista->id }}</td>
+                    <td>{{ $revista->tituloRevista }}</td>
+                    <td>{{ $revista->editor->nome }}</td>
+                    <td>{{ $revista->ISSNRevista }}</td>
+                    <td>{{ $revista->limiteArtigo }}</td>
+                    <td>{{ $revista->area->descricaoArea }}</td>
+                    <td>{{ $revista->periodicidade }}</td>
                     
-
                     <td class="text-center">
-                        <a class="btn btn-primary" href="">
+                        <a class="btn btn-primary" href="{{ route('select.revista', $revista->id) }}">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                     </td>
-
-
                     <td class="text-center">
                         <a class="btn btn-danger" href="{{ route('delete.revista', $revista->id) }}">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
-
-
                 </tr>
                 @endforeach
             </tbody>

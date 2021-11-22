@@ -1,11 +1,9 @@
 <?php 
 namespace App\Repository;
 
-use App\Models\Editor;
 use App\Models\Revista;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class RevistaRepository{
    
@@ -23,10 +21,37 @@ class RevistaRepository{
         return $revista->save();
     }
 
-    public function update(){}
-
+   
     public function show(){
         return Revista::all();
+    }
+
+    public function getByID($id){
+        
+        try{
+            $revista = Revista::findOrFail($id);
+        }catch(ModelNotFoundException $e){
+            return False;
+        }
+
+        return $revista;
+       
+    }
+
+    public function update(Request $request){
+        $revista = $this->getByID($request->id);
+
+        if(!empty($revista) && $revista != False){
+            $revista->update([
+                'editor_id' => $request->editor,
+                'area_id' => $request->areas,
+                'tituloRevista' => $request->titulo,
+                'limiteArtigo' => $request->limite,
+                'ISSNRevista' => $request->issn,
+                'periodicidade' => $request->periodicidade,
+            ]);
+        }
+        
     }
 
     public function delete($id){

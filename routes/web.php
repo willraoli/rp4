@@ -23,6 +23,7 @@ Route::post('/create/revista', [App\Http\Controllers\Revista\RevistaController::
 Route::get('/manage/revistas', [App\Http\Controllers\Revista\RevistaController::class, 'manage'])->name('list.revista.mgmt');
 Route::post('/revista/editar/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'update'])->name('update.revista');
 Route::get('/revista/excluir/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'delete'])->name('delete.revista');
+Route::get('/select/revista/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'select'])->name('select.revista');
 
 // Editor
 Route::get('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create']);
