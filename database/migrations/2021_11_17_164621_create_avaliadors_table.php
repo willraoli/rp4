@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRevistasTable extends Migration
+class CreateAvaliadorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateRevistasTable extends Migration
      */
     public function up()
     {
-        Schema::create('revistas', function (Blueprint $table) {
+        Schema::create('avaliadors', function (Blueprint $table) {
             $table->id();
-            $table->string('tituloRevista');
-            $table->integer('limiteArtigo');
-            $table->string('ISSNRevista')->unique();
+            $table->string('nome');
+            $table->string('endereco');
+            $table->string('email');
+            $table->bigInteger('telefone');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateRevistasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revistas');
+        Schema::dropIfExists('avaliadors');
     }
 }

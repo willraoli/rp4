@@ -1,20 +1,47 @@
+<?php 
+    use Illuminate\Support\Facades\DB;
+?>
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container" >
-    <div id="login-row" class="row justify-content-center align-items-center">
-        <div id="login-column" class="col-md-6">
-            <div id="login-box" class="col-md-12">
-                <form id="login-form" class="form" action="" method="POST">
+<div class="container pt-5" >
+    <div  class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <form class="form" action="{{ route('create.revista')}}" method="POST">
+                    @csrf
                     <h3 class="text-center">Cadastro de Nova Revista</h3>
-                        
+                    <?php 
+                        if(isset($_GET['err'])){
+                            echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao cadastrar nova revista!</small></h6>';
+                        }
+                    ?>
                     <div class="form-group mb-2">
                         <label for="titulo" class="ms-3" m>Título<span id="obrigatorio">*</span></label><br>
                         <input type="text" name="titulo" id="titulo" class="form-control" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="editor" class="ms-3">Editor<span id="obrigatorio">*</span></label><br>
-                        <input type="text" name="editor" id="editor" class="form-control" required>
+                        <select class="form-control" name="editor" id="editor" required>
+                            <option value="...">-</option>
+                            <?php
+                                  
+                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){
+   
+                                if(!empty($editor))
+                                   echo '<option value="...">-</option>';
+         
+                                   
+                                foreach($editors as $editor){
+                                    echo '<option value='.$editor->id.'>'.$editor->nome.'</option>';
+                                }  
+                                });
+
+
+                            ?>
+                        </select>
+
                     </div>
                     <div class="form-group mb-2">
                         <label for="issn" class="ms-3">ISSN<span id="obrigatorio">*</span></label><br>
@@ -26,15 +53,9 @@
                     </div>
 
                     <div class="d-flex">
-                        <!-- <div class="form-group mb-2 col-5 me-5">
-                            <label for="freq" class="ms-3">Frequência</label><br>
-                            <input type="text" name="freq" id="freq" class="form-control" required>
-                        </div>
-                        <p class="pt-4">-</p>
-                        <div class="form-group mb-2 col-5 ms-5"> -->
                         <div class="form-group mb-2 col-5 me-5">
-                            <label for="limite" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
-                            <select class="form-control" name="areas" id="areas">
+                            <label for="periodicidade" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
+                            <select class="form-control" name="periodicidade" id="periodicidade">
                                 <option>Diária</option>
                                 <option>Semanal</option>
                                 <option>Bissemanal</option>
@@ -52,27 +73,24 @@
                         
                         <div class="form-group mb-2 col-6 ">
                         <label for="areas" class="ms-3">Áreas</label><br>
+                        
                         <select class="form-control" name="areas" id="areas">
-                            <option>-</option>
-                            <option>Ciências Exatas e da Terra</option>
-                            <option>Ciências Biológicas.</option>
-                            <option>Engenharias</option>
-                            <option>Ciências Humanas</option>
-                        </select>
-                    </div>
-                    </div>
-<!--   
+                            <?php
+                                  
+                                  $areas = DB::table('areas')->get();
+                                
+                                  if(!empty($areas))
+                                      echo '<option value="...">-</option>';
+                                  
 
-                    <div class="form-group mb-2">
-                        <label for="areas" class="ms-3">Áreas</label><br>
-                        <select class="form-control" name="areas" id="areas">
-                            <option>-</option>
-                            <option>Ciências Exatas e da Terra</option>
-                            <option>Ciências Biológicas.</option>
-                            <option>Engenharias</option>
-                            <option>Ciências Humanas</option>
+                                  foreach($areas as $area){
+                                      echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
+                                  }
+                                    
+                            ?>
                         </select>
-                    </div> -->
+                    </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-3 form-group pt-2">

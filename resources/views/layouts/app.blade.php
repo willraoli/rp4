@@ -20,7 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
      
-    
+    <!-- Fontawesome para icones -->
+    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
     
 </head>
 <body>
