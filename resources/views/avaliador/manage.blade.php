@@ -2,11 +2,10 @@
     use Illuminate\Support\Facades\DB;
 ?>
 @extends('layouts.app')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>    
 
 @section('content')
 <div class="container" >
-        <h3>Gerenciamento de Revistas</h3>
+        <h3>Gerenciamento de Avaliadores</h3>
         <hr>
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -43,3 +42,6 @@
             </tbody>
         </table>
     </div>
+
+    <x-footer/>
+
