@@ -29,5 +29,12 @@ class AvaliadorController extends Controller
         return view('avaliador.delete', ['avaliador' => $avaliador]);
     }
 
+    public function manage(){
+    
+        $avaliador = Avaliador::all();
+        return view('avaliador\manage', compact('avaliador'));
+    
+    }
+
     
 }

@@ -14,4 +14,6 @@
         <button>Sim</button>
     </form>
 </body>
+
+<x-footer/>
 </html>

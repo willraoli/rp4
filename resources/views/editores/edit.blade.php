@@ -19,6 +19,8 @@
         <input type="text" name="dataDemissao" value="{{$editor->dataDemissao}}">
         <button>Salvar</button>
     </form>
+    <x-footer/>
+
 </body>
 
 </html>

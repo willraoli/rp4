@@ -43,4 +43,6 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </body>
+
+<x-footer/>
 </html>

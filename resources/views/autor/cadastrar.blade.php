@@ -20,4 +20,6 @@
         <button>Salvar</button>
     </form>
 </body>
+
+<x-footer/>
 </html>

@@ -72,8 +72,11 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- <x-footer/> -->
     </div>
+    
+    
 
 </div>
-    
+
 @endsection

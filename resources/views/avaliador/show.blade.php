@@ -30,4 +30,6 @@
         <input type="number" name="telefone" class="form-control" value="{{ $avaliador->telefone }}"> <br />
         </div>
 </body>
+
+<x-footer/>
 </html>

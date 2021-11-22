@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Utils;
 
-
 use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\Editor;
