@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deletar autor</title>
-</head>
-<body>
-    <form action="{{ route('exclusao_autor', $autor->id) }}" method="POST">
-        @csrf
-        <label for="">Tem certeza que deseja excluir este autor?</label><br>
-        <input type="text" name="nome" value="{{ $autor->nome }}"><br>
-        <button>Sim</button>
-    </form>
-</body>
+@extends('layouts.app')
+@section('content')
+<div class="container pt-5" >
+    <div  class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h3>Tem certeza que deseja excluir este autor?</h3>
+                <form action="{{ route('exclusao_autor', $autor->id) }}" method="POST">
+                    @csrf
+                    <div class="form-group mb-2 align-center">
+                        <input type="text" name="nome" value="{{ $autor->nome }}"><br>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 form-group pt-2">
+                            <input type="submit" name="submit" class="btn btn-success btn-md" style="color:white;" value="Sim">
+                        </div>
+                    </div>
+                </form>
 
 <x-footer/>
-</html>
+@endsection
