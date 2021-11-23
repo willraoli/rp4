@@ -2,8 +2,8 @@
     use Illuminate\Support\Facades\DB;
 ?>
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container" >
         <h3>Gerenciamento de Avaliadores</h3>
         <hr>
@@ -44,4 +44,5 @@
     </div>
 
     <x-footer/>
+    @endsection
 
