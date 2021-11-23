@@ -8,7 +8,7 @@
     <div class="d-flex align-items-stretch " style="height: 94vh; width: 150px;
     ">
         <ul class="list-group " style="width: 180px; border-radius: 0; ">
-            <!-- <li class="list-group-item border-0">Início</li> -->
+           
             <li class="list-group-item border-0">
                 <a class="" data-bs-toggle="collapse" href="#revistas" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Revistas

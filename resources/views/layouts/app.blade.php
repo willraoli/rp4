@@ -27,14 +27,16 @@
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <a class="navbar-brand ms-3" href="{{ url('/') }}">
-                <div class="text-start" style="color: black;" id="logo">
-                    <i class="fa fa-book fa-1x" aria-hidden="true"></i>
-                    <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
-                    {{ config('app.name', 'Revista') }}
-                </div>                    
-            </a>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-3" href="{{ url('/') }}">
+                    <div class="text-start" style="color: white;" id="logo">
+                        <i class="fa fa-book fa-1x" aria-hidden="true"></i>
+                        <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
+                        {{ config('app.name', 'Revista') }}
+                    </div>                    
+                </a>
+            </div>
             <div class="hidden fixed top-0 right-0 px-6 py-2 sm:block">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="d-flex bg-light">
+<div class="d-flex bg-light ">
     <x-sidebar/>
     <div class="container mt-5 height-100 bg-light">
         <div class="row justify-content-center">
@@ -23,6 +23,7 @@
             </div>
         </div>
     </div>
+    <x-footer/>
 </div>
 
 

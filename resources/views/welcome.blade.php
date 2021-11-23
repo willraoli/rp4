@@ -28,10 +28,11 @@
 
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand ms-4" href="#">
+            <a class="navbar-brand ms-3" href="#">
                 <div class="text-start" style="color: white;" id="logo">
                     <i class="fa fa-book fa-1x" aria-hidden="true"></i>
                     <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
+                    {{ config('app.name', 'Revista') }}
                 </div>
             </a>
         </div>
