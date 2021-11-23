@@ -15,13 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {return view('welcome');})->name('index');
+Route::get('/', function () {
+    return view('welcome');
+})->name('index');
 
 
 Route::get('/pop', [App\Http\Controllers\Utils\PopulateTables::class, 'index'])->name('popular.tabelas');
 
 // Revista
-Route::get('/form/create/revista', function() {return view('revista\create');})->name('create.revista.view');
+Route::get('/form/create/revista', function () {
+    return view('revista\create');
+})->name('create.revista.view');
 Route::post('/create/revista', [App\Http\Controllers\Revista\RevistaController::class, 'create'])->name('create.revista');
 Route::get('/manage/revistas', [App\Http\Controllers\Revista\RevistaController::class, 'manage'])->name('list.revista.mgmt');
 Route::post('/revista/editar/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'update'])->name('update.revista');
@@ -37,9 +41,9 @@ Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::cla
 Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('listaEditores');
 
 // Repository
-Route::post('/editor/novo', [App\Http\Controllers\EditoresController::class, 'store'])->name('registrar_editor');
-Route::post('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'update'])->name('alterar_editor');
-Route::post('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'destroy'])->name('excluir_editor');
+Route::post('/editor/novo', [App\Repository\EditorRepository::class, 'store'])->name('registrar_editor');
+Route::post('/editor/editar/{id}', [App\Repository\EditorRepository::class, 'update'])->name('alterar_editor');
+Route::post('/editor/excluir/{id}', [App\Repository\EditorRepository::class, 'destroy'])->name('excluir_editor');
 
 
 

@@ -34,34 +34,4 @@ class EditoresController extends Controller
 
     }
 
-    public function store(Request $request)
-    {
-        Editor::create([
-            'nome' => $request->nome,
-            'dataContratacao' => $request->dataContratacao,
-            'dataDemissao' => $request->dataDemissao,
-        ]);
-        return "Editor cadastrado com sucesso!";
-    }
-
-
-
-    public function update(Request $request, $id){
-        $editor = Editor::findOrFail($id);
-
-        $editor->update([
-            'nome' => $request->nome,
-            'dataContratacao' => $request->dataContratacao,
-            'dataDemissao' => $request->dataDemissao,
-        ]);
-        return "Editor atualizado com sucesso!";
-    }
-
-    public function destroy($id){
-
-    $editor = Editor::findOrFail($id);
-    $editor-> delete();
-
-    return "Editor excluído com sucesso";
-}
 }
