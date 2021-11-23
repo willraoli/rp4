@@ -12,16 +12,6 @@ class EditoresController extends Controller
         return view('editores.cadastro');
     }
 
-    public function store(Request $request)
-    {
-        Editor::create([
-            'nome' => $request->nome,
-            'dataContratacao' => $request->dataContratacao,
-            'dataDemissao' => $request->dataDemissao,
-        ]);
-        return "Editor cadastrado com sucesso!";
-    }
-
     public function show($id){
         $editor = Editor::findOrFail($id);
         return view ('editores.show', ['editor' => $editor]);
@@ -32,6 +22,30 @@ class EditoresController extends Controller
         return view('editores.edit', ['editor' => $editor]);
     }
 
+    public function delete($id){
+        $editor = Editor::findOrFail($id);
+        return view('editores.delete', ['editor' => $editor]);
+    }
+
+    public function manage(){
+
+        $editor = Editor::all();
+        return view('editores\manage', compact('editor'));
+
+    }
+
+    public function store(Request $request)
+    {
+        Editor::create([
+            'nome' => $request->nome,
+            'dataContratacao' => $request->dataContratacao,
+            'dataDemissao' => $request->dataDemissao,
+        ]);
+        return "Editor cadastrado com sucesso!";
+    }
+
+
+
     public function update(Request $request, $id){
         $editor = Editor::findOrFail($id);
 
@@ -41,10 +55,6 @@ class EditoresController extends Controller
             'dataDemissao' => $request->dataDemissao,
         ]);
         return "Editor atualizado com sucesso!";
-    }
-    public function delete($id){
-        $editor = Editor::findOrFail($id);
-        return view('editores.delete', ['editor' => $editor]);
     }
 
     public function destroy($id){

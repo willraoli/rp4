@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
-    <title>Cadastrar Editores</title>
-</head>
-
-<body>
-    <form action="{{ route('registrar_editor') }}" method = "POST">
+@extends('layouts.app')
+@section('content')
+<div class="container pt-5" >
+    <div  class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <form action="{{ route('registrar_editor') }}" method="POST">
+                    <h3 class="text-center">Cadastro de Editor</h3>
         @csrf
-        <label for="">Nome</label>
-        <input type='text' name='nome'>
-        <label for="">Data de Contratação</label>
-        <input type='text' name='dataContratacao'>
-        <label for="">Data de Demissão</label>
-        <input type='text' name='dataDemissao'>
-        <button>Salvar</button>
+        <div class=form-group>
+            <label for="">Nome</label> <br />
+            <input type="text" class="form-control" placeholder="Nome" name="nome"> <br />
+        </div>
+        <div class=form-group>
+            <label for="">Data de Contratação</label> <br />
+            <input type="date" class="form-control" placeholder="2001/06/01" name="dataContratacao"> <br />
+        </div>
+        <div class=form-group>
+            <label for="">Data de Demissão</label> <br />
+            <input type="date" class="form-control" placeholder="2001/06/01" name="dataDemissao"> <br />
+        </div>
+        <div class="row">
+            <div class="col-3 form-group pt-2">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
     </form>
-    <x-footer/>
-</body>
+            </div>
+        </div>
+    </div>
+</div>
 
-</html>
+<x-footer/>
+@endsection
