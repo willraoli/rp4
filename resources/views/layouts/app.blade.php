@@ -25,24 +25,21 @@
 
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-
-            <div class="container">
-               <a class="navbar-brand ms-5" href="{{ url('/') }}">
-                    <div class="text-start" style="color: black;" id="logo">
-                        <i class="fa fa-book fa-1x" aria-hidden="true"></i>
-                        <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
-                    </div>
-                    
-                </a>
-                <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand ms-3" href="{{ url('/') }}">
+                <div class="text-start" style="color: black;" id="logo">
+                    <i class="fa fa-book fa-1x" aria-hidden="true"></i>
+                    <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
                     {{ config('app.name', 'Revista') }}
-                </a>
+                </div>                    
+            </a>
+            <div class="hidden fixed top-0 right-0 px-6 py-2 sm:block">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -73,8 +70,8 @@
                                 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="logout">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -84,12 +81,13 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+                    </ul>                    
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+
+        <main class="">
             @yield('content')
         </main>
     </div>

@@ -404,11 +404,13 @@ video {
 .red{
     text-decoration: none;
     color: #6351ce;
+    transition: 0.3s ;
 }
 
 .red:hover{
     font-weight: bold;
     color: #2F714A;
+    transition: 0.3s ;
 }
 
 i{
