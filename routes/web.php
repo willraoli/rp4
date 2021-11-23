@@ -29,12 +29,14 @@ Route::get('/revista/excluir/{id}', [App\Http\Controllers\Revista\RevistaControl
 Route::get('/select/revista/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'select'])->name('select.revista');
 
 // Editor
+// Controller
 Route::get('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create']);
 Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::class, 'show']);
 Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit']);
 Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'delete']);
+Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('listaEditores');
 
-
+// Repository
 Route::post('/editor/novo', [App\Http\Controllers\EditoresController::class, 'store'])->name('registrar_editor');
 Route::post('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'update'])->name('alterar_editor');
 Route::post('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'destroy'])->name('excluir_editor');
