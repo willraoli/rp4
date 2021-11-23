@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Autor;
 
 class AutorController extends Controller
@@ -28,5 +27,16 @@ class AutorController extends Controller
     {
         $autor = Autor::findOrFail($id);
         return view('autor.mostrar', ['autor' => $autor]);
+    }
+
+    public function show_with_pagination()
+    {
+        return Autor::paginate(10);
+    }
+
+    public function manage()
+    {
+        $autor = Autor::all();
+        return view('autor.gerenciar', ['autor' => $autor]);
     }
 }
