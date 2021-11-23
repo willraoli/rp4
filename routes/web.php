@@ -29,12 +29,14 @@ Route::get('/revista/excluir/{id}', [App\Http\Controllers\Revista\RevistaControl
 Route::get('/select/revista/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'select'])->name('select.revista');
 
 // Editor
+// Controller
 Route::get('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create']);
 Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::class, 'show']);
 Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit']);
 Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'delete']);
+Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('listaEditores');
 
-
+// Repository
 Route::post('/editor/novo', [App\Http\Controllers\EditoresController::class, 'store'])->name('registrar_editor');
 Route::post('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'update'])->name('alterar_editor');
 Route::post('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'destroy'])->name('excluir_editor');
@@ -46,17 +48,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //CRUD Avaliador
 //controller
-    Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
-    Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);
-    Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit']);
-    Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete']);
-    Route::get('/avaliador/manage', [App\Http\Controllers\AvaliadorController::class, 'manage'])->name('listaAvaliadores');
-
-    //repository
-    Route::post('/avaliador/editar/{id}', [App\Repository\AvaliadorRepository::class, 'update'])->name('editarAvaliador');
-    Route::post('/avaliador/excluir/{id}', [App\Repository\AvaliadorRepository::class, 'destroy'])->name('excluirAvaliador');
-    Route::post('/avaliador/create', [App\Repository\AvaliadorRepository::class, 'store'])->name('cadastroAvaliador');
-
+Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
+Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);
+Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit'])->name('editarAvaliador');
+Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete'])->name('excluirAvaliador');
+Route::get('/avaliador/manage', [App\Http\Controllers\AvaliadorController::class, 'manage'])->name('listaAvaliadores');
+//repository
+Route::post('/avaliador/editar/{id}', [App\Repository\AvaliadorRepository::class, 'update'])->name('editarAvaliador');
+Route::post('/avaliador/excluir/{id}', [App\Repository\AvaliadorRepository::class, 'destroy'])->name('excluirAvaliador');
+Route::post('/avaliador/create', [App\Repository\AvaliadorRepository::class, 'store'])->name('cadastroAvaliador');
 
 // CRUD Autor
     //controller

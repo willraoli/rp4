@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Editor</title>
-</head>
-
-<body>
-    <label for="">Nome</label>
-    <input type='text' name='nome' value = "{{ $editor->nome }}">
-    <label for="">Data de Contratação</label>
-    <input type='text' name='dataContratacao' value="{{$editor->dataContratacao}}">
-    <label for="">Data de Demissão</label>
-    <input type='text' name='dataDemissao' value="{{ $editor -> datDemissao}}">
-    <x-footer/>
-
-</body>
-
-</html>
+ @extends('layouts.app')
+ @section('content')
+ <div class="container pt-5" >
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h3 class="text-center">Edição das informações do Editor</h3>
+                    <label for="">Nome</label> <br />
+                    <input type="text" name="nome" class="form-control" value="{{ $editor->nome }}"> <br />
+                    <label for="">Data de Contratação</label> <br />
+                    <input type="date" name="email" class="form-control" value="{{ $editor->dataContratacao }}"> <br />
+                    <label for="">Data de Demissao</label> <br />
+                    <input type="date" name="email" class="form-control" value="{{ $editor->dataDemissao }}"> <br />
+                </div>
+            </div>
+        </div>
+    </div>
+<x-footer/>
+@endsection

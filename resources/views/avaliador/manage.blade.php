@@ -28,12 +28,12 @@
                     <td>{{ $avaliador->telefone }}</td>
                     
                     <td class="text-center">
-                        <a class="btn btn-primary" href="{{ route('listaAvaliadores', $avaliador->id) }}">
+                        <a class="btn btn-primary" href="{{ route('editarAvaliador', $avaliador->id) }}">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>            
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
+                        <a class="btn btn-danger" href="{{ route('excluirAvaliador', $avaliador->id) }}">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
