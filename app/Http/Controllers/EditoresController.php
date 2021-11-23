@@ -29,7 +29,7 @@ class EditoresController extends Controller
 
     public function manage(){
 
-        $editor = Editor::all();
+        $editor = Editor::paginate(10);
         return view('editores\manage', compact('editor'));
 
     }

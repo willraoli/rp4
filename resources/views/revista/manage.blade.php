@@ -5,7 +5,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <h3>Gerenciamento de Revistas</h3>
     <hr>
     <div class="pagination justify-content-center" style="color: black;">

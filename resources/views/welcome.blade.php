@@ -57,7 +57,7 @@
                 <i class="fa fa-book fa-4x" aria-hidden="true"></i>
                 <i class="fa fa-flask fa-4x" style="color: #6351ce;" aria-hidden="true"></i>
             </div>
-            <div class="text-center mt-lg-5">
+            <div class="text-center mt-lg-3">
                 <h3>Nome do sistema de controle de revistas</h3>
                 <small>Descrição breve do sistema</small>
             </div>
