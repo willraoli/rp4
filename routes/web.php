@@ -49,8 +49,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //controller
 Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
 Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);
-Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit']);
-Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete']);
+Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit'])->name('editarAvaliador');
+Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete'])->name('excluirAvaliador');
 Route::get('/avaliador/manage', [App\Http\Controllers\AvaliadorController::class, 'manage'])->name('listaAvaliadores');
 //repository
 Route::post('/avaliador/editar/{id}', [App\Repository\AvaliadorRepository::class, 'update'])->name('editarAvaliador');
