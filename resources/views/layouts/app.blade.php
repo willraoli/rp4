@@ -8,11 +8,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Revista') }}</title>
+        
+    <!-- Fontawesome para icones -->
+    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>    
 
     <!-- Styles -->
@@ -22,12 +27,12 @@
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="{{ url('/') }}">
                     <div class="text-start" style="color: white;" id="logo">
-                        <i class="fa fa-book fa-1x" aria-hidden="true"></i>
-                        <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
+                        <i class="fa fa-book fa-1x" style="transition:none !important;" aria-hidden="true"></i>
+                        <i class="fa fa-flask fa-1x" style="color: #6351ce;transition:none !important;" aria-hidden="true"></i>
                         {{ config('app.name', 'Revista') }}
                     </div>                    
                 </a>
@@ -88,14 +93,6 @@
             @yield('content')
         </main>
     </div>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
-    <!-- Fontawesome para icones -->
-    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
-
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
