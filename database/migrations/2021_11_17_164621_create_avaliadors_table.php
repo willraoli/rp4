@@ -18,6 +18,7 @@ class CreateAvaliadorsTable extends Migration
             $table->string('nome');
             $table->string('endereco');
             $table->string('email');
+            $table->string('password');
             $table->bigInteger('telefone');
             $table->timestamps();
         });

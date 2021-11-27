@@ -16,6 +16,10 @@
             <input type="email" class="form-control" placeholder="Insira o e-mail" name="email"> <br />
         </div>
         <div class=form-group>
+            <label for="">Senha</label> <br />
+        <input type="password" class="form-control" placeholder="Senha" name="password"> <br />
+        </div>
+        <div class=form-group>
             <label for="">Endereço</label> <br />
             <input type="text" class="form-control" placeholder="Insira seu endereço" name="endereco"> <br />
         </div>
