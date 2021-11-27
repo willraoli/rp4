@@ -4,7 +4,7 @@
     <div  class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="col-md-12">
-                <form action="{{ route('cadastroAvaliador') }}" method="POST">
+                <form action="{{ route('create.avaliador') }}" method="POST">
                     <h3 class="text-center">Cadastro de Avaliador</h3>
         @csrf
         <div class=form-group>
