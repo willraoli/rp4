@@ -7,6 +7,7 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
+    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -19,9 +20,6 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
-
-    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
-
 </head>
 
 <body class="antialiased" style="height: 100vh;">
@@ -30,8 +28,8 @@
         <div class="container-fluid">
             <a class="navbar-brand ms-3" href="#">
                 <div class="text-start" style="color: white;" id="logo">
-                    <i class="fa fa-book fa-1x" aria-hidden="true"></i>
-                    <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
+                    <i class="fa fa-book fa-1x" style="transition:none !important;" aria-hidden="true"></i>
+                    <i class="fa fa-flask fa-1x" style="color: #6351ce;transition:none !important;" aria-hidden="true"></i>
                     {{ config('app.name', 'Revista') }}
                 </div>
             </a>
@@ -57,7 +55,7 @@
                 <i class="fa fa-book fa-4x" aria-hidden="true"></i>
                 <i class="fa fa-flask fa-4x" style="color: #6351ce;" aria-hidden="true"></i>
             </div>
-            <div class="text-center mt-lg-5">
+            <div class="text-center mt-lg-3">
                 <h3>Nome do sistema de controle de revistas</h3>
                 <small>Descrição breve do sistema</small>
             </div>

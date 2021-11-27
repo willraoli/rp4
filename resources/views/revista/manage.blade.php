@@ -5,14 +5,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <h3>Gerenciamento de Revistas</h3>
     <hr>
     <div class="pagination justify-content-center" style="color: black;">
             {{ $revistas->links("pagination::bootstrap-4") }} 
     </div>
     <div class="container" style="margin-bottom: 100px;">
-        <table class="table table-borderless table-hover">
+        <table style="transition:none !important;" class="table table-borderless table-hover">
             <thead class="table-dark">
                 <th scope="col">Id</th>
                 <th scope="col">Título</th>
@@ -38,12 +38,12 @@
                     
                     <td class="text-center">
                         <a class="btn btn-primary" href="{{ route('select.revista', $revista->id) }}">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>            
+                            <i class="fa fa-pencil-square-o" style="transition:none !important;" aria-hidden="true"></i>            
                         </a>
                     </td>
                     <td class="text-center">
                         <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <i class="fa fa-trash-o" style="transition:none !important;" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>

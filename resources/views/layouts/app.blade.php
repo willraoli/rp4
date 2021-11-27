@@ -8,6 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Revista') }}</title>
+        
+    <!-- Fontawesome para icones -->
+    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,19 +23,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
      
-    <!-- Fontawesome para icones -->
-    <script src="https://use.fontawesome.com/1ce878220b.js"></script>
-
 </head>
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="{{ url('/') }}">
                     <div class="text-start" style="color: white;" id="logo">
-                        <i class="fa fa-book fa-1x" aria-hidden="true"></i>
-                        <i class="fa fa-flask fa-1x" style="color: #6351ce;" aria-hidden="true"></i>
+                        <i class="fa fa-book fa-1x" style="transition:none !important;" aria-hidden="true"></i>
+                        <i class="fa fa-flask fa-1x" style="color: #6351ce;transition:none !important;" aria-hidden="true"></i>
                         {{ config('app.name', 'Revista') }}
                     </div>                    
                 </a>

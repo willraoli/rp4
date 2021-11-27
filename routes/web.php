@@ -33,8 +33,9 @@ Route::get('/revista/excluir/{id}', [App\Http\Controllers\Revista\RevistaControl
 Route::get('/select/revista/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'select'])->name('select.revista');
 
 // Editor
+
 // Controller
-Route::get('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create']);
+Route::get('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create'])->name('create.editor');
 Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::class, 'show']);
 Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit']);
 Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'delete']);
@@ -53,6 +54,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //CRUD Avaliador
 //controller
 
+
 Route::get('/form/create/avaliador', function () {
     return view('avaliador\create');
 })->name('create.avaliador.view');
@@ -69,14 +71,14 @@ Route::post('/avaliador/excluir/{id}', [App\Repository\AvaliadorRepository::clas
 //Route::post('/avaliador/create', [App\Repository\AvaliadorRepository::class, 'store'])->name('cadastroAvaliador');
 
 // CRUD Autor
-    //controller
-    Route::get('/autor/cadastro', [App\Http\Controllers\AutorController::class, 'create']);
-    Route::get('/autor/deletar/{id}', [\App\Http\Controllers\AutorController::class, 'delete'])->name('exclusao_autor_modal');
-    Route::get('/autor/editar/{id}', [App\Http\Controllers\AutorController::class, 'edit']);
-    Route::get('/autor/all', [App\Http\Controllers\AutorController::class, 'manage']);
-    Route::get('/autor/{id}', [App\Http\Controllers\AutorController::class, 'show']);
+//controller
+Route::get('/autor/cadastro', [App\Http\Controllers\AutorController::class, 'create'])->name('create.autor');
+Route::get('/autor/deletar/{id}', [\App\Http\Controllers\AutorController::class, 'delete'])->name('exclusao_autor_modal');
+Route::get('/autor/editar/{id}', [App\Http\Controllers\AutorController::class, 'edit']);
+Route::get('/autor/all', [App\Http\Controllers\AutorController::class, 'manage'])->name('list.autor.mgmt');
+Route::get('/autor/{id}', [App\Http\Controllers\AutorController::class, 'show']);
 
-    //repository
-    Route::post('/autor/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edicao_autor');
-    Route::post('/autor/cadastro', [App\Repository\AutorRepository::class, 'store'])->name('cadastro_autor');
-    Route::post('/autor/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
+//repository
+Route::post('/autor/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edicao_autor');
+Route::post('/autor/cadastro', [App\Repository\AutorRepository::class, 'store'])->name('cadastro_autor');
+Route::post('/autor/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
