@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvaliadorsTable extends Migration
+class CreatePeriodicidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateAvaliadorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('avaliadors', function (Blueprint $table) {
+        Schema::create('periodicidades', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('endereco');
-            $table->string('email');
-            $table->bigInteger('telefone');
-            $table->string('area_pref');
-            $table->string('pais_origem');
+            $table->string('descricaoPeriodicidade');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateAvaliadorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avaliadors');
+        Schema::dropIfExists('periodicidades');
     }
 }

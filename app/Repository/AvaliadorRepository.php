@@ -3,25 +3,52 @@
 namespace App\Repository;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Avaliador;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AvaliadorRepository
 {
     public function store(Request $request){
         
-        Avaliador::create([
+        $avaliador = Avaliador::create([
             'nome' => $request->nome,
             'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
+            'area_pref' => $request->area_pref,
+            'pais_origem' => $request->pais_origem,
         ]);
 
-        return "Avaliador cadastrado com sucesso!";
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->assignRole('avaliador');
+        $user->save();
+        
+        return $avaliador->save();
     }
 
-    public function update(Request $request, $id){
+    public function getByID($id){
+        try{
+            $avaliador = Avaliador::findOrFail($id);
+        }catch(ModelNotFoundException $e){
+            return False;
+        }
+        return $avaliador;
+    }
 
-        $avaliador = Avaliador::findOrFail($id);
+    public function show(){
+        return Avaliador::paginate(10);
+    }
+
+    public function update(Request $request){
+
+        $avaliador = $this->getByID($request->id);
 
         $avaliador->update([
             'nome' => $request->nome,
@@ -29,15 +56,11 @@ class AvaliadorRepository
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
         ]);
-
-        return "Informações do Avaliador atualizadas com sucesso!";
     }
 
     public function destroy($id){
-
         $avaliador = Avaliador::findOrFail($id);
-        $avaliador->delete();
+        return $avaliador->delete();
 
-        return "Avaliador excluído com sucesso!";
     }
 } 

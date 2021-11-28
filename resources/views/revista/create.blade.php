@@ -1,4 +1,4 @@
-<?php 
+<?php
     use Illuminate\Support\Facades\DB;
 ?>
 
@@ -13,7 +13,7 @@
                     
                     @csrf
                     <h3 class="text-center">Cadastro de Nova Revista</h3>
-                    <?php 
+                    <?php
                         if(isset($_GET['err'])){
                             echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao cadastrar nova revista!</small></h6>';
                         }
@@ -29,7 +29,6 @@
                                 <option value='{{ $editor->id}}'>{{ $editor->nome }}</option>
                             @endforeach
                         </select>
-
                     </div>
                     <div class="form-group mb-2">
                         <label for="issn" class="ms-3">ISSN<span id="obrigatorio">*</span></label><br>
@@ -43,33 +42,27 @@
                     <div class="d-flex">
                         <div class="form-group mb-2 col-5 me-5">
                             <label for="periodicidade" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
-                            <select class="form-control" name="periodicidade" id="periodicidade">
-                                <option disabled>-</option>    
-                                <option>Diária</option>
-                                <option>Semanal</option>
-                                <option>Bissemanal</option>
-                                <option>Quinzenal</option>
-                                <option>Mensal</option>
-                                <option>Bimensal</option>
-                                <option>Bimestral</option>
-                                <option>Trimestral</option>
-                                <option>Quadrimestral</option>
-                                <option>Semestral</option>
-                                <option>Anual</option>
-                                <option>Quinquenal</option>
-                            </select>
+                            <select class="form-control" name="periodicidades" id="periodicidades">
+                            <option value="" disabled>-</option>
+                            <?php
+                                  $periodicidades = DB::table('periodicidades')->get();
+                                  foreach($periodicidades as $p){
+                                      echo '<option value='.$p->id.'>'.$p->descricaoPeriodicidade.'</option>';
+                                  }
+                            ?>
+                        </select>
                         </div>
-                        
+
                         <div class="form-group mb-2 col-6 ">
                         <label for="areas" class="ms-3">Áreas</label><br>
-                        
+
                         <select class="form-control" name="areas" id="areas">
                             <option value="" disabled>-</option>
-                            <?php                                  
+                            <?php
                                   $areas = DB::table('areas')->get();
                                   foreach($areas as $area){
                                       echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
-                                  }                                    
+                                  }
                             ?>
                         </select>
                     </div>
@@ -79,7 +72,7 @@
                         <div class="col-3 form-group pt-2">
                             <input type="submit" name="submit" class="btn btn-success btn-md" style="color:white;" value="Cadastrar">
                         </div>
-       
+
                     </div>
                 </form>
             </div>

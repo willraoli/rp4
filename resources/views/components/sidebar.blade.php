@@ -33,7 +33,7 @@
                     Avaliadores
                 </a>
                 <ul class="list-group-item border-0 collapse" id="avaliadores">
-                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.avaliador') }}">Cadastrar</a></li>
+                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.avaliador.view') }}">Cadastrar</a></li>
                     <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('listaAvaliadores')}}">Gerenciar</a></li>
                 </ul>
             </li>

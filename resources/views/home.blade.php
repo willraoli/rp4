@@ -18,6 +18,10 @@
                         @endif
 
                         {{ __('You are logged in!') }}
+
+                        @hasrole('avaliador')
+                            Você está logado como avaliador!
+                        @endhasrole
                     </div>
                 </div>
             </div>
