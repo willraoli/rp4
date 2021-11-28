@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Revista;
 
 use App\Http\Controllers\Controller;
 use App\Business\Revista\RevistaBusiness;
+use App\Models\Editor;
 use App\Models\Revista;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,13 @@ class RevistaController extends Controller{
    private RevistaBusiness $business;
 
 
+
+public function createForm(){
+    
+    $editores = Editor::all();
+    return view("revista/create", compact("editores"));
+
+}   
 
 public function create(Request $request){
 
@@ -30,12 +38,12 @@ public function create(Request $request){
 }
 
 
-public function manage(Request $request){
-    
-    $this->business = new RevistaBusiness;
-    $revistas = $this->business->manageRevistas($request);
-    
-    return view('revista\manage', compact('revistas'));
+public function manage(Request $request){    
+
+        $this->business = new RevistaBusiness;
+        $revistas = $this->business->manageRevistas($request);
+        
+        return view('revista\manage', compact('revistas'));
 
 }
 

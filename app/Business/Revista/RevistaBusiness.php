@@ -32,7 +32,6 @@ class RevistaBusiness{
         //verificar permissões do usuário
 
         $this->repository = new RevistaRepository;
-
         return $this->repository->show();
         
     }

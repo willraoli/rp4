@@ -23,9 +23,7 @@ Route::get('/', function () {
 Route::get('/pop', [App\Http\Controllers\Utils\PopulateTables::class, 'index'])->name('popular.tabelas');
 
 // Revista
-Route::get('/form/create/revista', function () {
-    return view('revista\create');
-})->name('create.revista.view');
+Route::get('/form/create/revista', [App\Http\Controllers\Revista\RevistaController::class, 'createForm'])->name('create.revista.view');
 Route::post('/create/revista', [App\Http\Controllers\Revista\RevistaController::class, 'create'])->name('create.revista');
 Route::get('/manage/revistas', [App\Http\Controllers\Revista\RevistaController::class, 'manage'])->name('list.revista.mgmt');
 Route::post('/revista/editar/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'update'])->name('update.revista');

@@ -10,6 +10,7 @@
         <div class="col-md-6">
             <div class="col-md-12">
                 <form class="form" action="{{ route('create.revista')}}" method="POST">
+                    
                     @csrf
                     <h3 class="text-center">Cadastro de Nova Revista</h3>
                     <?php 
@@ -23,23 +24,10 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="editor" class="ms-3">Editor<span id="obrigatorio">*</span></label><br>
-                        <select class="form-control" name="editor" id="editor" required>
-                            <option value="...">-</option>
-                            <?php
-                                  
-                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){
-   
-                                if(!empty($editor))
-                                   echo '<option value="...">-</option>';
-         
-                                   
-                                foreach($editors as $editor){
-                                    echo '<option value='.$editor->id.'>'.$editor->nome.'</option>';
-                                }  
-                                });
-
-
-                            ?>
+                        <select class="form-control mt-2" size="4" name="editor" id="editor" style="border-radius:0% !important" required>
+                            @foreach($editores as $editor)
+                                <option value='{{ $editor->id}}'>{{ $editor->nome }}</option>
+                            @endforeach
                         </select>
 
                     </div>
