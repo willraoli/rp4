@@ -13,6 +13,8 @@
             <label for="">E-mail<span id="obrigatorio">*</span></label> <br />
             <input type="email" class="form-control" name="email" placeholder="Email"/>
         </div>
+        <p style="color: red";>@error('nome') {{$message}} @enderror<p>
+        <p style="color: red";>@error('email') {{$message}} @enderror<p>
         <!-- <div class="form-group">
             <label for="">Nome<span id="obrigatorio">*</span></label> <br />
             <input type="text" class="form-control" placeholder="Nome" name="nome" required> <br />
@@ -27,11 +29,13 @@
         </div>
         <div class=form-group>
             <label for="">Endereço<span id="obrigatorio">*</span></label> <br />
-            <input type="text" class="form-control" placeholder="Insira seu endereço" name="endereco" required> <br />
+            <input type="text" class="form-control" placeholder="Insira seu endereço" name="endereco" > <br />
+            <p style="color: red";>@error('endereco') {{$message}} @enderror<p>
         </div>
         <div class=form-group>
             <label for="">Telefone<span id="obrigatorio">*</span></label> <br />
-        <input type="number" class="form-control" placeholder="Número" name="telefone" required> <br />
+        <input type="number" class="form-control" placeholder="Número" name="telefone" > <br />
+        <p style="color: red";>@error('telefone') {{$message}} @enderror<p>
         </div>
 
         <div class="form-group mb-2 col-5 me-5">
@@ -289,6 +293,7 @@
                 <option value="Zâmbia">Zâmbia</option>
             </select>
         </div>
+        <p style="color: red";>@error('pais_origem') {{$message}} @enderror<p>
         <div class="form-group mb-2 col-5 me-5">
             <label for="">Área de maior Preferência<span id="obrigatorio">*</span></label> <br />
             <select class="from-control" name="area_pref" id="areasPref" style="border: 2px solid gray;"> 
@@ -300,12 +305,14 @@
                 <option>Química</option>
             </select>
         </div>
+        <p style="color: red";>@error('area_pref') {{$message}} @enderror<p>
         <div class="row">
             <div class="col-3 form-group pt-2">
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </form>
+    
             </div>
         </div>
     </div>
