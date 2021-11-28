@@ -1,4 +1,4 @@
-<?php 
+<?php
     use Illuminate\Support\Facades\DB;
 ?>
 
@@ -12,7 +12,7 @@
                 <form class="form" action="{{ route('update.revista', $revista->id )}}" method="POST">
                     @csrf
                     <h3 class="text-center">Atualizando Revista {{ $revista->tituloRevista }}<nome-aqui> </h3>
-                    <?php 
+                    <?php
                         if(isset($_GET['err'])){
                             echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao atualizar revista!</small></h6>';
                         }
@@ -25,11 +25,11 @@
                         <label for="editor" class="ms-3">Editor<span id="obrigatorio">*</span></label><br>
                         <select class="form-control" name="editor" id="editor" required>
                             <option value="" disabled>-</option>
-                            <?php                                  
-                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){   
+                            <?php
+                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){
                                 foreach($editors as $editor){
                                     echo '<option value='.$editor->id.'>'.$editor->nome.'</option>';
-                                }  
+                                }
                                 });
                             ?>
                         </select>
@@ -47,38 +47,32 @@
                     <div class="d-flex">
                         <div class="form-group mb-2 col-5 me-5">
                             <label for="periodicidade" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
-                            <select class="form-control" name="periodicidade" id="periodicidade">
-                                <option value="" disabled>-</option>
-                                <option>Diária</option>
-                                <option>Semanal</option>
-                                <option>Bissemanal</option>
-                                <option>Quinzenal</option>
-                                <option>Mensal</option>
-                                <option>Bimensal</option>
-                                <option>Bimestral</option>
-                                <option>Trimestral</option>
-                                <option>Quadrimestral</option>
-                                <option>Semestral</option>
-                                <option>Anual</option>
-                                <option>Quinquenal</option>
-                            </select>
+                            <select class="form-control" name="periodicidades" id="periodicidades">
+                            <option value="" disabled>-</option>
+                            <?php
+                                  $periodicidades = DB::table('periodicidades')->get();
+                                  foreach($periodicidades as $p){
+                                      echo '<option value='.$p->id.'>'.$p->descricaoPeriodicidade.'</option>';
+                                  }
+                            ?>
+                        </select>
                         </div>
-                        
+
                         <div class="form-group mb-2 col-6 ">
                         <label for="areas" class="ms-3">Áreas</label><br>
-                        
+
                         <select class="form-control" name="areas" id="areas">
                             <option value="" disabled>-</option>
                             <?php
                                   $areas = DB::table('areas')->get();
                                   foreach($areas as $area){
                                       echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
-                                  }                                   
+                                  }
                             ?>
                         </select>
                     </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col form-group pt-2 align-self-start text-start">
                             <input type="submit" name="submit" class="btn btn-success btn-md col-6" style="color:white;" value="Finalizar">
