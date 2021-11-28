@@ -42,7 +42,6 @@ Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::
 Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit']);
 Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'delete']);
 Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('listaEditores');
-Route::post('/cadastro/revista', [App\Http\Controllers\Editores\EditoresController::class, 'create'])->name('create.revista');
 
 // Repository
 Route::post('/editor/editar/{id}', [App\Repository\EditorRepository::class, 'update'])->name('alterar_editor');
