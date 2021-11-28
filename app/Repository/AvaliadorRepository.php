@@ -13,16 +13,7 @@ use App\Models\User;
 class AvaliadorRepository
 {
     public function store(Request $request){
-        // $v = Validator::make($request->all(), [
-        //     'nome' => 'required|max:255',
-        //     'email' => 'required|max:255',
-        //     'endereco' => 'required|max:255',
-        //     'telefone' => 'required|min:11',
-        // ]);
-
-        // if($v->fails()){
-        //     return $v === True ? redirect()->route('home',) : redirect()->route('create.avaliador.view', 'err');
-        // }
+        
         $data = request()->validate([
         'nome' => 'required|max:50|min:3',
         'email' => 'required|max:250',
@@ -72,11 +63,22 @@ class AvaliadorRepository
 
         $avaliador = $this->getByID($request->id);
 
+        $data = request()->validate([
+            'nome' => 'required|max:50|min:3',
+            'email' => 'required|max:250',
+            'endereco' => 'required|max:250',
+            'telefone' => 'required|min:13|max:13',
+            'area_pref' => 'required',
+            'pais_origem' => 'required'
+            ]);
+
         $avaliador->update([
             'nome' => $request->nome,
             'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
+            'area_pref' => $request->area_pref,
+            'pais_origem' => $request->pais_origem
         ]);
     }
 

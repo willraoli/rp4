@@ -16,7 +16,7 @@ class AvaliadorController extends Controller
         $this->business = new AvaliadorBusiness;
         $request = $this->business->createAvaliador($request);
 
-        return $request === True ? redirect()->route('home',) : redirect()->route('create.avaliador.view', 'err');
+        return $request === True ? redirect()->route('home',) : redirect()->route('create..view', 'err');
     }
 
     public function show($id){
@@ -29,6 +29,7 @@ class AvaliadorController extends Controller
         $this->business = new AvaliadorBusiness;
         $avaliador = $this->business->selectAvaliador($request);
         return view('avaliador\edit', ['avaliador' => $avaliador]);
+        
     }
 
     public function delete(Request $request){
