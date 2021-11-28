@@ -19,6 +19,8 @@ class CreateAvaliadorsTable extends Migration
             $table->string('endereco');
             $table->string('email');
             $table->bigInteger('telefone');
+            $table->string('area_pref');
+            $table->string('pais_origem');
             $table->timestamps();
         });
     }

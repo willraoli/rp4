@@ -15,7 +15,7 @@ class AvaliadorController extends Controller
         $this->business = new AvaliadorBusiness;
         $request = $this->business->createAvaliador($request);
 
-        return $request === True ? redirect()->route('listaAvaliadores',) : redirect()->route('create.revista.view', 'err');
+        return $request === True ? redirect()->route('home',) : redirect()->route('create.revista.view', 'err');
     }
 
 

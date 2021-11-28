@@ -5,6 +5,8 @@ namespace App\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Avaliador;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AvaliadorRepository
 {
@@ -15,8 +17,19 @@ class AvaliadorRepository
             'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
+            'area_pref' => $request->area_pref,
+            'pais_origem' => $request->pais_origem,
         ]);
 
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->assignRole('avaliador');
+        $user->save();
+        
         return $avaliador->save();
     }
 
