@@ -11,7 +11,6 @@
             <div class="col-md-12">
                 <h3 class="text-center">Edição das informações do Avaliador</h3>
                 <form action="{{ route('editarAvaliador', $avaliador->id) }}" method="POST">
-
         @csrf
         <div class="form-group mb-2">
         <label for="">Nome<span id="obrigatorio">*</span></label><br>
@@ -20,6 +19,11 @@
         <label for="">Email<span id="obrigatorio">*</span></label><br>
         <input type="email" name="email" class="form-control" value="{{ $avaliador->email }}"><br>
         <p style="color: red";>@error('email') {{$message}} @enderror<p>
+        <?php
+            if(isset($_GET['err'])){
+                echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao atualizar revista!</small></h6>';
+                    }
+        ?>
         <label for="">Endereço<span id="obrigatorio">*</span></label><br>
         <input type="text" name="endereco" class="form-control" value="{{ $avaliador->endereco }}"><br>
         <p style="color: red";>@error('endereco') {{$message}} @enderror<p>

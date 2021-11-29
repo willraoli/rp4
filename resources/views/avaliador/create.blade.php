@@ -20,6 +20,11 @@
                     <p>
                     <p style="color: red" ;>@error('email') {{$message}} @enderror
                     <p>
+                    <?php
+                        if(isset($_GET['err'])){
+                            echo '<h6 class="text-center" id="obrigatorio"><small>Email já existente!</small></h6>';
+                        }
+                    ?>
                         <!-- <div class="form-group">
             <label for="">Nome<span id="obrigatorio">*</span></label> <br />
             <input type="text" class="form-control" placeholder="Nome" name="nome" required> <br />

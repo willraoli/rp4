@@ -13,11 +13,14 @@ class AvaliadorBusiness{
     public function __construct(){}
 
     public function createAvaliador(Request $request){
-
+        if(!$this->uniqueEmail($request->email)){
         $this->repository= new AvaliadorRepository;
         $saved = $this->repository->store($request);
 
         return $saved;
+        }else{
+            return 'False';
+        }
     }
 
     public function manageAvaliador(){
@@ -44,6 +47,10 @@ class AvaliadorBusiness{
     public function updateAvaliador(Request $request){
         $this->repository = new AvaliadorRepository;
         return $this->repository->update($request); 
+    }
+
+    public function uniqueEmail(String $email){
+        return DB::table('avaliadors')->where('email', $email)->exists();
     }
 }
 ?>
