@@ -31,14 +31,14 @@ use Illuminate\Support\Facades\DB;
                     </a>
                 </td>
                 <td class="text-center">
-                    <a class="btn btn-danger" data-toggle="modal" data-target="#del-modal">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -59,10 +59,11 @@ use Illuminate\Support\Facades\DB;
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </tbody>
-    </table>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
-    <x-footer />
-    @endsection
+    <x-footer/>
+</div>
+@endsection
