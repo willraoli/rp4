@@ -5,13 +5,9 @@ use Illuminate\Support\Facades\DB;
 
 @extends('layouts.app')
 @section('content')
-<div class="container mt-3">
+<div class="container">
     <h3>Gerenciamento de Editores</h3>
     <hr>
-    <div class="pagination justify-content-center" style="color: black;">
-            {{ $editor->links("pagination::bootstrap-4") }} 
-    </div>
-    <div class="container" style="margin-bottom: 100px;">
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <th scope="col">Id</th>
@@ -35,15 +31,39 @@ use Illuminate\Support\Facades\DB;
                     </a>
                 </td>
                 <td class="text-center">
-                    <a class="btn btn-danger" data-toggle="modal" data-target="#del-editor-modal" href=#del-editor-modal>
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo deletar esse Editor?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{ $editor->nome }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" >
+                                <a href="{{ route('excluir_editor', $editor->id) }}" style="color: white;text-decoration: none;">
+                                Sim
+                                </a>
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
-    <x-footer />
-    @endsection
+    <x-footer/>
+</div>
+@endsection

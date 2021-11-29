@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Avaliador;
 use App\Business\Avaliador\AvaliadorBusiness;
+use Illuminate\Support\Facades\Validator;
 
 class AvaliadorController extends Controller
 {
@@ -15,10 +16,8 @@ class AvaliadorController extends Controller
         $this->business = new AvaliadorBusiness;
         $request = $this->business->createAvaliador($request);
 
-        return $request === True ? redirect()->route('home',) : redirect()->route('create.revista.view', 'err');
+        return $request === True ? redirect()->route('home',) : redirect()->route('create..view', 'err');
     }
-
-
 
     public function show($id){
 
@@ -30,6 +29,7 @@ class AvaliadorController extends Controller
         $this->business = new AvaliadorBusiness;
         $avaliador = $this->business->selectAvaliador($request);
         return view('avaliador\edit', ['avaliador' => $avaliador]);
+        
     }
 
     public function delete(Request $request){
@@ -56,7 +56,7 @@ class AvaliadorController extends Controller
     return redirect()->route('listaAvaliadores');
     }
 
-
+    
 
     
 }

@@ -21,5 +21,7 @@ class Avaliador extends Authenticatable
         'pais_origem'
     ];
 
-    
+    public function pais(){
+        return $this->hasOne(Pais::class, 'id', 'pais_origem');
+    }
 }

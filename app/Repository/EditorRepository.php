@@ -2,33 +2,40 @@
 
 namespace App\Repository;
 
-use Illuminate\Http\Request;
 use App\Models\Editor;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class EditorRepository
 {
+
+    public function show(){
+        return Editor::paginate(10);
+    }
+
     public function store(Request $request) // repository
     {
-        Editor::create([
+        $editor = Editor::create([
             'nome' => $request->nome,
-            'dataContratacao' => $request->email,
-            'dataDemissao' => $request->endereco,
+            'dataContratacao' => $request->dataContratacao,
+            'dataDemissao' => $request->dataDemissao,
         ]);
 
         return "Editor cadastrado com sucesso!";
     }
 
-    public function update(Request $request, $id) // repository
+    public function update(Request $request) // repository
     {
-        $editor = Editor::findOrFail($id);
+        $editor = $this->getByID($request->id);
 
         $editor->update([
             'nome' => $request->nome,
-            'dataContratacao' => $request->email,
-            'dataDemissao' => $request->endereco,
+            'dataContratacao' => $request->dataContratacao,
+            'dataDemissao' => $request->dataDemissao,
         ]);
 
-        return "Editor editado com sucesso!";
+        return "Editor alterado com sucesso!";
     }
 
     public function destroy($id) // repository
@@ -37,5 +44,14 @@ class EditorRepository
         $editor->delete();
 
         return "Editor excluído com sucesso!";
+    }
+
+    public function getByID($id){
+        try{
+            $editor = Editor::findOrFail($id);
+        }catch(ModelNotFoundException $e){
+            return False;
+        }
+        return $editor;
     }
 }

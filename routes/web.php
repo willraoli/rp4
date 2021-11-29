@@ -31,16 +31,17 @@ Route::get('/revista/excluir/{id}', [App\Http\Controllers\Revista\RevistaControl
 Route::get('/select/revista/{id}', [App\Http\Controllers\Revista\RevistaController::class, 'select'])->name('select.revista');
 
 // Editor
-
 // Controller
-Route::get('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create'])->name('create.editor');
+Route::get('/editor/novo/', function () {
+    return view('editores\cadastro');
+})->name('create.editor.view');
+Route::post('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create'])->name('registrar_editor');
 Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::class, 'show']);
 Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit']);
 Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'delete']);
 Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('listaEditores');
 
 // Repository
-Route::post('/editor/novo', [App\Repository\EditorRepository::class, 'store'])->name('registrar_editor');
 Route::post('/editor/editar/{id}', [App\Repository\EditorRepository::class, 'update'])->name('alterar_editor');
 Route::post('/editor/excluir/{id}', [App\Repository\EditorRepository::class, 'destroy'])->name('excluir_editor');
 
@@ -60,7 +61,7 @@ Route::post('/create/avaliador', [App\Http\Controllers\AvaliadorController::clas
 
 //Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
 Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);
-Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit'])->name('editarAvaliador');
+Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit']);
 Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete'])->name('excluirAvaliador');
 Route::get('/avaliador/manage', [App\Http\Controllers\AvaliadorController::class, 'manage'])->name('listaAvaliadores');
 //repository

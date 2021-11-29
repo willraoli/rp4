@@ -1,3 +1,7 @@
+<?php
+    use Illuminate\Support\Facades\DB;
+?>
+
 @extends('layouts.app')
 @section('content')
 
@@ -10,20 +14,46 @@
 
         @csrf
         <div class="form-group mb-2">
-        <label for="">Nome</label><br>
+        <label for="">Nome<span id="obrigatorio">*</span></label><br>
         <input type="text" name="nome" class="form-control" value="{{ $avaliador->nome }}"><br>
-        <label for="">Email</label><br>
+        <p style="color: red";>@error('nome') {{$message}} @enderror<p>
+        <label for="">Email<span id="obrigatorio">*</span></label><br>
         <input type="email" name="email" class="form-control" value="{{ $avaliador->email }}"><br>
-        <label for="">Endereço</label><br>
+        <p style="color: red";>@error('email') {{$message}} @enderror<p>
+        <label for="">Endereço<span id="obrigatorio">*</span></label><br>
         <input type="text" name="endereco" class="form-control" value="{{ $avaliador->endereco }}"><br>
-        <label for="">Telefone</label><br>
+        <p style="color: red";>@error('endereco') {{$message}} @enderror<p>
+        <label for="" >Telefone<span id="obrigatorio">*</span></label><br>
         <input type="number" name="telefone" class="form-control" value="{{ $avaliador->telefone }}"><br>
+        <p style="color: red";>@error('telefone') {{$message}} @enderror<p>
+        <label for="">País de origem<span id="obrigatorio">*</span></label> <br />
+            <select class="form-control" name="pais_origem" id="paises" value="{{ $avaliador->pais_origem }}"> <br />
+            <option value="" disabled>-</option>
+            <?php
+                            $paises = DB::table('paises')->get();
+                            foreach ($paises as $p) {
+                                echo '<option value=' . $p->id . '>' . $p->nomePais . '</option>';
+                            }
+                            ?>
+            </select>
+        </div>
+        <p style="color: red";>@error('pais_origem') {{$message}} @enderror<p>
+        <label for="">Área de interesse<span id="obrigatorio">*</span></label> <br />
+            <select class="from-control" name="area_pref" id="areasPref" style="border: 2px solid gray;" value="{{ $avaliador->area_pref }}">
+                <option selected="selected">Engenharia de Software</option>
+                <option>Ciência da Computação</option>
+                <option>Física</option>
+                <option>Biologia</option>
+                <option>Matemática</option>
+                <option>Química</option>
+            </select>
         <div>
+        <p style="color: red";>@error('area_pref') {{$message}} @enderror<p>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
             </div>
         </div>
     </div>
 </div>
-<x-footer/>
+
 @endsection

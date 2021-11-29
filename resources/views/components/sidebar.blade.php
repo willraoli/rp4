@@ -7,7 +7,7 @@
 
     <div class="d-flex align-items-stretch " style="height: 94vh; width: 150px; background-color:white; ">
         <ul class="list-group " style="width: 180px; border-radius: 0; ">
-           
+
             <li id="list-tree" class="list-group-item border-0">
                 <a class="" data-bs-toggle="collapse" href="#revistas" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Revistas
@@ -43,7 +43,7 @@
                     Editores
                 </a>
                 <ul class="list-group-item border-0 collapse" id="editores">
-                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.editor') }}">Cadastrar</a></li>
+                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.editor.view') }}">Cadastrar</a></li>
                     <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('listaEditores') }}">Gerenciar</a></li>
                 </ul>
             </li>

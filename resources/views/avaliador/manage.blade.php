@@ -14,6 +14,8 @@
                 <th scope="col">Endereço</th>
                 <th scope="col">Email</th>
                 <th scope="col">Telefone</th>
+                <th scope="col">País</th>
+                <th scope="col">Área de interesse</th>
                 <th class="table-borderless" scope="col"></th>
                 <th class="table-borderless" scope="col"></th>
             </thead>
@@ -26,6 +28,8 @@
                     <td>{{ $avaliador->endereco }}</td>
                     <td>{{ $avaliador->email }}</td>
                     <td>{{ $avaliador->telefone }}</td>
+                    <td>{{ $avaliador->pais_origem }}</td>
+                    <td>{{ $avaliador->area_pref }}</td>
                     
                     <td class="text-center">
                         <a class="btn btn-primary" href="{{ route('editarAvaliador', $avaliador->id) }}">
