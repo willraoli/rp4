@@ -61,15 +61,18 @@
                     <p>
                     <div class="form-group mb-2 col-5 me-5">
                         <label for="">Área de maior Preferência<span id="obrigatorio">*</span></label> <br />
-                        <select class="from-control" name="area_pref" id="areasPref" style="border: 2px solid gray;">
-                            <option selected="selected">Engenharia de Software</option>
-                            <option>Ciência da Computação</option>
-                            <option>Física</option>
-                            <option>Biologia</option>
-                            <option>Matemática</option>
-                            <option>Química</option>
+                        <select class="form-control" name="area_pref" id="areas">
+                            <option value="" disabled>-</option>
+                            <?php
+                                  $areas = DB::table('areas')->get();
+                                  foreach($areas as $area){
+                                      echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
+                                  }
+                            ?>
                         </select>
                     </div>
+
+
                     <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
                     <p>
                     <div class="row">
