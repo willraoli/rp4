@@ -13,11 +13,15 @@ class EditorBusiness{
     public function __construct(){}
 
     public function createEditor(Request $request){
-
+        if(!$this->uniqueEmail($request->email)){
         $this->repository= new EditorRepository;
         $saved = $this->repository->store($request);
 
         return $saved;
+        
+        }else{
+            return 'False';
+        }
     }
 
     public function manageEditor(){
@@ -44,6 +48,9 @@ class EditorBusiness{
     public function updateEditor(Request $request){
         $this->repository = new EditorRepository;
         return $this->repository->update($request);
+    }
+    public function uniqueEmail(String $email){
+        return DB::table('editors')->where('email', $email)->exists();
     }
 }
 ?>

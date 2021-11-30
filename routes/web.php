@@ -39,12 +39,12 @@ Route::get('/editor/novo/', function () {
 })->name('create.editor.view');
 Route::post('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create'])->name('registrar_editor');
 Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::class, 'show']);
-Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit']);
+Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit'])->name('alterar_editor');
 Route::get('/editor/excluir/{id}', [App\Http\Controllers\EditoresController::class, 'delete']);
-Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('listaEditores');
+Route::get('/editor/manage', [App\Http\Controllers\EditoresController::class, 'manage'])->name('lista_editores');
 
 // Repository
-Route::post('/editor/editar/{id}', [App\Repository\EditorRepository::class, 'update'])->name('alterar_editor');
+Route::post('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'update'])->name('alterar_editor');
 Route::post('/editor/excluir/{id}', [App\Repository\EditorRepository::class, 'destroy'])->name('excluir_editor');
 
 

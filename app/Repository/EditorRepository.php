@@ -12,19 +12,31 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class EditorRepository
 {
 
-    public function show(){
+    public function show()
+    {
         return Editor::paginate(10);
     }
 
     public function store(Request $request) // repository
     {
+        $dados = request()->validate([
+            'nome' => 'required|min:3',
+            'email' => 'required|max:250',
+            'endereco' => 'required|max:250',
+            'telefone' => 'required|min:13|max:13',
+            'area_id' => 'nullable',
+            'pais_id' => 'nullable',
+            'dataContratacao' => 'required',
+            'dataDemissao' => 'nullable'
+        ]);
+
         $editor = Editor::create([
             'nome' => $request->nome,
             'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
             'pais_id' => $request->pais,
-            'area_id'=> $request->especialidade,
+            'area_id' => $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
             'dataDemissao' => $request->dataDemissao,
         ]);
@@ -35,39 +47,52 @@ class EditorRepository
             'password' => Hash::make($request->password),
         ]);
 
-        return "Editor cadastrado com sucesso!";
+        $user->assignRole('editor');
+        return $user->save();
     }
 
     public function update(Request $request) // repository
     {
         $editor = $this->getByID($request->id);
+        $user = User::findOrFail($request->id);
+
+        $dados = request()->validate([
+            'nome' => 'required|min:3',
+            'email' => 'nullable',
+            'endereco' => 'required|max:250',
+            'telefone' => 'required|max:250',
+            'area_id' => 'nullable',
+            'pais_id' => 'nullable',
+            'dataContratacao' => 'required',
+            'dataDemissao' => 'nullable'
+        ]);
 
         $editor->update([
             'nome' => $request->nome,
-            'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
-            'pais_id' => $request->pais,
-            'area_id'=> $request->especialidade,
+            'pais_id' => $request->pais_id,
+            'area_id' => $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
-            'dataDemissao' => $request->dataDemissao,
         ]);
-
-        return "Editor alterado com sucesso!";
+        $user->update([
+            'name' => $request->nome,
+        ]);
     }
 
     public function destroy($id) // repository
     {
         $editor = Editor::findOrFail($id);
-        $editor->delete();
-
-        return "Editor excluído com sucesso!";
+        $user = User::findOrFail($id);
+        $user->delete();
+        return $editor->delete();
     }
 
-    public function getByID($id){
-        try{
+    public function getByID($id)
+    {
+        try {
             $editor = Editor::findOrFail($id);
-        }catch(ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
             return False;
         }
         return $editor;
