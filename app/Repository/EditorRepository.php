@@ -57,26 +57,15 @@ class EditorRepository
         $user = User::findOrFail($request->id);
 
         $dados = request()->validate([
-            'nome' => 'nullable',
-            'email' => 'nullable',
-            'endereco' => 'nullable',
-            'telefone' => 'nullable',
+            'nome' => 'required|min:3',
+            'email' => 'required|max:250',
+            'endereco' => 'required|max:250',
+            'telefone' => 'required|max:250',
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
-            'dataContratacao' => 'nullable',
+            'dataContratacao' => 'required',
             'dataDemissao' => 'nullable'
         ]);
-
-        // $dados = request()->validate([
-        //     'nome' => 'required|min:3',
-        //     'email' => 'required|max:250',
-        //     'endereco' => 'required|max:250',
-        //     'telefone' => 'required|max:250',
-        //     'area_id' => 'nullable',
-        //     'pais_id' => 'nullable',
-        //     'dataContratacao' => 'required',
-        //     'dataDemissao' => 'nullable'
-        // ]);
 
         $editor->update([
             'nome' => $request->nome,
