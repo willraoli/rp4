@@ -57,15 +57,26 @@ class EditorRepository
         $user = User::findOrFail($request->id);
 
         $dados = request()->validate([
-            'nome' => 'required|min:3',
-            'email' => 'required|max:250',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|max:250',
+            'nome' => 'nullable',
+            'email' => 'nullable',
+            'endereco' => 'nullable',
+            'telefone' => 'nullable',
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
-            'dataContratacao' => 'required',
+            'dataContratacao' => 'nullable',
             'dataDemissao' => 'nullable'
         ]);
+
+        // $dados = request()->validate([
+        //     'nome' => 'required|min:3',
+        //     'email' => 'required|max:250',
+        //     'endereco' => 'required|max:250',
+        //     'telefone' => 'required|max:250',
+        //     'area_id' => 'nullable',
+        //     'pais_id' => 'nullable',
+        //     'dataContratacao' => 'required',
+        //     'dataDemissao' => 'nullable'
+        // ]);
 
         $editor->update([
             'nome' => $request->nome,
@@ -86,9 +97,9 @@ class EditorRepository
     public function destroy($id) // repository
     {
         $editor = Editor::findOrFail($id);
-        $editor->delete();
-
-        return "Editor excluído com sucesso!";
+        $user = User::findOrFail($id);
+        $user->delete();
+        return $editor->delete();
     }
 
     public function getByID($id)
