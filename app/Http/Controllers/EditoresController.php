@@ -27,6 +27,7 @@ class EditoresController extends Controller
     public function create(Request $request)
     {
         if(!empty($request->all())){
+            
         $this->business = new EditorBusiness;
         $request = $this->business->createEditor($request);
 

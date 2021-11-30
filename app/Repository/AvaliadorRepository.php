@@ -13,15 +13,15 @@ use App\Models\User;
 class AvaliadorRepository
 {
     public function store(Request $request){
-        
-        $data = request()->validate([
-        'nome' => 'required|max:50|min:3',
-        'email' => 'required|max:250',
-        'endereco' => 'required|max:250',
-        'telefone' => 'required|min:13|max:13',
-        'area_pref' => 'required',
-        'pais_origem' => 'required'
-        ]);
+
+        // $data = request()->validate([
+        // 'nome' => 'required|max:50|min:3',
+        // 'email' => 'required|max:250',
+        // 'endereco' => 'required|max:250',
+        // 'telefone' => 'required|min:13|max:13',
+        // 'area_pref' => 'required',
+        // 'pais_origem' => 'required'
+        // ]);
 
         $avaliador = Avaliador::create([
             'nome' => $request->nome,
@@ -42,7 +42,7 @@ class AvaliadorRepository
 
         $user->assignRole('avaliador');
         $user->save();
-        
+
         return $avaliador->save();
     }
 
@@ -95,4 +95,4 @@ class AvaliadorRepository
         return $avaliador->delete();
 
     }
-} 
+}
