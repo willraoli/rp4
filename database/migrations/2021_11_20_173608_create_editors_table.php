@@ -27,7 +27,7 @@ class CreateEditorsTable extends Migration
             $table->timestamps();
 
             $table->foreign('area_id')->references('id')->on('areas');
-            $table->foreign('pais_id')->references('id')->on('pais');
+            $table->foreign('pais_id')->references('id')->on('paises');
             // $table->foreign('user_id')->references('id')->on('users');
         });
     }
