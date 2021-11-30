@@ -19,14 +19,14 @@ class EditorRepository
 
     public function store(Request $request) // repository
     {
-        $data = request()->validate([
-            'nome' => 'required|min:3|max:250',
-            'email' => 'required|max:250',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|min:13|max:13',
-            'area_id' => 'required',
-            'pais_id' => 'required',
-            'dataContratacao' => 'required',
+        $dados = request()->validate([
+            'nome' => 'nullable',
+            'email' => 'nullable',
+            'endereco' => 'nullable',
+            'telefone' => 'nullable',
+            'area_id' => 'nullable',
+            'pais_id' => 'nullable',
+            'dataContratacao' => 'nullable',
             'dataDemissao' => 'nullable'
         ]);
 
@@ -46,9 +46,8 @@ class EditorRepository
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
         $user->assignRole('editor');
-
-
         return $user->save();
     }
 
@@ -57,18 +56,17 @@ class EditorRepository
         $editor = $this->getByID($request->id);
         $user = User::findOrFail($request->id);
 
-        $data = request()->validate([
-            'nome' => 'required|max:50|min:3',
-            'email' => 'required|max:250',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|min:13|max:13',
-            'area_id' => 'required',
-            'pais_id' => 'required',
-            'dataContratacao' => 'required',
-            'dataDemissao' => 'nullable',
-
+        $dados = request()->validate([
+            'nome' => 'nullable',
+            'email' => 'nullable',
+            'endereco' => 'nullable',
+            'telefone' => 'nullable',
+            'area_id' => 'nullable',
+            'pais_id' => 'nullable',
+            'dataContratacao' => 'nullable',
+            'dataDemissao' => 'nullable'
         ]);
-        
+
         $editor->update([
             'nome' => $request->nome,
             'email' => $request->email,
@@ -77,14 +75,12 @@ class EditorRepository
             'pais_id' => $request->pais_id,
             'area_id' => $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
-            'dataDemissao' => $request->dataDemissao,
         ]);
 
         $user->update([
             'name' => $request->nome,
             'email' => $request->email,
         ]);
-
     }
 
     public function destroy($id) // repository

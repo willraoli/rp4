@@ -19,7 +19,6 @@ class CreateEditorsTable extends Migration
             $table->string('endereco');
             $table->string('email');
             $table->bigInteger('telefone');
-            // $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('pais_id');
             $table->unsignedBigInteger('area_id');
             $table->date('dataContratacao');
@@ -28,7 +27,7 @@ class CreateEditorsTable extends Migration
 
             $table->foreign('area_id')->references('id')->on('areas');
             $table->foreign('pais_id')->references('id')->on('paises');
-            // $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

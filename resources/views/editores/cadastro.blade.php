@@ -72,7 +72,7 @@ use Illuminate\Support\Facades\DB;
                     </div>
                     <div class=form-group>
                         <label for="">Data de Demissão</label> <br />
-                        <input type="date" class="form-control" placeholder="2001/06/01" name="dataDemissao"> <br />
+                        <input type="date" class="form-control" disabled placeholder="2001/06/01" name="dataDemissao"> <br />
                         <p style="color: red" ;>@error('dataDemissao') {{$message}} @enderror
                     </div>
                     <div class="row">
