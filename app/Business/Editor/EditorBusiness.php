@@ -18,7 +18,7 @@ class EditorBusiness{
         $saved = $this->repository->store($request);
 
         return $saved;
-        
+
         }else{
             return 'False';
         }
@@ -34,7 +34,7 @@ class EditorBusiness{
     public function deleteEditor(Request $request){
 
         $this->repository = new EditorRepository;
-        return $this->repository->destroy($request->id);
+        return $this->repository->destroy($request->id, $request->user_id);
     }
 
     public function selectEditor(Request $request){
