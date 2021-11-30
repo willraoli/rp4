@@ -14,27 +14,33 @@ use Illuminate\Support\Facades\DB;
                     <h3 class="text-center">Cadastro de Editor</h3>
                     @csrf
                     <div class=form-group>
-                        <label for="">Nome</label> <br />
+                        <label for="">Nome<span id="obrigatorio">*</span></label> <br />
                         <input type="text" class="form-control" placeholder="Nome" name="nome"> <br />
                         <p style="color: red" ;>@error('nome') {{$message}} @enderror
                     </div>
                     <div class=form-group>
-                        <label for="">Email</label> <br />
+                        <label for="">Email<span id="obrigatorio">*</span></label> <br />
                         <input type="email" class="form-control" name="email"> <br />
                         <p style="color: red" ;>@error('email') {{$message}} @enderror
+
+                        <?php
+                        if(isset($_GET['err'])){
+                            echo '<h6 class="text-center" id="obrigatorio"><small>Email já existente!</small></h6>';
+                        }
+                    ?>
                     </div>
                     <div class=form-group>
-                        <label for="">Senha</label> <br />
+                        <label for="">Senha<span id="obrigatorio">*</span></label> <br />
                         <input type="password" class="form-control" name="password"> <br />
 
                     </div>
                     <div class=form-group>
-                        <label for="">Endereco</label> <br />
+                        <label for="">Endereco<span id="obrigatorio">*</span></label> <br />
                         <input type="text" class="form-control" name="endereco"> <br />
                         <p style="color: red" ;>@error('endereco') {{$message}} @enderror
                     </div>
                     <div class=form-group>
-                        <label for="">Telefone</label> <br />
+                        <label for="">Telefone<span id="obrigatorio">*</span></label> <br />
                         <input type="tel" class="form-control" name="telefone"> <br />
                         <p style="color: red" ;>@error('telefone') {{$message}} @enderror
                     </div>
@@ -66,7 +72,7 @@ use Illuminate\Support\Facades\DB;
                         </select>
                     </div>
                     <div class=form-group>
-                        <label for="">Data de Contratação</label> <br />
+                        <label for="">Data de Contratação<span id="obrigatorio">*</span></label> <br />
                         <input type="date" class="form-control" placeholder="2001/06/01" name="dataContratacao"> <br />
                         <p style="color: red" ;>@error('dataContratacao') {{$message}} @enderror
                     </div>

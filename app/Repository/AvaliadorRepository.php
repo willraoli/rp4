@@ -64,9 +64,8 @@ class AvaliadorRepository
 
     public function update(Request $request)
     {
-
         $avaliador = $this->getByID($request->id);
-        $user = User::findOrFail($request->id);
+        $user = User::findOrFail($avaliador->user_id);
 
         $data = request()->validate([
             'nome' => 'required|max:50|min:3',
@@ -77,26 +76,27 @@ class AvaliadorRepository
             'pais_origem' => 'required'
         ]);
 
+        $user->update([
+            'name' => $request->nome,
+        ]);
+
         $avaliador->update([
             'nome' => $request->nome,
-            //'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
             'area_pref' => $request->area_pref,
             'pais_origem' => $request->pais_origem
         ]);
 
-        $user->update([
-            'name' => $request->nome,
-            //'email' => $request->email,
-        ]);
     }
 
     public function destroy($id)
     {
         $avaliador = Avaliador::findOrFail($id);
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($avaliador->user_id);
         $user->delete();
         return $avaliador->delete();
+
+
     }
 }

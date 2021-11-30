@@ -23,7 +23,7 @@ class EditorRepository
             'nome' => 'required|min:3',
             'email' => 'required|max:250',
             'endereco' => 'required|max:250',
-            'telefone' => 'required|min:13|max:13',
+            'telefone' => 'required|max:13',
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
             'dataContratacao' => 'required',
@@ -56,29 +56,31 @@ class EditorRepository
     public function update(Request $request) // repository
     {
         $editor = $this->getByID($request->id);
-        $user = $this->getByID($request->user_id);
+        $user = User::findOrFail($editor->user_id);
 
         $dados = request()->validate([
             'nome' => 'required|min:3',
             'email' => 'nullable',
             'endereco' => 'required|max:250',
-            'telefone' => 'required|max:250',
+            'telefone' => 'required|max:13',
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
             'dataContratacao' => 'required',
             'dataDemissao' => 'nullable'
         ]);
 
+        $user->update([
+            'name' => $request->nome,
+        ]);
+
         $editor->update([
+            'user_id' => $user->id,
             'nome' => $request->nome,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
             'pais_id' => $request->pais_id,
             'area_id' => $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
-        ]);
-        $user->update([
-            'name' => $request->nome,
         ]);
     }
 
