@@ -26,10 +26,15 @@ class EditoresController extends Controller
 
     public function create(Request $request)
     {
+        if(!empty($request->all())){
         $this->business = new EditorBusiness;
         $request = $this->business->createEditor($request);
 
-        return $request === True ? redirect()->route('home',) : redirect()->route('create.editor.view', 'err');
+        return redirect()->route('home');
+    }else{
+        return redirect()->route('create.editor.view', 'err');
+    }
+
     }
 
     public function edit(Request $request)
