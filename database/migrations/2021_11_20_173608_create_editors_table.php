@@ -25,8 +25,8 @@ class CreateEditorsTable extends Migration
             $table->date('dataDemissao');
             $table->timestamps();
 
-            $table->foreign('area_id')->references('id')->on('areas');
-            $table->foreign('pais_id')->references('id')->on('paises');
+            // $table->foreign('area_id')->references('id')->on('areas');
+            // $table->foreign('pais_id')->references('id')->on('paises');
         });
     }
 

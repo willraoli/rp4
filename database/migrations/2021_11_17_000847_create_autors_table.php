@@ -18,6 +18,9 @@ class CreateAutorsTable extends Migration
             $table->string('nome');
             $table->string('email');
             $table->string('endereco');
+            $table->string('area_pref');
+            $table->string('pais_origem');
+            $table->string('instituicao');
             $table->bigInteger('telefone');
             $table->timestamps();
         });
