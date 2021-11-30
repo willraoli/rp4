@@ -35,7 +35,10 @@ class EditorRepository
             'password' => Hash::make($request->password),
         ]);
 
-        return "Editor cadastrado com sucesso!";
+        $user->assignRole('editor');
+
+
+        return $user->save();
     }
 
     public function update(Request $request) // repository
@@ -53,7 +56,16 @@ class EditorRepository
             'dataDemissao' => $request->dataDemissao,
         ]);
 
-        return "Editor alterado com sucesso!";
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->update([
+            'name' => $request->nome,
+            'email' => $request->email,
+        ]);
     }
 
     public function destroy($id) // repository
