@@ -66,7 +66,7 @@ class AvaliadorRepository
 
         $data = request()->validate([
             'nome' => 'required|max:50|min:3',
-            'email' => 'required|max:250',
+            'email' => 'nullable',
             'endereco' => 'required|max:250',
             'telefone' => 'required|min:13|max:13',
             'area_pref' => 'required',
@@ -75,7 +75,7 @@ class AvaliadorRepository
 
         $avaliador->update([
             'nome' => $request->nome,
-            'email' => $request->email,
+            //'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
             'area_pref' => $request->area_pref,
@@ -84,7 +84,7 @@ class AvaliadorRepository
 
         $user->update([
             'name' => $request->nome,
-            'email' => $request->email,
+            //'email' => $request->email,
         ]);
     }
 

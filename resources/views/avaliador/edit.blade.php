@@ -17,13 +17,8 @@
         <input type="text" name="nome" class="form-control" value="{{ $avaliador->nome }}"><br>
         <p style="color: red";>@error('nome') {{$message}} @enderror<p>
         <label for="">Email<span id="obrigatorio">*</span></label><br>
-        <input type="email" name="email" class="form-control" value="{{ $avaliador->email }}"><br>
+        <input type="email" name="email" class="form-control" disabled value="{{ $avaliador->email }}"><br>
         <p style="color: red";>@error('email') {{$message}} @enderror<p>
-        <?php
-            if(isset($_GET['err'])){
-                echo '<h6 class="text-center" id="obrigatorio"><small>Erro ao atualizar revista!</small></h6>';
-                    }
-        ?>
         <label for="">Endereço<span id="obrigatorio">*</span></label><br>
         <input type="text" name="endereco" class="form-control" value="{{ $avaliador->endereco }}"><br>
         <p style="color: red";>@error('endereco') {{$message}} @enderror<p>
