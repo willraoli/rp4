@@ -18,6 +18,11 @@ class EditorRepository
     {
         $editor = Editor::create([
             'nome' => $request->nome,
+            'email' => $request->email,
+            'endereco' => $request->endereco,
+            'telefone' => $request->telefone,
+            'pais_id' => $request->pais,
+            'area_id'=> $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
             'dataDemissao' => $request->dataDemissao,
         ]);
@@ -31,6 +36,11 @@ class EditorRepository
 
         $editor->update([
             'nome' => $request->nome,
+            'email' => $request->email,
+            'endereco' => $request->endereco,
+            'telefone' => $request->telefone,
+            'pais_id' => $request->pais,
+            'area_id'=> $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
             'dataDemissao' => $request->dataDemissao,
         ]);

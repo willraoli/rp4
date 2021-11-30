@@ -16,9 +16,17 @@ class CreateEditorsTable extends Migration
         Schema::create('editors', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('endereco');
+            $table->string('email');
+            $table->bigInteger('telefone');
+            $table->unsignedBigInteger('pais_id');
+            $table->unsignedBigInteger('area_id');
             $table->date('dataContratacao');
             $table->date('dataDemissao');
             $table->timestamps();
+
+            $table->foreign('area_id')->references('id')->on('areas');
+            $table->foreign('pais_id')->references('id')->on('pais');
         });
     }
 
