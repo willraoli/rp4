@@ -44,7 +44,7 @@
                 </a>
                 <ul class="list-group-item border-0 collapse" id="editores">
                     <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.editor.view') }}">Cadastrar</a></li>
-                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('listaEditores') }}">Gerenciar</a></li>
+                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('lista_editores') }}">Gerenciar</a></li>
                 </ul>
             </li>
         </ul>

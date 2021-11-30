@@ -14,6 +14,7 @@ class Editor extends Authenticatable
 
 
     protected $fillable = [
+        // 'user_id',
         'nome',
         'email',
         'telefone',
@@ -22,18 +23,24 @@ class Editor extends Authenticatable
         'area_id',
         'dataContratacao',
         'dataDemissao',
-     ];
+    ];
 
-     public function revista(){
+    public function revista()
+    {
         return $this->belongsTo(Revista::class);
     }
 
-    public function pais(){
+    public function pais()
+    {
         return $this->hasOne(Pais::class, 'id', 'pais_id');
     }
 
-    public function area(){
+    public function area()
+    {
         return $this->hasOne(Area::class, 'id', 'area_id');
     }
-
+    // public function user()
+    // {
+    //     return $this->hasOne(User::class, 'id', 'user_id');
+    // }
 }

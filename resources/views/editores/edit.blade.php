@@ -19,14 +19,12 @@ use Illuminate\Support\Facades\DB;
                         <input type="text" name="nome" class="form-control" value="{{ $editor->nome }}"><br>
                         <label for="">Email</label><br>
                         <input type="email" name="email" class="form-control" value="{{ $editor->email }}"><br>
-                        <label for="">Senha</label><br>
-                        <input type="password" name="password" class="form-control"><br>
                         <label for="">Telefone</label> <br />
                         <input type="tel" class="form-control" name="telefone" value="{{ $editor->telefone }}"> <br />
                         <label for="">Endereco</label><br>
                         <input type="text" name="endereco" class="form-control" value="{{ $editor->endereco }}"><br>
                         <label for="">País de origem<span id="obrigatorio">*</span></label> <br />
-                        <select class="form-control" name="pais_origem" id="paises" value="{{ $editor->pais_id}}"> <br />
+                        <select class="form-control" name="pais_id" id="paises" value="{{ $editor->pais_id}}"> <br />
                             <option value="" disabled>-</option>
                             <?php
                             $paises = DB::table('paises')->get();
@@ -39,7 +37,7 @@ use Illuminate\Support\Facades\DB;
                         <select class="form-control" name="especialidade" value="{{ $editor->pais_id}}"> <br />
                             <option value="" disabled>-</option>
                             <?php
-                            $area = DB::table('areas')->get();
+                            $areas = DB::table('areas')->get();
                             foreach ($areas as $a) {
                                 echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
                             }
@@ -48,7 +46,7 @@ use Illuminate\Support\Facades\DB;
                         <label for="">Data de Contratação</label><br>
                         <input type="date" name="dataContratacao" class="form-control" value="{{ $editor->dataContratacao }}"><br>
                         <label for="">Data de Demissão</label><br>
-                        <input type="date" name="dataDemissao" class="form-control" value="{{ $editor->dataDemissao }}"><br>
+                        <input type="date" name="dataDemissao" class="form-control" disabled value="{{ $editor->dataDemissao }}"><br>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
