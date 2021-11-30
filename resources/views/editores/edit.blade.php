@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\DB;
                         <label for="">Data de Contratação</label><br>
                         <input type="date" name="dataContratacao" class="form-control" value="{{ $editor->dataContratacao }}"><br>
                         <label for="">Data de Demissão</label><br>
-                        <input type="date" name="dataDemissao" class="form-control" value="{{ $editor->dataDemissao }}"><br>
+                        <input type="date" name="dataDemissao" class="form-control" disabled value="{{ $editor->dataDemissao }}"><br>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>

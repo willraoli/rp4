@@ -27,7 +27,7 @@ class EditoresController extends Controller
     public function create(Request $request)
     {
         if(!empty($request->all())){
-            
+
         $this->business = new EditorBusiness;
         $request = $this->business->createEditor($request);
 
@@ -50,14 +50,14 @@ class EditoresController extends Controller
         $this->business = new EditorBusiness;
         $request = $this->business->updateEditor($request);
 
-        return redirect()->route('listaEditores');
+        return redirect()->route('lista_editores');
     }
 
     public function delete(Request $request)
     {
         $this->business = new EditorBusiness;
         $request = $this->business->deleteEditor($request);
-        return $request === True ? redirect()->route('listaEditores') : redirect()->route('listaEditores', 'err');
+        return $request === True ? redirect()->route('lista_editores') : redirect()->route('lista_editores', 'err');
     }
 
 }
