@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Models\User;
 use App\Models\Editor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
@@ -25,6 +27,12 @@ class EditorRepository
             'area_id'=> $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
             'dataDemissao' => $request->dataDemissao,
+        ]);
+
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
         return "Editor cadastrado com sucesso!";
