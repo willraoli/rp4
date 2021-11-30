@@ -76,7 +76,6 @@ class EditorRepository
             'area_id' => $request->especialidade,
             'dataContratacao' => $request->dataContratacao,
         ]);
-
         $user->update([
             'name' => $request->nome,
             'email' => $request->email,
