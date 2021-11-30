@@ -58,7 +58,7 @@ class EditorRepository
 
         $dados = request()->validate([
             'nome' => 'required|min:3',
-            'email' => 'required|max:250',
+            'email' => 'nullable',
             'endereco' => 'required|max:250',
             'telefone' => 'required|max:250',
             'area_id' => 'nullable',
@@ -69,7 +69,6 @@ class EditorRepository
 
         $editor->update([
             'nome' => $request->nome,
-            'email' => $request->email,
             'endereco' => $request->endereco,
             'telefone' => $request->telefone,
             'pais_id' => $request->pais_id,
@@ -78,7 +77,6 @@ class EditorRepository
         ]);
         $user->update([
             'name' => $request->nome,
-            'email' => $request->email,
         ]);
     }
 

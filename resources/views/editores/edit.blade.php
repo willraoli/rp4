@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\DB;
                         <label for="">Nome</label><br>
                         <input type="text" name="nome" class="form-control" value="{{ $editor->nome }}"><br>
                         <label for="">Email</label><br>
-                        <input type="email" name="email" class="form-control" value="{{ $editor->email }}"><br>
+                        <input type="email" name="email" class="form-control" disabled value="{{ $editor->email }}"><br>
                         <label for="">Telefone</label> <br />
                         <input type="tel" class="form-control" name="telefone" value="{{ $editor->telefone }}"> <br />
                         <label for="">Endereco</label><br>
