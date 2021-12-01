@@ -14,11 +14,11 @@ class Editor extends Authenticatable
 
 
     protected $fillable = [
-        // 'user_id',
         'nome',
         'email',
         'telefone',
         'endereco',
+        'user_id',
         'pais_id',
         'area_id',
         'dataContratacao',
@@ -39,8 +39,9 @@ class Editor extends Authenticatable
     {
         return $this->hasOne(Area::class, 'id', 'area_id');
     }
-    // public function user()
-    // {
-    //     return $this->hasOne(User::class, 'id', 'user_id');
-    // }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
