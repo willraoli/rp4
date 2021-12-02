@@ -21,6 +21,11 @@
                     <p>
                     <p style="color: red" ;>@error('email') {{$message}} @enderror
                     <p>
+                    <?php
+                        if(isset($_GET['err'])){
+                            echo '<h6 class="text-center" id="obrigatorio"><small>Email já existente!</small></h6>';
+                        }
+                    ?>
                         <!-- <div class="form-group">
             <label for="">Nome<span id="obrigatorio">*</span></label> <br />
             <input type="text" class="form-control" placeholder="Nome" name="nome" required> <br />
@@ -62,15 +67,18 @@
                     <p>
                     <div class="form-group mb-2 col-5 me-5">
                         <label for="">Área de maior Preferência<span id="obrigatorio">*</span></label> <br />
-                        <select class="from-control" name="area_pref" id="areasPref" style="border: 2px solid gray;">
-                            <option selected="selected">Engenharia de Software</option>
-                            <option>Ciência da Computação</option>
-                            <option>Física</option>
-                            <option>Biologia</option>
-                            <option>Matemática</option>
-                            <option>Química</option>
+                        <select class="form-control" name="area_pref" id="areas">
+                            <option value="" disabled>-</option>
+                            <?php
+                                  $areas = DB::table('areas')->get();
+                                  foreach($areas as $area){
+                                      echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
+                                  }
+                            ?>
                         </select>
                     </div>
+
+
                     <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
                     <p>
                     <div class="row">

@@ -18,10 +18,16 @@ class Avaliador extends Authenticatable
         'email',
         'telefone',
         'area_pref',
-        'pais_origem'
+        'pais_origem',
+        'user_id'
     ];
 
     public function pais(){
         return $this->hasOne(Pais::class, 'id', 'pais_origem');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }
