@@ -42,7 +42,7 @@
                     <div class="d-flex">
                         <div class="form-group mb-2 col-5 me-5">
                             <label for="periodicidade" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
-                            <select class="form-control" name="periodicidades" id="periodicidades">
+                            <select class="form-control" name="periodicidade" id="periodicidade">
                             <option value="" disabled>-</option>
                             <?php
                                   $periodicidades = DB::table('periodicidades')->get();

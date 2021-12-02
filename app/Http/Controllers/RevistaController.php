@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Revista;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Business\Revista\RevistaBusiness;
 use App\Models\Editor;
-use App\Models\Revista;
 use Illuminate\Http\Request;
 
 

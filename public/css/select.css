@@ -1,0 +1,21 @@
+
+.selected-author{
+    background-color: #212529;
+    border-radius: 5px;
+    color: white;
+    list-style-type: none;
+}
+
+.articles{
+    background-color: #690808;
+    border-radius: 5px;
+    color: white;
+    list-style-type: none;
+}
+
+
+
+#selected-icon{
+    color: red;
+}
+

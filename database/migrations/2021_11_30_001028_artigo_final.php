@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAutorsTable extends Migration
+class ArtigoFinal extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateAutorsTable extends Migration
      */
     public function up()
     {
-        $this->down();
 
-        Schema::create('autors', function (Blueprint $table) {
+        Schema::create('artigos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('email');
-            $table->string('endereco');
-            $table->bigInteger('telefone');
+            $table->string('tituloArtigo');
+            $table->string('caminhoArtigo');
             $table->timestamps();
+
         });
+    
     }
 
     /**

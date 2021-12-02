@@ -36,7 +36,7 @@ class EditoresController extends Controller
     {
         $this->business = new EditorBusiness;
         $editor = $this->business->selectEditor($request);
-        return view('editores\edit', ['editor' => $editor]);
+        return view('editores\edit', ['editor' => $editor] );
     }
 
     public function update(Request $request)

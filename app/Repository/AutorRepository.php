@@ -40,4 +40,8 @@ class AutorRepository
 
         return "Autor excluído com sucesso!";
     }
+
+    public function queryTitle(String $title){
+        return Autor::where('nome', 'LIKE', '%'.$title.'%')->get();
+    }
 }
