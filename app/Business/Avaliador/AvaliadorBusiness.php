@@ -12,32 +12,44 @@ class AvaliadorBusiness{
 
     public function __construct(){}
 
+    //     if(!$this->uniqueEmail($request->email)){
+    //     $this->repository= new AvaliadorRepository;
+    //     $saved = $this->repository->store($request);
+
+    //     return $saved;
+    //     }else{
+    //         return 'False';
+    //     }
+    
     public function createAvaliador(Request $request){
-        if(!$this->uniqueEmail($request->email)){
+
+    if(!$this->uniqueEmailUser($request->email)){
         $this->repository= new AvaliadorRepository;
         $saved = $this->repository->store($request);
 
         return $saved;
-        }else{
-            return 'False';
-        }
+
+    }else{
+        return 'False';
+    }
+
     }
 
     public function manageAvaliador(){
-      
+
         $this->repository = new AvaliadorRepository;
 
         return $this->repository->show();
     }
 
     public function deleteAvaliador(Request $request){
-       
+
         $this->repository = new AvaliadorRepository;
         return $this->repository->destroy($request->id);
     }
 
     public function selectAvaliador(Request $request){
-        
+
         $this->repository = new AvaliadorRepository;
         $avaliador = $this->repository->getByID($request->id);
 
@@ -46,11 +58,15 @@ class AvaliadorBusiness{
 
     public function updateAvaliador(Request $request){
         $this->repository = new AvaliadorRepository;
-        return $this->repository->update($request); 
+        return $this->repository->update($request);
     }
 
-    public function uniqueEmail(String $email){
-        return DB::table('avaliadors')->where('email', $email)->exists();
+    // public function uniqueEmail(String $email){
+    //     return DB::table('avaliadors')->where('email', $email)->exists();
+    // }
+
+    public function uniqueEmailUser(String $email){
+        return DB::table('users')->where('email', $email)->exists();
     }
 }
 ?>
