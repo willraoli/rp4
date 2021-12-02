@@ -39,12 +39,13 @@
         <p style="color: red";>@error('pais_origem') {{$message}} @enderror<p>
         <label for="">Área de interesse<span id="obrigatorio">*</span></label> <br />
             <select class="from-control" name="area_pref" id="areasPref" style="border: 2px solid gray;" value="{{ $avaliador->area_pref }}">
-                <option selected="selected">Engenharia de Software</option>
-                <option>Ciência da Computação</option>
-                <option>Física</option>
-                <option>Biologia</option>
-                <option>Matemática</option>
-                <option>Química</option>
+            <option value="" disabled>-</option>
+            <?php
+                            $areas = DB::table('areas')->get();
+                            foreach ($areas as $a) {
+                                echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
+                            }
+                            ?>
             </select>
         <div>
         <p style="color: red";>@error('area_pref') {{$message}} @enderror<p>

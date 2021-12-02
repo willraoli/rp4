@@ -24,7 +24,14 @@ class AvaliadorRepository
             'pais_origem' => 'required'
         ]);
 
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
         $avaliador = Avaliador::create([
+            'user_id' => $user->id,
             'nome' => $request->nome,
             'email' => $request->email,
             'endereco' => $request->endereco,
@@ -33,11 +40,6 @@ class AvaliadorRepository
             'pais_origem' => $request->pais_origem,
         ]);
 
-        $user = User::create([
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
 
 
 
@@ -87,16 +89,13 @@ class AvaliadorRepository
             'area_pref' => $request->area_pref,
             'pais_origem' => $request->pais_origem
         ]);
-
     }
 
     public function destroy($id)
     {
         $avaliador = Avaliador::findOrFail($id);
         $user = User::findOrFail($avaliador->user_id);
-        $user->delete();
-        return $avaliador->delete();
-
-
+        $avaliador->delete();
+        return $user->delete();
     }
 }

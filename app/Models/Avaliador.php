@@ -17,13 +17,19 @@ class Avaliador extends Authenticatable
         'endereco',
         'email',
         'telefone',
-        'area_pref',
         'pais_origem',
+        'area_pref',
         'user_id'
     ];
 
-    public function pais(){
+    public function pais()
+    {
         return $this->hasOne(Pais::class, 'id', 'pais_origem');
+    }
+
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_pref');
     }
 
     public function user()
