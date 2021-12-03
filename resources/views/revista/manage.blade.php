@@ -73,9 +73,6 @@
             </tbody>
         </table>
     </div>
-
     <x-footer/>
-    
-
 </div>
 @endsection

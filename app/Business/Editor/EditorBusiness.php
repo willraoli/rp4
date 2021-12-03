@@ -12,14 +12,30 @@ class EditorBusiness{
 
     public function __construct(){}
 
+    // if(!$this->uniqueEmail($request->email)){
+    // $this->repository= new EditorRepository;
+    // $saved = $this->repository->store($request);
+
+    // return $saved;
+
+    // }else{
+    //     return 'False';
+    // }
+    
     public function createEditor(Request $request){
 
-        $this->repository= new EditorRepository;
-        $saved = $this->repository->store($request);
 
-        return $saved;
+        if(!$this->uniqueEmailUser($request->email)){
+            $this->repository= new EditorRepository;
+            $saved = $this->repository->store($request);
+
+            return $saved;
+
+        }else{
+            return 'False';
+        }
+
     }
-
     public function manageEditor(){
 
         $this->repository = new EditorRepository;
@@ -30,7 +46,7 @@ class EditorBusiness{
     public function deleteEditor(Request $request){
 
         $this->repository = new EditorRepository;
-        return $this->repository->destroy($request->id);
+        return $this->repository->destroy($request->id, $request->user_id);
     }
 
     public function selectEditor(Request $request){
@@ -44,6 +60,14 @@ class EditorBusiness{
     public function updateEditor(Request $request){
         $this->repository = new EditorRepository;
         return $this->repository->update($request);
+    }
+
+    public function uniqueEmail(String $email){
+        return DB::table('editors')->where('email', $email)->exists();
+    }
+
+    public function uniqueEmailUser(String $email){
+        return DB::table('users')->where('email', $email)->exists();
     }
 }
 ?>

@@ -9,6 +9,7 @@
             <div class="col-md-12">
                 <form action="{{ route('create.avaliador') }}" method="POST">
                     <h3 class="text-center">Cadastro de Avaliador</h3>
+                                 
                     @csrf
                     <div class="input-group">
                         <label for="">Nome<span id="obrigatorio">*</span></label> <br />

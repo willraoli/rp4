@@ -26,6 +26,10 @@ class RevistaRepository{
         return Revista::paginate(10);
     }
 
+    public function queryTitle(String $title){
+        return Revista::where('tituloRevista', 'LIKE', '%'.$title.'%')->get();
+    }
+
     public function getByID($id){
         
         try{

@@ -12,6 +12,8 @@ class Autor extends Authenticatable
 {
     use HasFactory, HasRoles, Authorizable;
 
+    public $table = "autors";
+    
     protected $fillable = [
         'nome',
         'email',
@@ -21,8 +23,10 @@ class Autor extends Authenticatable
         'pais_origem',
         'instituicao',
     ];
-
     public function pais(){
         return $this->hasOne(Pais::class, 'id', 'pais_origem');
+
+    public function artigo(){
+        return $this->belongsToMany(ArtigoFinal::class);
     }
 }

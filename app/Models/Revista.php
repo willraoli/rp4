@@ -30,4 +30,8 @@ class Revista extends Model
     public function periodicidade(){
         return $this->hasOne(Peridiocidade::class, 'id', 'periodicidade_id');
     }
+
+    public function submissao(){
+        return $this->belongsToMany(Submissao::class);
+    }
 }

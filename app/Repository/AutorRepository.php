@@ -98,4 +98,8 @@ class AutorRepository
     public function show(){
         return Autor::paginate(10);
     }
+
+    public function queryTitle(String $title){
+        return Autor::where('nome', 'LIKE', '%'.$title.'%')->get();
+    }
 }
