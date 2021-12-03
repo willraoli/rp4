@@ -23,7 +23,7 @@
                     Autores
                 </a>
                 <ul class="list-group-item border-0 collapse" id="autores">
-                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.autor') }}">Cadastrar</a></li>
+                    <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('create.autor.view') }}">Cadastrar</a></li>
                     <li id="list-tree" class="list-group-item  border-0"><a href="{{ route('list.autor.mgmt') }}">Gerenciar</a></li>
                 </ul>
             </li>

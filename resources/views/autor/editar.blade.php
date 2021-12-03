@@ -10,31 +10,31 @@
                     @csrf
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Nome</label><span id="obrigatorio">*</span><br>
-                        <input type="text" name="nome" class="form-control" required><br>
+                        <input type="text" name="nome" class="form-control" value="{{ $autor->nome }}" required><br>
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Email</label><span id="obrigatorio">*</span><br>
-                        <input type="email" name="email" class="form-control" required><br>
+                        <input type="email" name="email" class="form-control" value="{{ $autor->email }}" required><br>
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Senha</label><span id="obrigatorio">*</span><br>
-                        <input type="password" name="password" class="form-control"><br>
+                        <input type="password" name="password" value="{{ $autor->password }}" class="form-control"><br>
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Endereço</label><br>
-                        <input type="text" name="endereco" class="form-control"><br>
+                        <input type="text" name="endereco" value="{{ $autor->endereco }}" class="form-control"><br>
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Telefone</label><br>
-                        <input type="number" name="telefone" class="form-control"><br>
+                        <input type="number" name="telefone" value="{{ $autor->telefone }}" class="form-control"><br>
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Área de preferência</label><br>
-                        <input type="text" name="area_pref" class="form-control"><br>
+                        <input type="text" name="area_pref" value="{{ $autor->area_pref }}" class="form-control"><br>
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Instituição</label><br>
-                        <input type="text" name="instituicao" class="form-control"><br>
+                        <input type="text" name="instituicao" value="{{ $autor->instituicao }}" class="form-control"><br>
                     </div>
                     <div class="form-group mb-2 col-5 me-5">
                         <label for="">País de origem<span id="obrigatorio">*</span></label> <br />

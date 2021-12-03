@@ -70,29 +70,14 @@ Route::post('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController:
 Route::post('/avaliador/excluir/{id}', [App\Repository\AvaliadorRepository::class, 'destroy'])->name('deletarAvaliador');
 //Route::post('/avaliador/create', [App\Repository\AvaliadorRepository::class, 'store'])->name('cadastroAvaliador');
 
-// CRUD Autor
-//controller
-// Route::get('/autor/cadastro', function () { return view('autor\cadastrar'); })->name('create.autor.view');
-// Route::post('/autor/cadastro', [App\Http\Controllers\Autor\AutorController::class, 'create'])->name('cadastro_autor');
-// // Route::get('/autor/cadastro', [App\Http\Controllers\Autor\AutorController::class, 'create'])->name('create.autor');
-// Route::get('/autor/deletar/{id}', [\App\Http\Controllers\Autor\AutorController::class, 'delete'])->name('exclusao_autor_modal');
-// Route::get('/autor/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'edit'])->name('edit.autor');
-// Route::get('/autor/all', [App\Http\Controllers\Autor\AutorController::class, 'manage'])->name('list.autor.mgmt');
-// Route::get('/autor/{id}', [App\Http\Controllers\Autor\AutorController::class, 'show']);
-
-// //repository
-// Route::post('/autor/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edicao_autor');
-// // Route::post('/autor/cadastro', [App\Repository\AutorRepository::class, 'store'])->name('cadastro_autor');
-// Route::post('/autor/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
-
-
 
 // autor
 Route::group(['prefix' => 'autor'], function () {
     Route::view('/cadastro', 'autor.cadastrar')->name('create.autor.view');
     Route::post('/cadastro', [App\Http\Controllers\Autor\AutorController::class, 'create'])->name('cadastro_autor');
-    Route::get('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'edit'])->name('edit.autor');
-    Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edicao_autor');
+    Route::get('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'edit'])->name('edicao_autor');
+    Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
+    Route::get('/deletar/{id}', [\App\Http\Controllers\Autor\AutorController::class, 'delete'])->name('exclusao_autor_modal');
     Route::delete('/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
     Route::get('/all', [App\Http\Controllers\Autor\AutorController::class, 'manage'])->name('list.autor.mgmt');
 });

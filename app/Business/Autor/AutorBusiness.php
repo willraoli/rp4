@@ -14,16 +14,10 @@ class AutorBusiness{
 
     public function createAutor(Request $request)
     {
-        if (!$this->uniqueEmail($request->email))
-        {
-            $this->repository= new AutorRepository;
-            $saved = $this->repository->store($request);
+        $this->repository= new AutorRepository;
+        $saved = $this->repository->store($request);
 
-            return $saved;
-        } else
-        {
-            return 'False';
-        }
+        return $saved;
     }
 
     public function manageAutor(){

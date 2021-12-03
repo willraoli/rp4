@@ -38,7 +38,7 @@ class AutorRepository
             'password' => Hash::make($request->password),
         ]);
 
-        $user->assignRole('avaliador');
+        $user->assignRole('autor');
         $user->save();
 
         return $autor->save();

@@ -11,19 +11,17 @@ class AutorController extends Controller
 {
     private AutorBusiness $business;
 
-    public function create(Request $request){
-
-        if (!empty($request->all()))
-        {
+    public function create(Request $request)
+    {
+        if(!empty($request->all())){
         $this->business = new AutorBusiness;
-
         $request = $this->business->createAutor($request);
 
-        return $request === True ? redirect()->route('home',) : redirect()->route('create.autor.view', 'err');
-        } else
-        {
-            return redirect()->route('create.autor.view', 'err');
-        }
+        return redirect()->route('home');
+    }else{
+        return redirect()->route('create.autor.view', 'err');
+    }
+
     }
 
     public function edit(Request $request)
@@ -31,7 +29,7 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $autor = $this->business->selectAutor($request);
 
-        return view('autor\editar', ['autor' => $autor]);
+        return view('autor.editar', ['autor' => $autor]);
     }
 
     public function delete(Request $request)
@@ -42,7 +40,7 @@ class AutorController extends Controller
         return $request === True ? redirect()->route('list.autor.mgmt') : redirect()->route('list.autor.mgmt', 'err');
     }
 
-    public function show($id) // repository
+    public function show($id)
     {
         $autor = Autor::findOrFail($id);
         return view('autor.mostrar', ['autor' => $autor]);
@@ -58,7 +56,7 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $autores = $this->business->manageAutor($request);
 
-        return view('list.autor.mgmt', ['AUTOR' => $autores]);
+        return view('autor.gerenciar', ['autor' => $autores]);
     }
 
     public function update(Request $request)
