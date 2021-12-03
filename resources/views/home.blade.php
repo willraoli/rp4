@@ -19,8 +19,8 @@
 
                         {{ __('You are logged in!') }}
 
-                        @hasrole('avaliador')
-                            Você está logado como avaliador!
+                        @hasrole('autor')
+                            Você está logado como autor!
                         @endhasrole
                     </div>
                 </div>

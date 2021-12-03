@@ -47,7 +47,7 @@
             @endauth
 
             <a href="{{ route('create.avaliador.view') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Cadastrar Avaliador</a>
-            <a href="{{ route('create.autor') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Cadastrar Autor</a>
+            <a href="{{ route('create.autor.view') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Cadastrar Autor</a>
             <a href="{{ route('create.editor.view') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Cadastrar Editor</a>
         </div>
         @endif
