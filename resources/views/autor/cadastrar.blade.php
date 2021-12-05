@@ -19,6 +19,11 @@
                         <input type="email" name="email" class="form-control" required><br>
                         <p style="color: red" ;>@error('email') {{$message}} @enderror
                     </div>
+                    <?php
+                        if(isset($_GET['err'])){
+                            echo '<h6 class="text-center" id="obrigatorio"><small>Email já existente!</small></h6>';
+                        }
+                    ?>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Senha</label><span id="obrigatorio">*</span><br>
                         <input type="password" name="password" class="form-control"><br>

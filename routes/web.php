@@ -73,7 +73,7 @@ Route::post('/create/avaliador', [App\Http\Controllers\AvaliadorController::clas
 
 //Route::get('/avaliador/create', [App\Http\Controllers\AvaliadorController::class, 'create']);
 Route::get('/avaliador/ver/{id}', [App\Http\Controllers\AvaliadorController::class, 'show']);
-Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit'])->name('editarAvaliador');
+Route::get('/avaliador/editar/{id}', [App\Http\Controllers\AvaliadorController::class, 'edit'])->name('editar.avaliador');
 Route::get('/avaliador/excluir/{id}', [App\Http\Controllers\AvaliadorController::class, 'delete'])->name('excluirAvaliador');
 Route::get('/avaliador/manage', [App\Http\Controllers\AvaliadorController::class, 'manage'])->name('listaAvaliadores');
 
@@ -88,7 +88,8 @@ Route::group(['prefix' => 'autor'], function () {
     Route::view('/cadastro', 'autor.cadastrar')->name('create.autor.view');
     Route::post('/cadastro', [App\Http\Controllers\Autor\AutorController::class, 'create'])->name('cadastro_autor');
     Route::get('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'edit'])->name('edicao_autor');
-    Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
+    //Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
+    Route::post('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
     Route::get('/deletar/{id}', [\App\Http\Controllers\Autor\AutorController::class, 'delete'])->name('exclusao_autor_modal');
     Route::delete('/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
     Route::get('/all', [App\Http\Controllers\Autor\AutorController::class, 'manage'])->name('list.autor.mgmt');

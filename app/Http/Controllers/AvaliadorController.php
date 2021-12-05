@@ -31,7 +31,8 @@ class AvaliadorController extends Controller
     public function edit(Request $request){
         $this->business = new AvaliadorBusiness;
         $avaliador = $this->business->selectAvaliador($request);
-        return redirect()->route('editar.avaliador',  $avaliador);
+        //return redirect()->route('editar.avaliador',  $avaliador);
+        return view('avaliador\edit', ['avaliador' => $avaliador]);
         
     }
 

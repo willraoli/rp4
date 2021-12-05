@@ -14,10 +14,15 @@ class AutorBusiness{
 
     public function createAutor(Request $request)
     {
+        if(!$this->uniqueEmail($request->email)){
+
         $this->repository= new AutorRepository;
         $saved = $this->repository->store($request);
-
         return $saved;
+
+        }else{
+            return 'False';
+        }
     }
 
     public function manageAutor(){
@@ -47,7 +52,7 @@ class AutorBusiness{
     }
 
     public function uniqueEmail(String $email){
-        return DB::table('autors')->where('email', $email)->exists();
+        return DB::table('users')->where('email', $email)->exists();
     }
 }
 ?>

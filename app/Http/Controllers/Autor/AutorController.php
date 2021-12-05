@@ -17,7 +17,7 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $request = $this->business->createAutor($request);
 
-        return redirect()->route('home');
+        return $request === True ? redirect()->route('home',) : redirect()->route('create.autor.view', 'err');
     }else{
         return redirect()->route('create.autor.view', 'err');
     }
