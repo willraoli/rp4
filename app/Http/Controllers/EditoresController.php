@@ -11,10 +11,21 @@ class EditoresController extends Controller
 
     private EditorBusiness $business;
 
+
     public function show($id)
     {
         $editor = Editor::findOrFail($id);
         return view('editores.show', ['editor' => $editor]);
+    }
+
+    public function new()
+    {
+        $this->business = new EditorBusiness;
+
+        $dataCountries = $this->business->getAllCountries();
+        $dataAreas = $this->business->getAllAreas();
+
+        return view('editores/cadastro', compact('dataCountries', 'dataAreas'));
     }
 
     public function manage(Request $request)
@@ -27,11 +38,12 @@ class EditoresController extends Controller
     public function create(Request $request)
     {
         if (!empty($request->all())) {
-
             $this->business = new EditorBusiness;
             $request = $this->business->createEditor($request);
+            $dataCountries = $this->business->getAllCountries();
+            $dataAreas = $this->business->getAllAreas();
 
-            return $request === True ? redirect()->route('home',) : redirect()->route('create.editor.view', 'err');
+            return view('editores/cadastro', compact('editor', 'dataCountries', 'dataAreas'));
         } else {
             return redirect()->route('create.editor.view', 'err');
         }
@@ -41,7 +53,10 @@ class EditoresController extends Controller
     {
         $this->business = new EditorBusiness;
         $editor = $this->business->selectEditor($request);
-        return view('editores\edit', ['editor' => $editor] );
+        $dataCountries = $this->business->getAllCountries();
+        $dataAreas = $this->business->getAllAreas();
+
+        return view('editores\edit', compact('editor', 'dataCountries', 'dataAreas'));
     }
 
     public function update(Request $request)

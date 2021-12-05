@@ -21,7 +21,7 @@ class EditorBusiness{
     // }else{
     //     return 'False';
     // }
-    
+
     public function createEditor(Request $request){
 
 
@@ -68,6 +68,22 @@ class EditorBusiness{
 
     public function uniqueEmailUser(String $email){
         return DB::table('users')->where('email', $email)->exists();
+    }
+
+    public function getPaisById($id)
+    {
+        $pais = DB::table('paises')->where('pais_id', $id)->first();
+        return $pais->nomePais;
+    }
+
+    public function getAllCountries(){
+        $dataCountries = DB::table('paises')->get();
+        return $dataCountries;
+    }
+
+    public function getAllAreas(){
+        $dataAreas = DB::table('areas')->get();
+        return $dataAreas;
     }
 }
 ?>

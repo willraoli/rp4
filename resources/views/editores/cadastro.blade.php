@@ -1,9 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\DB;
-?>
-
-
 @extends('layouts.app')
 @section('content')
 <div class="container pt-5">
@@ -23,11 +17,11 @@ use Illuminate\Support\Facades\DB;
                         <input type="email" class="form-control" name="email"> <br />
                         <p style="color: red" ;>@error('email') {{$message}} @enderror
 
-                        <?php
-                        if(isset($_GET['err'])){
-                            echo '<h6 class="text-center" id="obrigatorio"><small>Email já existente!</small></h6>';
-                        }
-                    ?>
+                            <?php
+                            if (isset($_GET['err'])) {
+                                echo '<h6 class="text-center" id="obrigatorio"><small>Email já existente!</small></h6>';
+                            }
+                            ?>
                     </div>
                     <div class=form-group>
                         <label for="">Senha<span id="obrigatorio">*</span></label> <br />
@@ -49,9 +43,8 @@ use Illuminate\Support\Facades\DB;
                         <select class="form-control" name="pais" id="pais"> <br />
                             <option value="" disabled>-</option>
                             <?php
-                            $paises = DB::table('paises')->get();
-                            foreach ($paises as $p) {
-                                echo '<option value=' . $p->id . '>' . $p->nomePais . '</option>';
+                            foreach ($dataCountries as $p) {
+                                echo '<option value=' .  $p->id . '>' . $p->nomePais . '</option>';
                             }
                             ?>
                         </select>
@@ -62,13 +55,13 @@ use Illuminate\Support\Facades\DB;
                         <label for="">Especialidade<span id="obrigatorio">*</span></label> <br />
                         <select class="form-control" name="especialidade" id="area"> <br />
                             <option value="" disabled>-</option>
+
                             <?php
-                            $areas = DB::table('areas')->get();
-                            foreach ($areas as $a) {
-                                echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
+                            foreach ($dataAreas as $a) {
+                           echo '<option value=' . $a->id . '>' .$a->descricaoArea . '</option>';
                             }
-                            ?>
-                               <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
+                                ?>
+                            <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
                         </select>
                     </div>
                     <div class=form-group>

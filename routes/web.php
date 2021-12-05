@@ -45,9 +45,7 @@ Route::get('/help', function (){
 
 // Editor
 // Controller
-Route::get('/editor/novo/', function () {
-    return view('editores\cadastro');
-})->name('create.editor.view');
+Route::get('/editor/novo/',[App\Http\Controllers\EditoresController::class, 'new'] )->name('create.editor.view');
 Route::post('/editor/novo', [App\Http\Controllers\EditoresController::class, 'create'])->name('registrar_editor');
 Route::get('/editor/visualizar/{id}', [App\Http\Controllers\EditoresController::class, 'show']);
 Route::get('/editor/editar/{id}', [App\Http\Controllers\EditoresController::class, 'edit'])->name('alterar_editor');
