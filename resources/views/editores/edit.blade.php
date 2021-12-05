@@ -17,12 +17,16 @@ use Illuminate\Support\Facades\DB;
                     <div class="form-group mb-2">
                         <label for="">Nome</label><br>
                         <input type="text" name="nome" class="form-control" value="{{ $editor->nome }}"><br>
+                        <p style="color: red";>@error('nome') {{$message}} @enderror<p>
                         <label for="">Email</label><br>
                         <input type="email" name="email" class="form-control" disabled value="{{ $editor->email }}"><br>
+                        <p style="color: red";>@error('email') {{$message}} @enderror<p>
                         <label for="">Telefone</label> <br />
                         <input type="tel" class="form-control" name="telefone" value="{{ $editor->telefone }}"> <br />
+                        <p style="color: red";>@error('telefone') {{$message}} @enderror<p>
                         <label for="">Endereco</label><br>
                         <input type="text" name="endereco" class="form-control" value="{{ $editor->endereco }}"><br>
+                        <p style="color: red";>@error('endereco') {{$message}} @enderror<p>
                         <label for="">País de origem<span id="obrigatorio">*</span></label> <br />
                         <select class="form-control" name="pais_id" id="paises" value="{{ $editor->pais_id}}"> <br />
                             <option value="" disabled>-</option>
@@ -33,6 +37,7 @@ use Illuminate\Support\Facades\DB;
                             }
                             ?>
                         </select>
+                        <p style="color: red";>@error('pais') {{$message}} @enderror<p>
                         <label for="">Especialidade<span id="obrigatorio">*</span></label> <br />
                         <select class="form-control" name="especialidade" value="{{ $editor->pais_id}}"> <br />
                             <option value="" disabled>-</option>
@@ -43,11 +48,14 @@ use Illuminate\Support\Facades\DB;
                             }
                             ?>
                         </select>
+                        <p style="color: red";>@error('area_pref') {{$message}} @enderror<p>
                         <label for="">Data de Contratação</label><br>
                         <input type="date" name="dataContratacao" class="form-control" value="{{ $editor->dataContratacao }}"><br>
+                        <p style="color: red" ;>@error('dataContratacao') {{$message}} @enderror<p>
                         <label for="">Data de Demissão</label><br>
                         <input type="date" name="dataDemissao" class="form-control" disabled value="{{ $editor->dataDemissao }}"><br>
                         <button type="submit" class="btn btn-primary">Salvar</button>
+                        <p style="color: red" ;>@error('dataDemissao') {{$message}} @enderror<p>
                     </div>
                 </form>
             </div>

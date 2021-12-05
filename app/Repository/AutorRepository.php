@@ -18,8 +18,8 @@ class AutorRepository
             'endereco' => 'required|max:250',
             'telefone' => 'required|min:13|max:13',
             'area_pref' => 'required',
-            'instituicao' => 'nullable',
-            'pais_origem' => 'nullable'
+            'instituicao' => 'required',
+            'pais_origem' => 'required'
             ]);
 
         $user = User::create([
@@ -67,7 +67,7 @@ class AutorRepository
             'endereco' => 'required|max:250',
             'telefone' => 'required|min:13|max:13',
             'area_pref' => 'required',
-            'instituicao' => 'nullable',
+            'instituicao' => 'required',
             'pais_origem' => 'required'
             ]);
 
