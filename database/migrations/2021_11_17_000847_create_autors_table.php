@@ -24,6 +24,7 @@ class CreateAutorsTable extends Migration
             $table->string('pais_origem');
             $table->string('instituicao');
             $table->bigInteger('telefone');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

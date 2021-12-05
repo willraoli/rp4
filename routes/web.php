@@ -88,8 +88,8 @@ Route::group(['prefix' => 'autor'], function () {
     Route::view('/cadastro', 'autor.cadastrar')->name('create.autor.view');
     Route::post('/cadastro', [App\Http\Controllers\Autor\AutorController::class, 'create'])->name('cadastro_autor');
     Route::get('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'edit'])->name('edicao_autor');
-    //Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
-    Route::post('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
+    Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
+    //Route::post('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'update'])->name('edit.autor');
     Route::get('/deletar/{id}', [\App\Http\Controllers\Autor\AutorController::class, 'delete'])->name('exclusao_autor_modal');
     Route::delete('/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
     Route::get('/all', [App\Http\Controllers\Autor\AutorController::class, 'manage'])->name('list.autor.mgmt');

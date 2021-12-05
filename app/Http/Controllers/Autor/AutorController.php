@@ -29,7 +29,7 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $autor = $this->business->selectAutor($request);
 
-        return view('autor.editar', ['autor' => $autor]);
+        return view('autor\editar', ['autor' => $autor]);
     }
 
     public function delete(Request $request)
@@ -64,6 +64,8 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $request = $this->business->updateAutor($request);
 
-        return redirect()->route('list.autor.mgmt');
+        //return redirect()->route('list.autor.mgmt');
+        return view('autor\gerenciar', ['autor' => $autores]);
+        
     }
 }

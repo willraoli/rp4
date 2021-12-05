@@ -22,7 +22,7 @@ class Autor extends Authenticatable
         'area_pref',
         'pais_origem',
         'instituicao',
-        //'user_id'
+        'user_id'
     ];
     public function pais(){
         return $this->hasOne(Pais::class, 'id', 'pais_origem');
@@ -32,8 +32,8 @@ class Autor extends Authenticatable
         return $this->belongsToMany(ArtigoFinal::class);
     }
 
-    // public function user()
-    // {
-    //     return $this->hasOne(User::class, 'id', 'user_id');
-    // }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

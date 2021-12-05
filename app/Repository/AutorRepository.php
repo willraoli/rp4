@@ -22,7 +22,14 @@ class AutorRepository
             'pais_origem' => 'nullable'
             ]);
 
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);    
+
         $autor = Autor::create([
+            'user_id' => $user->id,
             'nome' => $request->nome,
             'email' => $request->email,
             'endereco' => $request->endereco,
@@ -32,11 +39,7 @@ class AutorRepository
             'pais_origem' => $request->pais_origem,
         ]);
 
-        $user = User::create([
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        
 
         $user->assignRole('autor');
         $user->save();
@@ -56,7 +59,7 @@ class AutorRepository
     public function update(Request $request)
     {
         $autor = $this->getByID($request->id);
-        $user = User::findOrFail($request->id);
+        $user = User::findOrFail($request->user_id);
 
         $request->validate([
             'nome' => 'required|max:50|min:3',
@@ -80,11 +83,10 @@ class AutorRepository
 
         $user->update([
             'name' => $request->nome,
-            'email' => $request->email,
-            'password' => $request->password,
+            // 'email' => $request->email,
+            // 'password' => $request->password,
         ]);
 
-        return $autor;
     }
 
     public function destroy($id) {
