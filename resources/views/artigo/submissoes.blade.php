@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="container mt-3">
-    <h3>Minhas submissões Pendentes</h3>
+    <h3>Submissões Pendentes</h3>
     <hr>
     <div class="pagination justify-content-center" style="color: black;">
             {{ $submissoes->links("pagination::bootstrap-4") }} 
@@ -18,34 +18,29 @@
                 <th scope="col">Autores</th>
                 <th scope="col">Data de Submissão</th>
                 <th class="" scope="col"></th>
-                <th class="" scope="col"></th>
             </thead>
             <tbody>
                 @foreach($submissoes as $submissao)
                 <tr scope="row">
 
-                    <td>{{ $submissao->revista->tituloRevista}}</td>
+                    <td><p class="text-center">{{ $submissao->revista->tituloRevista}}</p></td>
                     <td>
                         @foreach($submissao->artigos as $artigo)
                             <a target="_blank" href="<?php echo url('storage/' . $artigo->caminhoArtigo); ?>">
-                                <span class="articles ms-2 p-1">{{ $artigo->tituloArtigo . " " }}</span>    
+                                <small><p class="articles mb-1 text-center p-1">{{ $artigo->tituloArtigo }}</br></p></small>    
                             </a>
                         @endforeach
                     </td>
 
-                    <td>
-                        @foreach($submissao->artigos as $artigo)
-                            @foreach($artigo->autores as  $autor)
-                                <span class="selected-author ms-2 p-1">{{ $autor->nome . " " }}</span> 
-                            @endforeach
+                    <td>                        
+                        @foreach($submissao->artigos[0]->autores as  $autor)
+                            <small><p class="selected-author p-1 mb-1 text-center">{{ $autor->user->name }}</br></p></small>
                         @endforeach
                     </td>
 
-                    <td>
-                        {{ date('d/m/Y H:i:s', strtotime($submissao->created_at)) }}
-                    </td>
-
+                    <td><p class="text-center">{{ date('d/m/Y H:i:s', strtotime($submissao->created_at)) }}</p></td>
                     
+                </tr>
                 @endforeach
             </tbody>
         </table>

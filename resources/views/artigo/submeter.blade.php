@@ -28,9 +28,9 @@
                     </div>
 
                     <div class="form-group mb-2">
+                       
+                        <label for="autores" class="ms-3" m>Autores<span id="obrigatorio">* <small>{!! session()->get('erro002') !!}</small></span></label><br>
                         
-                        <label for="autores" class="ms-3 mb-1" m>Autores<span id="obrigatorio">*</span></label><br>
-                        <h6 class="text-center" id="obrigatorio"><small>{!! session()->get('erro002') !!}</small></h6>
                         <ul id="author" class="list-group list-group-horizontal"></ul>
                         <input autocomplete="off" type="text" id="autores" class="form-control mt-2" onkeyup="searchAuthor(this.value)">
 

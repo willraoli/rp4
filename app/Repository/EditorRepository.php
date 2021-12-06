@@ -83,4 +83,8 @@ class EditorRepository
         }
         return $editor;
     }
+
+    public function getEditorByUserID($user_id){
+        return Editor::where('user_id', $user_id)->first();
+    }
 }

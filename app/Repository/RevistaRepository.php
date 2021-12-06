@@ -10,12 +10,12 @@ class RevistaRepository{
     public function create(Request $request){
        
         $revista = Revista::create([
-            'editor_id' => $request->editor,
+            'editor_id' => $request->editor_id,
             'area_id' => $request->areas,
             'tituloRevista' => $request->titulo,
             'limiteArtigo' => $request->limite,
             'ISSNRevista' => $request->issn,
-            'periodicidade' => $request->periodicidade,
+            'periodicidade_id' => $request->periodicidade,
         ]);
 
         return $revista->save();
@@ -47,7 +47,7 @@ class RevistaRepository{
 
         if(!empty($revista) && $revista != False){
             $revista->update([
-                'editor_id' => $request->editor,
+                'editor_id' => $request->editor_id,
                 'area_id' => $request->areas,
                 'tituloRevista' => $request->titulo,
                 'limiteArtigo' => $request->limite,

@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/pop', [App\Http\Controllers\Utils\PopulateTables::class, 'index'])->name('popular.tabelas');
 Route::get('/gen', [App\Http\Controllers\Utils\SuperAdmin::class, 'generateSuperAdmin'])->name('super.admin');
+Route::get('/editorchefe', [App\Http\Controllers\Utils\SuperAdmin::class, 'generateEditorChefe'])->name('editor.chefe');
 Route::get('/ver', [App\Http\Controllers\Utils\SuperAdmin::class, 'verifyCurrentRole'])->name('check.role');
 
 // Revista
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['role:editor-chefe']], function () {
     Route::post('/revista/editar/{id}', [App\Http\Controllers\RevistaController::class, 'update'])->name('update.revista');
     Route::get('/revista/excluir/{id}', [App\Http\Controllers\RevistaController::class, 'delete'])->name('delete.revista');
     Route::get('/select/revista/{id}', [App\Http\Controllers\RevistaController::class, 'select'])->name('select.revista');
+    Route::get('/search/editor', [App\Service\EditorService::class, 'search'])->name('search.editor');
 });
 
 

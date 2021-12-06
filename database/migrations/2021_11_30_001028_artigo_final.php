@@ -16,10 +16,12 @@ class ArtigoFinal extends Migration
 
         Schema::create('artigos', function (Blueprint $table) {
             $table->id();
+            $table->integer('situacao_id')->unsigned();
             $table->string('tituloArtigo');
             $table->string('caminhoArtigo');
             $table->timestamps();
 
+            $table->foreign('situacao_id')->references('id')->on('situacao');
         });
     
     }

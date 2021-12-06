@@ -27,11 +27,11 @@
 
                     <td>{{ $revista->id }}</td>
                     <td>{{ $revista->tituloRevista }}</td>
-                    <td>{{ $revista->editor->nome }}</td>
+                    <td>{{ $revista->editor->user->name }}</td>
                     <td>{{ $revista->ISSNRevista }}</td>
                     <td>{{ $revista->limiteArtigo }}</td>
                     <td>{{ $revista->area->descricaoArea }}</td>
-                    <td>{{ $revista->periodicidade }}</td>
+                    <td>{{ $revista->periodicidade->descricaoPeriodicidade }}</td>
                     
                     <td class="text-center">
                         <a class="btn btn-primary" href="{{ route('select.revista', $revista->id) }}">

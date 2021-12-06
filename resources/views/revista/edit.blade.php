@@ -1,3 +1,7 @@
+<!-- Scripts -->
+<script src="{{ asset('js/editorSearch.js') }}" defer></script>
+
+
 <?php
     use Illuminate\Support\Facades\DB;
 ?>
@@ -23,17 +27,10 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="editor" class="ms-3">Editor<span id="obrigatorio">*</span></label><br>
-                        <select class="form-control" name="editor" id="editor" required>
-                            <option value="" disabled>-</option>
-                            <?php
-                                $editor = DB::table('editors')->orderBy('id')->chunk(5, function($editors){
-                                foreach($editors as $editor){
-                                    echo '<option value='.$editor->id.'>'.$editor->nome.'</option>';
-                                }
-                                });
-                            ?>
-                        </select>
+                        <input type="text" name="editor_id" id="editor_id" hidden>
+                        <input type="text" name="editor" id="editor_input" class="form-control" placeholder="" onkeyup="searchEditor(this.value)" autocomplete="off" required>
 
+                        <ul class="list-group ms-4 me-4 col col-11"  id="editor">
                     </div>
                     <div class="form-group mb-2">
                         <label for="issn" class="ms-3">ISSN<span id="obrigatorio">*</span></label><br>
@@ -43,7 +40,6 @@
                         <label for="limite" class="ms-3">Limite de Artigos<span id="obrigatorio">*</span></label><br>
                         <input type="text" name="limite" id="limite" class="form-control" required>
                     </div>
-
                     <div class="d-flex">
                         <div class="form-group mb-2 col-5 me-5">
                             <label for="periodicidade" class="ms-3">Periodicidade<span id="obrigatorio">*</span></label><br>
@@ -57,22 +53,20 @@
                             ?>
                         </select>
                         </div>
-
                         <div class="form-group mb-2 col-6 ">
-                        <label for="areas" class="ms-3">Áreas</label><br>
+                            <label for="areas" class="ms-3">Áreas</label><br>
 
-                        <select class="form-control" name="areas" id="areas">
-                            <option value="" disabled>-</option>
-                            <?php
-                                  $areas = DB::table('areas')->get();
-                                  foreach($areas as $area){
-                                      echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
-                                  }
-                            ?>
-                        </select>
+                            <select class="form-control" name="areas" id="areas">
+                                <option value="" disabled>-</option>
+                                <?php
+                                    $areas = DB::table('areas')->get();
+                                    foreach($areas as $area){
+                                        echo '<option value='.$area->id.'>'.$area->descricaoArea.'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                    </div>
-
                     <div class="row">
                         <div class="col form-group pt-2 align-self-start text-start">
                             <input type="submit" name="submit" class="btn btn-success btn-md col-6" style="color:white;" value="Finalizar">
@@ -89,11 +83,12 @@
 
 <script>
     document.getElementById('titulo').value = "{{ $revista->tituloRevista }}";
-    document.getElementById('editor').value = "{{ $revista->editor_id }}";
+    document.getElementById('editor').value = "{{ $revista->editor->user->name }}";
     document.getElementById('issn').value = "{{ $revista->ISSNRevista }}";
     document.getElementById('limite').value = "{{ $revista->limiteArtigo }}";
-    document.getElementById('periodicidade').value = "{{ $revista->periodicidade }}";
+    document.getElementById('periodicidade').value = "{{ $revista->periodicidade->id }}";
     document.getElementById('areas').value = "{{ $revista->area_id }}";
 </script>
+
 <x-footer/>
 @endsection

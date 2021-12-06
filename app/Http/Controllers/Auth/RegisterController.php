@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'telefone' => $data['telefone'],
             'pais_id' => $data['pais_id']
         ]);
-        $user->assignRole($data['role']);        
+        $user->assignRole($data['role']);                 
         $this->createPersonByRole($data, $user->getKey());
         return $user;
     }

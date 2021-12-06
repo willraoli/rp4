@@ -40,7 +40,11 @@ class SubmissaoBusiness{
         }
              
         $this->repository = new SubmissaoRepository();
-        $this->repository->create($request, $caminhosArtigos);
+        $current_user_id = auth()->user()->id;
+        $autor_repository = new AutorRepository();
+        $autor = $autor_repository->getAutorByUserID($current_user_id);        
+        
+        $this->repository->create($request, $caminhosArtigos, $autor);
     }
 
     public function manageSubmissao(){
@@ -48,12 +52,12 @@ class SubmissaoBusiness{
         $current_user_id = auth()->user()->id;
         
         $autor_repository = new AutorRepository();
-        $autor_repository->getAutorByUserID($current_user_id);
+        $autor = $autor_repository->getAutorByUserID($current_user_id);
 
-        // if(!empty($current_user_id)){
-        //     $this->repository = new SubmissaoRepository();
-        //     $this->repository->showMySubmissions($current_user_id);
-        // }
+        $submissao_repository = new SubmissaoRepository();
+        $submissao = $submissao_repository->showMySubmissions($autor->orcid);
+
+        return $submissao;
 
         
     }

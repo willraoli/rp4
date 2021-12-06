@@ -8,6 +8,7 @@ class ArtigoFinal extends Model{
         public $table = "artigos";    
 
         protected $fillable = [
+            'situacao_id',
             'tituloArtigo',
             'caminhoArtigo',  
         ];
@@ -18,6 +19,10 @@ class ArtigoFinal extends Model{
 
         public function submissao(){
             return $this->belongsTo(Submissao::class);
+        }
+
+        public function situacao(){
+            return $this->hasOne(Situacao::class, 'id', 'situacao_id');
         }
 
     }

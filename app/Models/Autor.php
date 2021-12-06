@@ -10,18 +10,23 @@ class Autor extends Model
 
     use HasFactory;
 
-    public $table = "autors";
-    
+    protected $table = "autors";
+    protected $primaryKey = 'orcid';
+
     protected $fillable = [
         'user_id',
         'orcid'
     ];
+
+    public function submissao(){
+        return $this->belongsToMany(Submissao::class);
+    }
 
     public function artigo(){
         return $this->belongsToMany(ArtigoFinal::class);
     }
 
     public function user(){
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

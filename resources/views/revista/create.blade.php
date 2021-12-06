@@ -1,3 +1,8 @@
+<!-- Scripts -->
+<script src="{{ asset('js/editorSearch.js') }}" defer></script>
+
+
+
 <?php
     use Illuminate\Support\Facades\DB;
 ?>
@@ -24,11 +29,10 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="editor" class="ms-3">Editor<span id="obrigatorio">*</span></label><br>
-                        <select class="form-control mt-2" size="4" name="editor" id="editor" style="border-radius:0% !important" required>
-                            @foreach($editores as $editor)
-                                <option value='{{ $editor->id}}'>{{ $editor->nome }}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" name="editor_id" id="editor_id" hidden>
+                        <input type="text" name="editor" id="editor_input" class="form-control" placeholder="" onkeyup="searchEditor(this.value)" autocomplete="off" required>
+
+                        <ul class="list-group ms-4 me-4 col col-11"  id="editor">
                     </div>
                     <div class="form-group mb-2">
                         <label for="issn" class="ms-3">ISSN<span id="obrigatorio">*</span></label><br>

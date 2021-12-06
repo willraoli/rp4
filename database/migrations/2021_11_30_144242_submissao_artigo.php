@@ -14,8 +14,8 @@ class SubmissaoArtigo extends Migration
     public function up()
     {
         Schema::create('SubmissaoArtigo', function (Blueprint $table) {
-            $table->integer('submissao_id')->unsigned();        
-            $table->integer('artigo_id')->unsigned();
+            $table->bigInteger('submissao_id')->unsigned();        
+            $table->bigInteger('artigo_id')->unsigned();
             
             $table->foreign('submissao_id')->references('id')->on('submissao');
             $table->foreign('artigo_id')->references('id')->on('artigos');

@@ -24,7 +24,9 @@ class ArtigoController extends Controller{
         // return view('artigo/submissoes', compact('submissoes'));
 
         $this->bussiness = new SubmissaoBusiness;   
-        $this->bussiness->manageSubmissao();
+        $submissoes = $this->bussiness->manageSubmissao();
+        return view('artigo/submissoes', compact('submissoes'));
+
     }
  
 

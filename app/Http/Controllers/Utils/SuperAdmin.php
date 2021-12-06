@@ -32,6 +32,25 @@ class SuperAdmin extends Controller{
         return view('welcome');
     }
 
+    public function generateEditorChefe(){
+        try{
+            Role::create(['name' => 'editor-chefe']);
+            Role::create(['name' => 'editor']);
+            Role::create(['name' => 'autor']);
+            Role::create(['name' => 'avaliador']);
+        }catch(RoleAlreadyExists $e){
+        }
+
+        try{
+            $userr = Auth::user();
+            $user = User::findOrFail($userr->id);
+            $user->assignRole('editor-chefe');
+        }catch(ErrorException $e){
+        }
+        
+        return view('welcome');
+    }
+
 
     public function verifyCurrentRole(){
         $user = Auth::user();

@@ -49,9 +49,10 @@ function search(str) {
     }
     xmlhttp.open("GET","/search?q="+str,true);
     xmlhttp.send();
-    }
+}
 
-    function searchAuthor(str) {
+
+function searchAuthor(str) {
 
     if (str.length <= 0) {
         document.getElementById('autor').innerHTML = "";
@@ -78,8 +79,8 @@ function select(id){
 }
 
 function selectAuthor(id){
-    var revista = document.getElementById(id);
-    newAuthor(id, revista.innerHTML);
+    var autor = document.getElementById(id);
+    newAuthor(id, autor.innerHTML);
     document.getElementById("autores").value = "";
     document.getElementById('autor').innerHTML = "";
 
@@ -89,4 +90,6 @@ function removeAuthor(id){
     var elem = document.getElementById("selected-author-" + id);
     elem.parentNode.removeChild(elem);
 }
+
+
 

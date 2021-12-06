@@ -13,7 +13,7 @@ class Revista extends Model
     protected $fillable = [
         'editor_id',
         'area_id',
-        'periodicidade',
+        'periodicidade_id',
         'tituloRevista',
         'limiteArtigo',
         'ISSNRevista',
@@ -28,7 +28,7 @@ class Revista extends Model
     }
 
     public function periodicidade(){
-        return $this->hasOne(Peridiocidade::class, 'id', 'periodicidade_id');
+        return $this->hasOne(Periodicidade::class, 'id', 'periodicidade_id');
     }
 
     public function submissao(){

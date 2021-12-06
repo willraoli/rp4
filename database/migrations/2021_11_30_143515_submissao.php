@@ -15,9 +15,12 @@ class Submissao extends Migration
     {
         Schema::create('Submissao', function (Blueprint $table) {
             $table->id();
-            $table->integer('revista_id')->unsigned();
+            $table->boolean('finalizado');
+            $table->bigInteger('autor_id')->unsigned();
+            $table->bigInteger('revista_id')->unsigned();
             $table->timestamps();
             
+            $table->foreign('autor_id')->references('id')->on('autors');
             $table->foreign('revista_id')->references('id')->on('revistas');        
         });
     }

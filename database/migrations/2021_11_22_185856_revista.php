@@ -20,8 +20,9 @@ class Revista extends Migration
             $table->string('tituloRevista')->unique();
             $table->integer('limiteArtigo');
             $table->string('ISSNRevista')->unique();
-            $table->string('periodicidade');
+            $table->unsignedBigInteger('periodicidade_id');
 
+            $table->foreign('periodicidade_id')->references('id')->on('periodicidades');
             $table->foreign('editor_id')->references('id')->on('editors');
             $table->foreign('area_id')->references('id')->on('areas');
         });

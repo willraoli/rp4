@@ -59,7 +59,7 @@ use Illuminate\Support\Facades\DB;
                             <label for="password-confirm" class="ms-3 col-form-label text-md-right">{{ __('Confirm Password') }}<span id="obrigatorio">*</span></label>
 
                             <div class="">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ use Illuminate\Support\Facades\DB;
                     
                     <input type="text" name="role" id="role" class="form-control" hidden>
 
-                    <div class="card-header mt-5 d-flex justify-content-between">
+                    <div class="card-header mt-5 mb-3 d-flex justify-content-between">
                         <div class="btn-group">
                             <span>Escolha um tipo de usuário<span id="obrigatorio">*</span>&nbsp;&nbsp;</span> 
                             <button class="btn btn-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,7 +76,6 @@ use Illuminate\Support\Facades\DB;
                                 <li><a class="dropdown-item" onclick="select(this.id)" data-bs-toggle="collapse" data-bs-target="#" id="avaliador">Avaliador</a></li>
                                 <li><a class="dropdown-item" onclick="select(this.id)"  id="autor">Autor</a></li>
                                 <li><a class="dropdown-item" onclick="select(this.id)"  id="editor">Editor</a></li>
-                                <li><a class="dropdown-item" onclick="select(this.id)" data-bs-toggle="collapse" data-bs-target="#" id="editor-chefe">Editor Chefe</a></li>
                             </ul>
                         </div>
                         {{ __('Dados Pessoais') }}
@@ -104,14 +103,14 @@ use Illuminate\Support\Facades\DB;
                         </select>
 
                         <label for="" class="ms-3 mb-1 mt-2">Data de Contratação<span id="obrigatorio">*</span></label> <br />
-                        <input type="date" class="form-control" placeholder="2001/06/01" name="dataContratacao"> <br />
-                        <p style="color: red" ;>@error('dataContratacao') {{$message}} @enderror
+                        <input type="date" class="form-control mb-0" placeholder="2001/06/01" name="dataContratacao">
+                         <p style="color: red" ;>@error('dataContratacao') {{$message}} @enderror
                     </div>
                     <!-- FIM EDITOR -->
 
                     <div class="form-group">
                         <label for="endereco" class="ms-3 mb-1">Endereço<span id="obrigatorio">*</span></label><br>
-                        <input type="address" name="endereco" id="endereco" class="form-control" >
+                        <input type="address" name="endereco" id="endereco" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -134,7 +133,7 @@ use Illuminate\Support\Facades\DB;
                         <p style="color: red">@error('telefone') {{$message}} @enderror
                     </div>
 
-                    <div class="form-group row mb-0 mt-4">
+                    <div class="form-group row mb-5 mt-4">
                         <div class="col-3 form-group pt-2">
                             <input type="submit" name="submit" class="btn btn-success btn-md" style="color:white;" value="Register">
                         </div>
