@@ -17,13 +17,12 @@
                             </div>
                         @endif
                        
-                        @hasrole('avaliador')
-                            Você está logado como
-                            @foreach(auth()->user()->roles as $role)
-                             , {{ ucwords($role->name) }}
-                            @endforeach
-                            !
-                        @endhasrole
+                        
+                        Você está logado como
+                        @foreach(auth()->user()->roles as $role)
+                            , {{ ucwords($role->name) }}
+                        @endforeach
+                        !
                     </div>
                 </div>
             </div>
