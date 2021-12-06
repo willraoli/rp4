@@ -16,12 +16,11 @@ class CreateAutorsTable extends Migration
         $this->down();
 
         Schema::create('autors', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->string('email');
-            $table->string('endereco');
-            $table->bigInteger('telefone');
+            $table->unsignedBigInteger('user_id');
+            $table->bigInteger('orcid')->unique();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

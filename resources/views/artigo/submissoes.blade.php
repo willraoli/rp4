@@ -4,12 +4,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
-    <h3>Minhas submissões</h3>
+<div class="container mt-3">
+    <h3>Minhas submissões Pendentes</h3>
     <hr>
-    <!-- <div class="pagination justify-content-center" style="color: black;">
-            
-    </div> -->
+    <div class="pagination justify-content-center" style="color: black;">
+            {{ $submissoes->links("pagination::bootstrap-4") }} 
+    </div>
     <div class="container" style="margin-bottom: 100px;">
         <table style="transition:none !important;" class="table table-borderless table-hover">
             <thead class="table-dark">

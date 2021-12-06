@@ -18,7 +18,7 @@
 <footer class="footer fixed-bottom" style="background-color: rgb(42, 40, 40); color: white;">
     <div class="ml-4 text-center text-sm sm:text-right sm:ml-0 mt-2">
         <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
-        <p>Created in 2021 by: <a class="red" href="https://github.com/BhrunoB8"> Bhruno Roan Leifheit</a>, <a  class="red" href="https://github.com/lleafar">Rafael Lezama</a>, <a class="red" href="https://github.com/ThiagoCMAraujo">Thiago Melo</a>, <a class="red" href="https://github.com/willraoli">Will Raoli</a>.</p>
+        <p>Created in 2021 by: <a class="red" href="https://github.com/BhrunoB8" target="_blank"> Bhruno Roan Leifheit</a>, <a  class="red" href="https://github.com/lleafar" target="_blank">Rafael Lezama</a>, <a class="red" href="https://github.com/ThiagoCMAraujo" target="_blank">Thiago Melo</a>, <a class="red" href="https://github.com/willraoli" target="_blank">Will Raoli</a>.</p>
         <!-- https://github.com/BhrunoB8 -->
         <!-- https://github.com/willraoli -->
         <!-- https://github.com/lleafar -->

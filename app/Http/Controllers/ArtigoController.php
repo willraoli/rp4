@@ -19,9 +19,12 @@ class ArtigoController extends Controller{
 
 
     public function submissoes(){
-        $submissoes = Submissao::all();
+        // $submissoes = Submissao::paginate(10);
 
-        return view('artigo/submissoes', compact('submissoes'));
+        // return view('artigo/submissoes', compact('submissoes'));
+
+        $this->bussiness = new SubmissaoBusiness;   
+        $this->bussiness->manageSubmissao();
     }
  
 

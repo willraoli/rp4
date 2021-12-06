@@ -3,11 +3,13 @@
 namespace App\Service;
 
 use App\Repository\AutorRepository;
+use App\Repository\UserRepository;
 use Illuminate\Http\Request;
 
 class AutorService{
 
-    private AutorRepository $repository;
+    private AutorRepository $autorRep;
+    private UserRepository $userRep;
     
     public function search(Request $request){
         $q = $request->query('q');       
@@ -17,13 +19,16 @@ class AutorService{
     public function queryTitle($title){
         
         if(strlen($title) > 0 ){
-            $this->repository = new AutorRepository;        
-            
-            $autores = $this->repository->queryTitle($title);
+            $this->userRep = new UserRepository;        
+            $this->autorRep = new AutorRepository;
+
+            $users = $this->userRep->queryTitle($title);
             $response_html = '';
 
-            foreach($autores as $autor){
-                $response_html = $response_html . '<a type="button" onclick="selectAuthor('.$autor->id.')" ><li class="list-group-item" id='.$autor->id.'>'.$autor->nome.'</li></a>';
+            
+            foreach($users as $user){
+                $autor = $this->autorRep->getAutorByUserID($user->id);
+                $response_html = $response_html . '<a type="button" onclick="selectAuthor('.$autor->id.')" ><li class="list-group-item" id='.$autor->id.'>'.$user->name.'</li></a>';
             }
 
             return $response_html;

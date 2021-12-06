@@ -13,4 +13,8 @@ class Pais extends Model
         'id',
         'nomePais',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

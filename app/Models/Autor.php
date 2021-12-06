@@ -13,13 +13,15 @@ class Autor extends Model
     public $table = "autors";
     
     protected $fillable = [
-        'nome',
-        'email',
-        'endereco',
-        'telefone'
+        'user_id',
+        'orcid'
     ];
 
     public function artigo(){
         return $this->belongsToMany(ArtigoFinal::class);
+    }
+
+    public function user(){
+        return $this->hasOne(User::class);
     }
 }

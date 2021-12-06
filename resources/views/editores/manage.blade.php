@@ -5,9 +5,13 @@ use Illuminate\Support\Facades\DB;
 
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container mt-3">
+    
     <h3>Gerenciamento de Editores</h3>
     <hr>
+    <div class="pagination justify-content-center" style="color: black;">
+            {{ $editor->links("pagination::bootstrap-4") }} 
+    </div>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <th scope="col">Id</th>

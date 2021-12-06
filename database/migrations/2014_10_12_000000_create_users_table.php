@@ -19,8 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('endereco');
+            $table->string('telefone');
+            $table->unsignedBigInteger('pais_id');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('pais_id')->references('id')->on('paises');
         });
     }
 

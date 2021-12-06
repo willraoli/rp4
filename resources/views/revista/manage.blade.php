@@ -1,11 +1,8 @@
-<?php 
-    use Illuminate\Support\Facades\DB;   
-?>
-
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
+
+<div class="container mt-3">
     <h3>Gerenciamento de Revistas</h3>
     <hr>
     <div class="pagination justify-content-center" style="color: black;">

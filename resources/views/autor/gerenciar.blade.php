@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container mt-3">
     <h3>Gerenciamento de Autores</h3>
     <hr>
     <div class="container" style="margin-bottom: 100px;">

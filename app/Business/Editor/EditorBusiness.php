@@ -12,29 +12,13 @@ class EditorBusiness{
 
     public function __construct(){}
 
-    public function createEditor(Request $request){
-
-        // if(!$this->uniqueEmail($request->email)){
-        // $this->repository= new EditorRepository;
-        // $saved = $this->repository->store($request);
-
-        // return $saved;
-
-        // }else{
-        //     return 'False';
-        // }
-
-        if(!$this->uniqueEmailUser($request->email)){
-            $this->repository= new EditorRepository;
-            $saved = $this->repository->store($request);
+    public function createEditor(array $data, $user_id){
+            $this->repository = new EditorRepository;
+            $saved = $this->repository->store($data, $user_id);
 
             return $saved;
-
-        }else{
-            return 'False';
-        }
-
     }
+
     public function manageEditor(){
 
         $this->repository = new EditorRepository;

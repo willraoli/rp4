@@ -17,40 +17,21 @@ class EditorRepository
         return Editor::paginate(10);
     }
 
-    public function store(Request $request) // repository
+    public function store(array $data, $user_id) // repository
     {
         $dados = request()->validate([
-            'nome' => 'required|min:3',
-            'email' => 'required|max:250',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|max:13',
             'area_id' => 'nullable',
-            'pais_id' => 'nullable',
             'dataContratacao' => 'required',
             'dataDemissao' => 'nullable'
         ]);
 
-        $user = User::create([
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
         $editor = Editor::create([
-            'user_id' => $user->id,
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
-            'pais_id' => $request->pais,
-            'area_id' => $request->especialidade,
-            'dataContratacao' => $request->dataContratacao,
-            'dataDemissao' => $request->dataDemissao,
+            'user_id' => $user_id,
+            'area_id' => $data['especialidade'],
+            'dataContratacao' => $data['dataContratacao'],
         ]);
-
-
-        $user->assignRole('editor');
-        return $user->save();
+             
+        return $editor->save();
     }
 
     public function update(Request $request) // repository

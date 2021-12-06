@@ -27,6 +27,7 @@
 <body>
 
     <div id="app">
+        
         <nav class="navbar navbar-dark bg-dark navbar-expand-md">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="{{ url('/') }}">
@@ -89,7 +90,8 @@
         </nav>
 
 
-        <main class="">
+        <main class="d-flex">
+            <x-sidebar/>
             @yield('content')
         </main>
     </div>

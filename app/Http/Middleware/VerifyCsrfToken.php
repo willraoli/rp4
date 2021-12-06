@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'http://127.0.0.1:8000/form/submit/artigo',
-        'http://127.0.0.1:8000/submit/artigo'
+        'http://127.0.0.1:8000/submit/artigo',
+        'http://127.0.0.1:8000/register'
     ];
 }

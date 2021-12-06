@@ -42,6 +42,11 @@ class SubmissaoRepository{
        
     }
 
+    public function showMySubmissions($user_id){
+        
+
+    }
+
 }
 
 ?>

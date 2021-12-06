@@ -4,9 +4,12 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container" >
+<div class="container mt-3" >
         <h3>Gerenciamento de Avaliadores</h3>
         <hr>
+        <div class="pagination justify-content-center" style="color: black;">
+            {{ $avaliador->links("pagination::bootstrap-4") }} 
+        </div>
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <th scope="col">Id</th>

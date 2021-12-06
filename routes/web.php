@@ -22,14 +22,18 @@ Route::get('/', function () {
 
 
 Route::get('/pop', [App\Http\Controllers\Utils\PopulateTables::class, 'index'])->name('popular.tabelas');
+Route::get('/gen', [App\Http\Controllers\Utils\SuperAdmin::class, 'generateSuperAdmin'])->name('super.admin');
+Route::get('/ver', [App\Http\Controllers\Utils\SuperAdmin::class, 'verifyCurrentRole'])->name('check.role');
 
 // Revista
-Route::get('/form/create/revista', [App\Http\Controllers\RevistaController::class, 'createForm'])->name('create.revista.view');
-Route::post('/create/revista', [App\Http\Controllers\RevistaController::class, 'create'])->name('create.revista');
-Route::get('/manage/revistas', [App\Http\Controllers\RevistaController::class, 'manage'])->name('list.revista.mgmt');
-Route::post('/revista/editar/{id}', [App\Http\Controllers\RevistaController::class, 'update'])->name('update.revista');
-Route::get('/revista/excluir/{id}', [App\Http\Controllers\RevistaController::class, 'delete'])->name('delete.revista');
-Route::get('/select/revista/{id}', [App\Http\Controllers\RevistaController::class, 'select'])->name('select.revista');
+Route::group(['middleware' => ['role:editor-chefe']], function () {
+    Route::get('/form/create/revista', [App\Http\Controllers\RevistaController::class, 'createForm'])->name('create.revista.view');
+    Route::post('/create/revista', [App\Http\Controllers\RevistaController::class, 'create'])->name('create.revista');
+    Route::get('/manage/revistas', [App\Http\Controllers\RevistaController::class, 'manage'])->name('list.revista.mgmt');
+    Route::post('/revista/editar/{id}', [App\Http\Controllers\RevistaController::class, 'update'])->name('update.revista');
+    Route::get('/revista/excluir/{id}', [App\Http\Controllers\RevistaController::class, 'delete'])->name('delete.revista');
+    Route::get('/select/revista/{id}', [App\Http\Controllers\RevistaController::class, 'select'])->name('select.revista');
+});
 
 
 //Artigo
@@ -38,9 +42,6 @@ Route::post('/submit/artigo', [App\Http\Controllers\ArtigoController::class, 'su
 Route::get('/my/submissions', [App\Http\Controllers\ArtigoController::class, 'submissoes'])->name('minhas.submissoes');
 Route::get('/search', [App\Service\RevistaService::class, 'search'])->name('search.revista');
 Route::get('/search/autor', [App\Service\AutorService::class, 'search'])->name('search.autor');
-Route::get('/help', function (){
-    return Storage::get("storage/artigos/2121432021113061a695e7b8ef0.pdf");
-})->name('a');
 
 
 // Editor
