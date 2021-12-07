@@ -94,3 +94,6 @@ Route::group(['prefix' => 'autor'], function () {
     Route::delete('/deletar/{id}', [App\Repository\AutorRepository::class, 'destroy'])->name('exclusao_autor');
     Route::get('/all', [App\Http\Controllers\Autor\AutorController::class, 'manage'])->name('list.autor.mgmt');
 });
+
+// profile
+Route::view('/profile', 'profile')->name('profile');
