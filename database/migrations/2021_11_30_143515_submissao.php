@@ -25,6 +25,9 @@ class Submissao extends Migration
         });
     }
 
+    
+
+
     /**
      * Reverse the migrations.
      *

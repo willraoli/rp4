@@ -17,12 +17,21 @@ class ArtigoController extends Controller{
         return view('artigo/submeter');
     }
 
+    public function delete(Request $request){
+
+        $id = $request->id;
+        $this->bussiness = new SubmissaoBusiness;   
+        $valido = $this->bussiness->validateStatus($id);
+        
+        if($valido){
+            $this->
+        }else{
+            return redirect()->route('minhas.submissoes')->with('erro004', "Proibido cancelar submissão em avaliação");
+        }
+
+    }
 
     public function submissoes(){
-        // $submissoes = Submissao::paginate(10);
-
-        // return view('artigo/submissoes', compact('submissoes'));
-
         $this->bussiness = new SubmissaoBusiness;   
         $submissoes = $this->bussiness->manageSubmissao();
         return view('artigo/submissoes', compact('submissoes'));

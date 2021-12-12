@@ -23,13 +23,15 @@ class Revista extends Model
         return $this->hasOne(Editor::class, 'id', 'editor_id');
     }
 
-    public function area(){
-        return $this->hasOne(Area::class, 'id', 'area_id');
-    }
 
     public function periodicidade(){
         return $this->hasOne(Periodicidade::class, 'id', 'periodicidade_id');
     }
+
+    public function area(){
+        return $this->hasOne(Area::class, 'id', 'area_id');
+    }
+
 
     public function submissao(){
         return $this->belongsToMany(Submissao::class);

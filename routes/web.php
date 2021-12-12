@@ -39,13 +39,14 @@ Route::group(['middleware' => ['role:editor-chefe']], function () {
 
 
 //Artigo
-Route::get('/form/submit/artigo', [App\Http\Controllers\ArtigoController::class, 'submitForm'])->name('submit.artigo.view');
-Route::post('/submit/artigo', [App\Http\Controllers\ArtigoController::class, 'submit'])->name('submit.artigo');
-Route::get('/my/submissions', [App\Http\Controllers\ArtigoController::class, 'submissoes'])->name('minhas.submissoes');
-Route::get('/search', [App\Service\RevistaService::class, 'search'])->name('search.revista');
-Route::get('/search/autor', [App\Service\AutorService::class, 'search'])->name('search.autor');
-
-
+Route::group(['middleware' => ['role:autor']], function () {
+    Route::get('/form/submit/artigo', [App\Http\Controllers\ArtigoController::class, 'submitForm'])->name('submit.artigo.view');
+    Route::post('/submit/artigo', [App\Http\Controllers\ArtigoController::class, 'submit'])->name('submit.artigo');
+    Route::get('/my/submissions', [App\Http\Controllers\ArtigoController::class, 'submissoes'])->name('minhas.submissoes');
+    Route::get('/search', [App\Service\RevistaService::class, 'search'])->name('search.revista');
+    Route::get('/search/autor', [App\Service\AutorService::class, 'search'])->name('search.autor');
+    Route::get('/delete/submissao/{id}', [App\Http\Controllers\ArtigoController::class, 'delete'])->name('delete.submissao');
+});
 // Editor
 // Controller
 Route::get('/editor/novo/', function () {

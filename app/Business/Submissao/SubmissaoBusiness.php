@@ -6,6 +6,7 @@ use App\Models\Revista;
 use App\Models\Submissao;
 use App\Repository\AutorRepository;
 use App\Repository\SubmissaoRepository;
+use ArtigoFinal;
 use Illuminate\Http\Request;
 
 class SubmissaoBusiness{
@@ -57,9 +58,18 @@ class SubmissaoBusiness{
         $submissao_repository = new SubmissaoRepository();
         $submissao = $submissao_repository->showMySubmissions($autor->orcid);
 
-        return $submissao;
+        return $submissao;   
+    }
 
-        
+
+    public function validateStatus($id){
+        $this->repository = new SubmissaoRepository();
+        $artigos = $this->repository->getArtigosBySubmissionID($id);
+        foreach($artigos as $artigo){
+            if($artigo->situacao_id != 4)
+                return False;
+        }
+        return True;
     }
 
 }

@@ -5,7 +5,7 @@ use App\Models\ArtigoFinal;
 use App\Models\Autor;
 use App\Models\Revista;
 use App\Models\Submissao;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\SubmissaoArtigo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +26,7 @@ class SubmissaoRepository{
                 $artigo    = new ArtigoFinal();
                 $artigo->tituloArtigo = $request->tituloArtigo[$i];
                 $artigo->caminhoArtigo = $caminhoArtigos[$i];   
-                $artigo->situacao_id = 3; //Sob Avaliação
+                $artigo->situacao_id = 4; //Sem Avaliador
                 $artigo->save();
 
                 $autores = $request->autor_id ;
@@ -51,6 +51,31 @@ class SubmissaoRepository{
     public function showMySubmissions($autor){
 
         return Submissao::where('autor_id', $autor)->paginate(10);
+    }
+
+    public function getArtigosBySubmissionID($submissao_id){
+        try{   
+            $artigos_submissao = SubmissaoArtigo::where('submissao_id', $submissao_id)->get()->toArray();   
+            $artigos = array();
+            foreach($artigos_submissao as $artigo){
+               array_push($artigos, ArtigoFinal::findOrFail($artigo['artigo_id']));
+            }
+            return $artigos;
+        }catch(\Exception $e){
+            echo 'Ocorreu um erro ' . $e;
+        }
+    }
+
+    public function delete($id){
+        
+        try{
+            $submissao = Submissao::findOrFail($id);
+            $submissao->delete();
+        }catch(\Exception $e){
+            return False;
+        }
+
+        return True;
     }
 
 }

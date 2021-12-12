@@ -15,13 +15,14 @@ class Submissao extends Model{
             'data_submissao',  
         ];
 
+        public function autor(){
+            return $this->hasOne(Autor::class, 'id', 'autor_id');
+        }
+
         public function revista(){
             return $this->hasOne(Revista::class, 'id', 'revista_id');
         }
 
-        public function autor(){
-            return $this->hasOne(Autor::class, 'id', 'autor_id');
-        }
 
         public function artigos(){
             return $this->belongsToMany(ArtigoFinal::class, 'submissaoartigo', 'submissao_id', 'artigo_id');

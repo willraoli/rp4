@@ -16,6 +16,7 @@ class SubmissaoArtigo extends Migration
         Schema::create('SubmissaoArtigo', function (Blueprint $table) {
             $table->bigInteger('submissao_id')->unsigned();        
             $table->bigInteger('artigo_id')->unsigned();
+            $table->timestamps();
             
             $table->foreign('submissao_id')->references('id')->on('submissao');
             $table->foreign('artigo_id')->references('id')->on('artigos');
