@@ -26,7 +26,7 @@ class SubmissaoRepository{
                 $artigo    = new ArtigoFinal();
                 $artigo->tituloArtigo = $request->tituloArtigo[$i];
                 $artigo->caminhoArtigo = $caminhoArtigos[$i];   
-                $artigo->situacao_id = 4; //Sem Avaliador
+                $artigo->situacao_id = 4; //Sem Avaliadores Definidos
                 $artigo->save();
 
                 $autores = $request->autor_id ;
