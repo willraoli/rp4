@@ -15,13 +15,13 @@ class ArtigoAutor extends Migration
     {
         Schema::create('ArtigoAutor', function (Blueprint $table) {
 
-            $table->bigInteger('artigo_id')->unsigned();        
+            $table->bigInteger('artigo_id')->unsigned();
             $table->bigInteger('autor_id')->unsigned();
             $table->timestamps();
-            
+
             $table->foreign('artigo_id')->references('id')->on('artigos')->onDelete('cascade');
-            $table->foreign('autor_id')->references('id')->on('autors')->onDelete('cascade');
-        
+            $table->foreign('autor_id')->references('orcid')->on('autors')->onDelete('cascade');
+
         });
     }
 

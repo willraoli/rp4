@@ -19,13 +19,13 @@ class Submissao extends Migration
             $table->bigInteger('autor_id')->unsigned();
             $table->bigInteger('revista_id')->unsigned();
             $table->timestamps();
-            
-            $table->foreign('autor_id')->references('id')->on('autors');
-            $table->foreign('revista_id')->references('id')->on('revistas');        
+
+            $table->foreign('autor_id')->references('orcid')->on('autors');
+            $table->foreign('revista_id')->references('id')->on('revistas');
         });
     }
 
-    
+
 
 
     /**

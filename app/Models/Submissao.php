@@ -12,11 +12,11 @@ class Submissao extends Model{
             'autor_id',
             'revista_id',
             'artigo_id',
-            'data_submissao',  
+            'data_submissao',
         ];
 
         public function autor(){
-            return $this->hasOne(Autor::class, 'id', 'autor_id');
+            return $this->hasOne(Autor::class, 'orcid', 'autor_id');
         }
 
         public function revista(){
@@ -29,5 +29,5 @@ class Submissao extends Model{
         }
 
     }
-    
+
 ?>
