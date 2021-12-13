@@ -15,8 +15,15 @@ class Autor extends Model
 
     protected $fillable = [
         'user_id',
-        'orcid'
+        'orcid',
+        'area_id',
+        'instituicao'
     ];
+
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_id');
+    }
 
     public function submissao(){
         return $this->belongsToMany(Submissao::class);

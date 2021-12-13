@@ -5,53 +5,74 @@ namespace App\Repository;
 use Illuminate\Http\Request;
 use App\Models\Autor;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AutorRepository
 {
-    // public function store(Request $request) // repository
-    // {
-    //     Autor::create([
-    //         'nome' => $request->nome,
-    //         'email' => $request->email,
-    //         'endereco' => $request->endereco,
-    //         'telefone' => $request->telefone,
-    //     ]);
 
-    //     return "Autor cadastrado com sucesso!";
-    // }
-
-    public function store($user_id, $orcid) // repository
+    public function store($user_id, array $data) // repository
     {
         $autor = new Autor();
         $autor->user_id = $user_id;
-        $autor->orcid = $orcid;
+        $autor->orcid = $data['orcid'];
+        $autor->area_id = $data['area_pref'];
+        $autor->instituicao = $data['instituicao'];
         return $autor->save();
     }
 
 
-    public function update(Request $request, $id) // repository
+    public function update(Request $request) 
     {
-        $autor = Autor::findOrFail($id);
-
-        $autor->update([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
+        $request->validate([
+            'nome' => 'required|max:50|min:3',
+            'email' => 'required|max:250',
+            'endereco' => 'required|max:250',
+            'telefone' => 'required|min:13|max:13',
+            'area_pref' => 'required',
+            'instituicao' => 'required',
+            'pais_origem' => 'required'
         ]);
 
-        return "Autor editado com sucesso!";
-    }
+        $autor = new Autor();
+        $autor = Autor::where('orcid',$request->id)->first();
 
-    public function destroy($id) // repository
-    {
-        $autor = Autor::findOrFail($id);
-        $autor->delete();
+        $autor->user->name = $request->nome;
+        $autor->user->email = $request->email;
+        $autor->user->endereco = $request->endereco;
+        $autor->user->telefone = $request->telefone;
+        $autor->area_id = $request->area_pref;
+        $autor->instituicao = $request->instituicao;
 
-        return "Autor excluído com sucesso!";
+        return $autor->push();
     }
 
     public function getAutorByUserID($user_id){
         return Autor::where('user_id', $user_id)->first();
+    }
+
+    public function getByID($id){
+        try{
+            $autor = Autor::findOrFail($id);
+        }catch(ModelNotFoundException $e){
+            return False;
+        }
+        return $autor;
+    }
+
+    public function destroy($id) {
+        $autor = new Autor();
+        $autor = Autor::where('orcid', $id)->first();
+        $user = User::findOrFail($autor->user_id);
+
+        $user->delete();
+        return $autor->delete();
+    }
+
+    public function show(){
+        return Autor::paginate(10);
+    }
+
+    public function queryTitle(String $title){
+        return Autor::where('nome', 'LIKE', '%'.$title.'%')->get();
     }
 }

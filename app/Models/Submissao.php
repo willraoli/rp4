@@ -16,7 +16,7 @@ class Submissao extends Model{
         ];
 
         public function autor(){
-            return $this->hasOne(Autor::class, 'id', 'autor_id');
+            return $this->hasOne(Autor::class, 'orcid', 'autor_id');
         }
 
         public function revista(){

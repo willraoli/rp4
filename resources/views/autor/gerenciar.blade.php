@@ -11,6 +11,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Endereço</th>
                 <th scope="col">Telefone</th>
+                <th scope="col">Telefone</th>
                 <th scope="col">Data de criação</th>
                 <th scope="col">Data de atualização</th>
                 <th class="" scope="col">Editar</th>
@@ -19,15 +20,15 @@
             <tbody>
                 @foreach($autor as $autor)
                 <tr scope="row">
-                    <td>{{ $autor->id }}</td>
-                    <td>{{ $autor->nome }}</td>
-                    <td>{{ $autor->email }}</td>
-                    <td>{{ $autor->endereco }}</td>
-                    <td>{{ $autor->telefone }}</td>
+                    <td>{{ $autor->orcid }}</td>
+                    <td>{{ $autor->user->name }}</td>
+                    <td>{{ $autor->user->email }}</td>
+                    <td>{{ $autor->user->endereco }}</td>
+                    <td>{{ $autor->user->telefone }}</td>
                     <td>{{ $autor->created_at }}</td>
                     <td>{{ $autor->updated_at }}</td>
                     <td class="text-center">
-                        <a class="btn btn-primary" href="{{ route('edicao_autor', $autor->id) }}">
+                        <a class="btn btn-primary" href="{{ route('edicao_autor', $autor->orcid) }}">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>            
                         </a>
                     </td>
@@ -46,11 +47,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {{ $autor->nome }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
+                            {{ $autor->orcid }} - {{ $autor->user->name }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" >
-                                <a href="{{ route('exclusao_autor_modal', $autor->id) }}" style="color: white;text-decoration: none;">
+                                <a href="{{ route('exclusao_autor_modal', $autor->orcid) }}" style="color: white;text-decoration: none;">
                                 Sim
                                 </a>    
                             </button>

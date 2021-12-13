@@ -18,9 +18,12 @@ class CreateAutorsTable extends Migration
         Schema::create('autors', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->bigInteger('orcid')->unique();
+            $table->unsignedBigInteger('area_id');
+            $table->string('instituicao');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('area_id')->references('id')->on('areas');
         });
     }
 

@@ -83,14 +83,31 @@ use Illuminate\Support\Facades\DB;
                     </div>                        
                     <!-- AUTOR -->
                     <div class="form-group mb-2 mt-4" hidden="true" id="autor_modal">
-                        <label for="orcid" class="ms-3 mb-1">ORCID<span id="obrigatorio">*</span></label><br>
-                        <input type="text" maxlength="12" name="orcid" id="orcid" class="form-control">
+                        <label for="orcid" class="ms-3 mb-1">ORCID<span id="obrigatorio">*</span></label>
+                        <input type="text" maxlength="12" name="orcid" id="orcid" class="form-control mb-2">
+
+                        <label for="" class="ms-3 mb-1">Instituição</label>
+                        @error('instituicao') {{$message}} @enderror
+                        <input type="text" name="instituicao" class="form-control mb-2">
+
+                        <label for="" class="ms-3 mb-1">Área de preferência<span id="obrigatorio">*</span></label>
+                        @error('area_pref') {{$message}} @enderror
+                        <select class="form-control mb-2" name="area_pref" id="area">
+                            <option value="" disabled>-</option>
+                            <?php
+                            $areas = DB::table('areas')->get();
+                            foreach ($areas as $a) {
+                                echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
+                            }
+                            ?>
+                        </select>
+
                     </div>
                     <!-- FIM AUTOR -->
 
                     <!-- EDITOR -->
                     <div class="form-group mt-4" hidden="true" id="editor_modal">
-                        <label for="" class="ms-3 mb-1">Especialidade<span id="obrigatorio">*</span></label> <br />
+                        <label for="" class="ms-3 mb-1">Área de preferência<span id="obrigatorio">*</span></label> <br />
                         <select class="form-control" name="especialidade" id="area"> <br />
                             <option value="" disabled>-</option>
                             <?php
@@ -99,7 +116,7 @@ use Illuminate\Support\Facades\DB;
                                 echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
                             }
                             ?>
-                               <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
+                            <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
                         </select>
 
                         <label for="" class="ms-3 mb-1 mt-2">Data de Contratação<span id="obrigatorio">*</span></label> <br />

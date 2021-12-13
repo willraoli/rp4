@@ -20,7 +20,7 @@ class ArtigoAutor extends Migration
             $table->timestamps();
             
             $table->foreign('artigo_id')->references('id')->on('artigos')->onDelete('cascade');
-            $table->foreign('autor_id')->references('id')->on('autors')->onDelete('cascade');
+            $table->foreign('autor_id')->references('orcid')->on('autors')->onDelete('cascade');
         
         });
     }
