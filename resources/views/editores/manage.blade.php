@@ -6,18 +6,17 @@ use Illuminate\Support\Facades\DB;
 @extends('layouts.app')
 @section('content')
 <div class="container mt-3">
-    
+
     <h3>Gerenciamento de Editores</h3>
     <hr>
     <div class="pagination justify-content-center" style="color: black;">
-            {{ $editor->links("pagination::bootstrap-4") }} 
+            {{ $editor->links("pagination::bootstrap-4") }}
     </div>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
             <th scope="col">Data de Contratação</th>
-            <th scope="col">Data de Demissão</th>
             <th class="table-borderless" scope="col"></th>
             <th class="table-borderless" scope="col"></th>
         </thead>
@@ -26,9 +25,8 @@ use Illuminate\Support\Facades\DB;
             <tr scope="row">
 
                 <td>{{ $editor->id }}</td>
-                <td>{{ $editor->nome }}</td>
+                <td>{{ $editor->user->name }}</td>
                 <td>{{ $editor->dataContratacao}}</td>
-                <td>{{ $editor->dataDemissao}}</td>
                 <td class="text-center">
                     <a class="btn btn-primary" href="{{ route('alterar_editor', $editor->id) }}">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -40,7 +38,7 @@ use Illuminate\Support\Facades\DB;
                         </a>
                     </td>
                 </tr>
-                
+
                 <!-- Modal -->
                 <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -50,7 +48,7 @@ use Illuminate\Support\Facades\DB;
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {{ $editor->nome }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
+                            {{ $editor->user->name }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" >

@@ -17,7 +17,6 @@ class Editor extends Authenticatable
         'user_id',
         'area_id',
         'dataContratacao',
-        'dataDemissao',
     ];
 
     public function revista()

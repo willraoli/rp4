@@ -19,25 +19,16 @@ class EditorRepository
 
     public function store(array $data, $user_id) // repository
     {
-        $dados = request()->validate([
-            'area_id' => 'nullable',
-            'dataContratacao' => 'required',
-            'dataDemissao' => 'nullable'
-        ]);
+        $editor = new Editor();
+        $editor->user_id = $user_id;
+        $editor->area_id = $data['area_id'];
+        $editor->dataContratacao = $data['dataContratacao'];
 
-        $editor = Editor::create([
-            'user_id' => $user_id,
-            'area_id' => $data['especialidade'],
-            'dataContratacao' => $data['dataContratacao'],
-        ]);
-             
         return $editor->save();
     }
 
     public function update(Request $request) // repository
     {
-        $editor = $this->getByID($request->id);
-        $user = User::findOrFail($editor->user_id);
 
         $dados = request()->validate([
             'nome' => 'required|min:3',
@@ -47,22 +38,20 @@ class EditorRepository
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
             'dataContratacao' => 'required',
-            'dataDemissao' => 'nullable'
         ]);
 
-        $user->update([
-            'name' => $request->nome,
-        ]);
+        $editor = new Editor();
+        $editor = Editor::where('id', $request->id)->first();
 
-        $editor->update([
-            'user_id' => $user->id,
-            'nome' => $request->nome,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
-            'pais_id' => $request->pais_id,
-            'area_id' => $request->especialidade,
-            'dataContratacao' => $request->dataContratacao,
-        ]);
+        $editor->user->name = $request->name;
+        $editor->user->email = $request->email;
+        $editor->user->endereco = $request->endereco;
+        $editor->user->endereco = $request->telefone;
+        $editor->area_id = $request->especialidade;
+        $editor->dataContratacao = $request->dataContratacao;
+
+        return $editor->push();
+
     }
 
     public function destroy($id) // repository
