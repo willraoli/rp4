@@ -40,13 +40,13 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
+                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal-{{$avaliador->id}}">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
                 <!-- Modal -->
-                <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="del-modal-{{$avaliador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -54,7 +54,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {{ $avaliador->user->name }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
+                        {{ $avaliador->id }} - {{ $avaliador->user->name }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" >
