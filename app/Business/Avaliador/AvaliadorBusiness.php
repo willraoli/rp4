@@ -16,7 +16,6 @@ class AvaliadorBusiness{
         $this->repository= new AvaliadorRepository;
         $saved = $this->repository->store($data, $user_id);
 
-
         return $saved;
     }
 
@@ -46,7 +45,7 @@ class AvaliadorBusiness{
         return $this->repository->update($request);
     }
 
-    public function uniqueEmail(String $email){
-        return DB::table('avaliadors')->where('email', $email)->exists();
+    public function uniqueEmailUser(String $email){
+        return DB::table('users')->where('email', $email)->exists();
     }
 }

@@ -15,7 +15,6 @@ class EditorBusiness{
     public function createEditor(array $data, $user_id){
             $this->repository = new EditorRepository;
             $saved = $this->repository->store($data, $user_id);
-
             return $saved;
     }
 
@@ -44,7 +43,7 @@ class EditorBusiness{
         $this->repository = new EditorRepository;
         return $this->repository->update($request);
     }
-    
+
     public function uniqueEmail(String $email){
         return DB::table('editors')->where('email', $email)->exists();
     }

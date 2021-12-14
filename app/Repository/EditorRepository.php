@@ -19,16 +19,6 @@ class EditorRepository
 
     public function store(array $data, $user_id) // repository
     {
-        // $dados = request()->validate([
-        //     'nome' => 'required|min:3',
-        //     'email' => 'required|max:250',
-        //     'endereco' => 'required|max:250',
-        //     'telefone' => 'required|max:13|min:13',
-        //     'area_id' => 'nullable',
-        //     'pais_id' => 'nullable',
-        //     'dataContratacao' => 'required',
-        // ]);
-
         $editor = new Editor();
         $editor->user_id = $user_id;
         $editor->area_id = $data['especialidade'];

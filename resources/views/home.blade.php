@@ -16,7 +16,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                       
                         
                         Você está logado como
                         @foreach(auth()->user()->roles as $role)

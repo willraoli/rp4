@@ -13,7 +13,6 @@ class AutorBusiness{
     public function __construct(){}
 
     public function createAutor(array $data, $user_id){
-       
 
         $this->repository = new AutorRepository();
         $this->repository->store($user_id, $data);

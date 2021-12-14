@@ -19,7 +19,6 @@ class CreateEditorsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('dataContratacao');
             $table->timestamps();
-
             $table->foreign('area_id')->references('id')->on('areas');
             $table->foreign('user_id')->references('id')->on('users');
         });

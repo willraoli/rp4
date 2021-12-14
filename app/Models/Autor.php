@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Autor extends Model
+class Autor extends Authenticatable
 {
-
-    use HasFactory;
+    use HasFactory, HasRoles, Authorizable;
 
     protected $table = "autors";
     protected $primaryKey = 'orcid';
@@ -19,6 +21,10 @@ class Autor extends Model
         'area_id',
         'instituicao'
     ];
+  
+    public function pais(){
+        return $this->hasOne(Pais::class, 'id', 'pais_origem');
+    }
 
     public function area()
     {

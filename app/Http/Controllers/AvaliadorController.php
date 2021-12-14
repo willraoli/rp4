@@ -20,8 +20,8 @@ class AvaliadorController extends Controller
     public function edit(Request $request){
         $this->business = new AvaliadorBusiness;
         $avaliador = $this->business->selectAvaliador($request);
-        return view ('avaliador\edit', ['avaliador' => $avaliador]);
 
+        return view ('avaliador\edit', ['avaliador' => $avaliador]);
     }
 
 
@@ -48,8 +48,4 @@ class AvaliadorController extends Controller
 
         return redirect()->route('listaAvaliadores');
     }
-
-
-
-
 }

@@ -9,8 +9,6 @@ use App\Models\Autor;
 
 class AutorController extends Controller
 {
-
-
     public function edit(Request $request)
     {
         $this->business = new AutorBusiness;
@@ -51,8 +49,6 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $request = $this->business->updateAutor($request);
 
-        return redirect()->route('list.autor.mgmt');
-        
+        return redirect()->route('list.autor.mgmt'); 
     }
-
 }

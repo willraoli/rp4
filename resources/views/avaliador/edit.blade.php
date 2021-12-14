@@ -39,6 +39,7 @@
         <p style="color: red";>@error('pais_origem') {{$message}} @enderror<p>
         <label for="">Área de interesse<span id="obrigatorio">*</span></label> <br />
             <select class="from-control" name="area_pref" id="areasPref" value = " {{ $avaliador->area->descricaoArea }}"  style="border: 2px solid gray;">
+
             <option value="" disabled>-</option>
             <?php
                             $areas = DB::table('areas')->get();

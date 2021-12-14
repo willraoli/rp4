@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AutorRepository
 {
-
-    public function store($user_id, array $data) // repository
+    public function store($user_id, array $data)
     {
         $autor = new Autor();
         $autor->user_id = $user_id;
@@ -36,7 +35,6 @@ class AutorRepository
         $autor = Autor::where('orcid',$request->id)->first();
 
         $autor->user->name = $request->nome;
-        //$autor->user->email = $request->email;
         $autor->user->endereco = $request->endereco;
         $autor->user->telefone = $request->telefone;
         $autor->area_id = $request->area_pref;
@@ -66,8 +64,7 @@ class AutorRepository
 
         return $user->delete();
     }
-
-
+  
     public function show(){
         return Autor::paginate(10);
     }

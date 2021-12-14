@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\DB;
                             }
                             ?>
                         </select>
+                        <p style="color: red";>@error('pais') {{$message}} @enderror<p>
                         <label for="">Especialidade<span id="obrigatorio">*</span></label> <br />
                         <select class="form-control" name="especialidade" value="{{ $editor->pais_id}}"> <br />
                             <option value="" disabled>-</option>
@@ -46,9 +47,12 @@ use Illuminate\Support\Facades\DB;
                             }
                             ?>
                         </select>
+                        <p style="color: red";>@error('area_pref') {{$message}} @enderror<p>
                         <label for="">Data de Contratação</label><br>
                         <input disabled type="date" name="dataContratacao" class="form-control" value="{{ $editor->dataContratacao }}"><br>
+
                         <button type="submit" class="btn btn-primary">Salvar</button>
+                        <p style="color: red" ;>@error('dataDemissao') {{$message}} @enderror<p>
                     </div>
                 </form>
             </div>

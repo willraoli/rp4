@@ -14,39 +14,9 @@ class AvaliadorRepository
 {
     public function store(array $data, $user_id)
     {
-
-        // $dados = request()->validate([
-        //     'nome' => 'required|max:50|min:3',
-        //     'email' => 'required|max:250',
-        //     'endereco' => 'required|max:250',
-        //     'telefone' => 'required|min:13|max:13',
-        //     'area_pref' => 'required',
-        //     'pais_origem' => 'required'
-        // ]);
-
         $avaliador = new Avaliador();
         $avaliador ->user_id = $user_id;
         $avaliador ->area_pref=$data['area_pref'];
-
-        // $avaliador = Avaliador::create([
-        //     'nome' => $request->nome,
-        //     'email' => $request->email,
-        //     'endereco' => $request->endereco,
-        //     'telefone' => $request->telefone,
-        //     'area_pref' => $request->area_pref,
-        //     'pais_origem' => $request->pais_origem,
-        // ]);
-
-        // $user = User::create([
-        //     'name' => $request->nome,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
-
-
-
-        // $user->assignRole('avaliador');
-        // $user->save();
 
         return $avaliador->save();
     }
@@ -68,9 +38,6 @@ class AvaliadorRepository
 
     public function update(Request $request)
     {
-        // $avaliador = $this->getByID($request->id);
-        // $user = User::findOrFail($avaliador->user_id);
-
         $data = request()->validate([
             'nome' => 'required|min:3',
             'endereco' => 'required|max:255|min:10',
@@ -89,7 +56,6 @@ class AvaliadorRepository
         $avaliador->area_pref = $request->area_pref;
 
         return $avaliador->push();
-
     }
 
     public function destroy($id)
@@ -99,6 +65,5 @@ class AvaliadorRepository
         $avaliador->delete();
 
         return $user->delete();
-
     }
 }
