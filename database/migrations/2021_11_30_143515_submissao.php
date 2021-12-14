@@ -16,7 +16,7 @@ class Submissao extends Migration
         Schema::create('Submissao', function (Blueprint $table) {
             $table->id();
             $table->boolean('finalizado');
-            $table->bigInteger('autor_id')->unsigned();
+            $table->bigInteger('autor_id')->unique();
             $table->bigInteger('revista_id')->unsigned();
             $table->timestamps();
             
@@ -25,7 +25,7 @@ class Submissao extends Migration
         });
     }
 
-    
+
 
 
     /**

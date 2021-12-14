@@ -19,9 +19,19 @@ class EditorRepository
 
     public function store(array $data, $user_id) // repository
     {
+        // $dados = request()->validate([
+        //     'nome' => 'required|min:3',
+        //     'email' => 'required|max:250',
+        //     'endereco' => 'required|max:250',
+        //     'telefone' => 'required|max:13|min:13',
+        //     'area_id' => 'nullable',
+        //     'pais_id' => 'nullable',
+        //     'dataContratacao' => 'required',
+        // ]);
+
         $editor = new Editor();
         $editor->user_id = $user_id;
-        $editor->area_id = $data['area_id'];
+        $editor->area_id = $data['especialidade'];
         $editor->dataContratacao = $data['dataContratacao'];
 
         return $editor->save();
@@ -32,23 +42,20 @@ class EditorRepository
 
         $dados = request()->validate([
             'nome' => 'required|min:3',
-            'email' => 'nullable',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|max:13',
+            'endereco' => 'required|max:255|min:10',
+            'telefone' => 'required|max:13|min:13',
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
-            'dataContratacao' => 'required',
         ]);
 
         $editor = new Editor();
         $editor = Editor::where('id', $request->id)->first();
 
-        $editor->user->name = $request->name;
-        $editor->user->email = $request->email;
+        $editor->user->name = $request->nome;
         $editor->user->endereco = $request->endereco;
-        $editor->user->endereco = $request->telefone;
+        $editor->user->telefone = $request->telefone;
+        $editor->user->pais_id = $request->pais_id;
         $editor->area_id = $request->especialidade;
-        $editor->dataContratacao = $request->dataContratacao;
 
         return $editor->push();
 

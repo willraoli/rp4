@@ -12,37 +12,41 @@ use App\Models\User;
 
 class AvaliadorRepository
 {
-    public function store(Request $request)
+    public function store(array $data, $user_id)
     {
 
-        $data = request()->validate([
-            'nome' => 'required|max:50|min:3',
-            'email' => 'required|max:250',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|min:13|max:13',
-            'area_pref' => 'required',
-            'pais_origem' => 'required'
-        ]);
+        // $dados = request()->validate([
+        //     'nome' => 'required|max:50|min:3',
+        //     'email' => 'required|max:250',
+        //     'endereco' => 'required|max:250',
+        //     'telefone' => 'required|min:13|max:13',
+        //     'area_pref' => 'required',
+        //     'pais_origem' => 'required'
+        // ]);
 
-        $avaliador = Avaliador::create([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
-            'area_pref' => $request->area_pref,
-            'pais_origem' => $request->pais_origem,
-        ]);
+        $avaliador = new Avaliador();
+        $avaliador ->user_id = $user_id;
+        $avaliador ->area_pref=$data['area_pref'];
 
-        $user = User::create([
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // $avaliador = Avaliador::create([
+        //     'nome' => $request->nome,
+        //     'email' => $request->email,
+        //     'endereco' => $request->endereco,
+        //     'telefone' => $request->telefone,
+        //     'area_pref' => $request->area_pref,
+        //     'pais_origem' => $request->pais_origem,
+        // ]);
+
+        // $user = User::create([
+        //     'name' => $request->nome,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
 
 
-        $user->assignRole('avaliador');
-        $user->save();
+        // $user->assignRole('avaliador');
+        // $user->save();
 
         return $avaliador->save();
     }
@@ -64,29 +68,27 @@ class AvaliadorRepository
 
     public function update(Request $request)
     {
-        $avaliador = $this->getByID($request->id);
-        $user = User::findOrFail($avaliador->user_id);
+        // $avaliador = $this->getByID($request->id);
+        // $user = User::findOrFail($avaliador->user_id);
 
         $data = request()->validate([
-            'nome' => 'required|max:50|min:3',
-            'email' => 'nullable',
-            'endereco' => 'required|max:250',
+            'nome' => 'required|min:3',
+            'endereco' => 'required|max:255|min:10',
             'telefone' => 'required|min:13|max:13',
-            'area_pref' => 'required',
+            'area_pref' => 'nullable',
             'pais_origem' => 'required'
         ]);
 
-        $user->update([
-            'name' => $request->nome,
-        ]);
+        $avaliador = new Avaliador();
+        $avaliador = Avaliador::where('id', $request->id)->first();
 
-        $avaliador->update([
-            'nome' => $request->nome,
-            'endereco' => $request->endereco,
-            'telefone' => $request->telefone,
-            'area_pref' => $request->area_pref,
-            'pais_origem' => $request->pais_origem
-        ]);
+        $avaliador->user->name = $request->nome;
+        //$avaliador->user->email = $request->email;
+        $avaliador->user->endereco = $request->endereco;
+        $avaliador->user->endereco = $request->telefone;
+        $avaliador->area_pref = $request->area_pref;
+
+        return $avaliador->push();
 
     }
 
@@ -94,9 +96,9 @@ class AvaliadorRepository
     {
         $avaliador = Avaliador::findOrFail($id);
         $user = User::findOrFail($avaliador->user_id);
-        $user->delete();
-        return $avaliador->delete();
+        $avaliador->delete();
 
+        return $user->delete();
 
     }
 }

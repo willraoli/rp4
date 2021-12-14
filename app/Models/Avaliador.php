@@ -13,21 +13,17 @@ class Avaliador extends Authenticatable
     use HasFactory, HasRoles, Authorizable;
 
     protected $fillable = [
-        'nome',
-        'endereco',
-        'email',
-        'telefone',
         'area_pref',
-        'pais_origem',
         'user_id'
     ];
-
-    public function pais(){
-        return $this->hasOne(Pais::class, 'id', 'pais_origem');
-    }
 
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_pref');
     }
 }

@@ -11,17 +11,6 @@ class AvaliadorController extends Controller
 
     private AvaliadorBusiness $business;
 
-    public function create(Request $request){
-
-        if(!empty($request->all())){
-            $this->business = new AvaliadorBusiness;
-            $request = $this->business->createAvaliador($request);
-            return $request === True ? redirect()->route('home',) : redirect()->route('create.avaliador.view', 'err');
-        }else{
-            return redirect()->route('create.avaliador.view', 'err');
-        }
-    }
-
     public function show($id){
 
         $avaliador = Avaliador::findOrFail($id);
@@ -31,9 +20,10 @@ class AvaliadorController extends Controller
     public function edit(Request $request){
         $this->business = new AvaliadorBusiness;
         $avaliador = $this->business->selectAvaliador($request);
-        return redirect()->route('editar.avaliador',  $avaliador);
-        
+        return view ('avaliador\edit', ['avaliador' => $avaliador]);
+
     }
+
 
     public function delete(Request $request){
 
@@ -45,11 +35,11 @@ class AvaliadorController extends Controller
     }
 
     public function manage(Request $request){
-    
+
         $this->business = new AvaliadorBusiness;
         $avaliadores = $this->business->manageAvaliador($request);
         return view('avaliador\manage', ['avaliador' => $avaliadores]);
-    
+
     }
 
     public function update(Request $request){
@@ -59,7 +49,7 @@ class AvaliadorController extends Controller
         return redirect()->route('listaAvaliadores');
     }
 
-    
 
-    
+
+
 }
