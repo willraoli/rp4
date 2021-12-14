@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
                     @csrf
                     <div class="form-group mb-2">
                         <label for="">Nome</label><br>
-                        <input type="text" name="name" class="form-control" value="{{ $editor->user->name }}"><br>
+                        <input type="text" name="nome" class="form-control" value="{{ $editor->user->name }}"><br>
                         <label for="">Email</label><br>
                         <input type="email" name="email" class="form-control" disabled value="{{ $editor->user->email }}"><br>
                         <label for="">Telefone</label> <br />
@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\DB;
                             ?>
                         </select>
                         <label for="">Data de Contratação</label><br>
-                        <input type="date" name="dataContratacao" class="form-control" value="{{ $editor->dataContratacao }}"><br>
+                        <input disabled type="date" name="dataContratacao" class="form-control" value="{{ $editor->dataContratacao }}"><br>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>

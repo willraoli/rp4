@@ -21,7 +21,7 @@ class AutorRepository
     }
 
 
-    public function update(Request $request) 
+    public function update(Request $request)
     {
         $request->validate([
             'nome' => 'required|max:50|min:3',
@@ -63,9 +63,9 @@ class AutorRepository
         $autor = new Autor();
         $autor = Autor::where('orcid', $id)->first();
         $user = User::findOrFail($autor->user_id);
+        $autor->delete();
 
-        $user->delete();
-        return $autor->delete();
+        return $user->delete();
     }
 
     public function show(){

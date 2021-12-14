@@ -1,4 +1,4 @@
-<?php 
+<?php
     use Illuminate\Support\Facades\DB;
 ?>
 @extends('layouts.app')
@@ -8,7 +8,7 @@
         <h3>Gerenciamento de Avaliadores</h3>
         <hr>
         <div class="pagination justify-content-center" style="color: black;">
-            {{ $avaliador->links("pagination::bootstrap-4") }} 
+            {{ $avaliador->links("pagination::bootstrap-4") }}
         </div>
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -17,6 +17,7 @@
                 <th scope="col">Endereço</th>
                 <th scope="col">Email</th>
                 <th scope="col">Telefone</th>
+                <th scope="col">Área de Preferência</th>
                 <th class="table-borderless" scope="col">Editar</th>
                 <th class="table-borderless" scope="col">Excluir</th>
             </thead>
@@ -25,16 +26,17 @@
                 <tr scope="row">
 
                     <td>{{ $avaliador->id }}</td>
-                    <td>{{ $avaliador->nome }}</td>
-                    <td>{{ $avaliador->endereco }}</td>
-                    <td>{{ $avaliador->email }}</td>
-                    <td>{{ $avaliador->telefone }}</td>
+                    <td>{{ $avaliador->user->name }}</td>
+                    <td>{{ $avaliador->user->endereco }}</td>
+                    <td>{{ $avaliador->user->email }}</td>
+                    <td>{{ $avaliador->user->telefone }}</td>
+                    <td>{{ $avaliador->area->descricaoArea }}</td>
                     <!-- <td>{{ $avaliador->pais_origem }}</td>
                     <td>{{ $avaliador->area_pref }}</td> -->
-                    
+
                     <td class="text-center">
                         <a class="btn btn-primary" href="{{ route('editarAvaliador', $avaliador->id) }}">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>            
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                     </td>
                     <td class="text-center">
@@ -52,13 +54,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {{ $avaliador->nome }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
+                            {{ $avaliador->user->name }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" >
                                 <a href="{{ route('deletarAvaliador', $avaliador->id) }}" style="color: white;text-decoration: none;">
                                 Sim
-                                </a>    
+                                </a>
                             </button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
                         </div>
@@ -73,5 +75,5 @@
     <x-footer/>
 </div>
 @endsection
-                
+
 

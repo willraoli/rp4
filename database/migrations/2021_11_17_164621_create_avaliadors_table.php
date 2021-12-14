@@ -15,13 +15,12 @@ class CreateAvaliadorsTable extends Migration
     {
         Schema::create('avaliadors', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('endereco');
-            $table->string('email');
-            $table->bigInteger('telefone');
-            $table->string('area_pref');
-            $table->string('pais_origem');
+            $table->unsignedBigInteger('area_pref');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('area_pref')->references('id')->on('areas');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
