@@ -45,6 +45,7 @@ class SubmissaoBusiness{
         $autor_repository = new AutorRepository();
         $autor = $autor_repository->getAutorByUserID($current_user_id);        
         
+
         $this->repository->create($request, $caminhosArtigos, $autor);
     }
 
@@ -61,6 +62,12 @@ class SubmissaoBusiness{
         return $submissao;   
     }
 
+    public function deleteSubmissao($id){
+
+        $submissao_repository = new SubmissaoRepository();
+        $submissao = $submissao_repository->delete($id);
+
+    }
 
     public function validateStatus($id){
         $this->repository = new SubmissaoRepository();

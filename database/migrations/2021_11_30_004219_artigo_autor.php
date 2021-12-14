@@ -16,7 +16,7 @@ class ArtigoAutor extends Migration
         Schema::create('ArtigoAutor', function (Blueprint $table) {
 
             $table->bigInteger('artigo_id')->unsigned();
-            $table->bigInteger('autor_id')->unique();
+            $table->bigInteger('autor_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('artigo_id')->references('id')->on('artigos')->onDelete('cascade');

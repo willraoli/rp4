@@ -85,7 +85,7 @@ class AvaliadorRepository
         $avaliador->user->name = $request->nome;
         //$avaliador->user->email = $request->email;
         $avaliador->user->endereco = $request->endereco;
-        $avaliador->user->endereco = $request->telefone;
+        $avaliador->user->telefone = $request->telefone;
         $avaliador->area_pref = $request->area_pref;
 
         return $avaliador->push();

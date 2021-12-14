@@ -23,11 +23,12 @@ class ArtigoController extends Controller{
         $this->bussiness = new SubmissaoBusiness;   
         $valido = $this->bussiness->validateStatus($id);
         
-        // if($valido){
-        //     $this->
-        // }else{
-        //     return redirect()->route('minhas.submissoes')->with('erro004', "Proibido cancelar submissão em avaliação");
-        // }
+        if($valido){
+            $this->bussiness->deleteSubmissao($id);
+            return redirect()->route('minhas.submissoes');
+        }else{
+            return redirect()->route('minhas.submissoes')->with('erro004', "Proibido cancelar submissão em avaliação");
+        }
 
     }
 

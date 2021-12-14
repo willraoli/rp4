@@ -3,60 +3,102 @@
 use Illuminate\Support\Facades\DB;
 ?>
 
-@extends('layouts.app')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <div class="container pt-5">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="col-md-10">
-                <div class="card-header">{{ __('Registrar Usuário') }}</div>
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
+                <div class="card-header"><?php echo e(__('Registrar Usuário')); ?></div>
+                <form method="POST" action="<?php echo e(route('register')); ?>">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
-                        <label for="name" class="ms-3 col-md-4 col-form-label text-md-right">{{ __('Name') }}<span id="obrigatorio">*</span> </label>
+                        <label for="name" class="ms-3 col-md-4 col-form-label text-md-right"><?php echo e(__('Name')); ?><span id="obrigatorio">*</span> </label>
 
                         <div class="">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                            <input id="name" type="text" class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="name" value="<?php echo e(old('name')); ?>" autocomplete="name" autofocus>
 
-                            @error('name')
+                            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong><?php echo e($message); ?></strong>
                             </span>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="email" class="ms-3 col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}<span id="obrigatorio">*</span></label>
+                        <label for="email" class="ms-3 col-md-4 col-form-label text-md-right"><?php echo e(__('E-Mail Address')); ?><span id="obrigatorio">*</span></label>
 
                         <div class="">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+                            <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" autocomplete="email">
 
-                            @error('email')
+                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong><?php echo e($message); ?></strong>
                             </span>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col form-group mt-2">
-                            <label for="password" class="ms-3 col-form-label text-md-right">{{ __('Password') }}<span id="obrigatorio">*</span></label>
+                            <label for="password" class="ms-3 col-form-label text-md-right"><?php echo e(__('Password')); ?><span id="obrigatorio">*</span></label>
 
                             <div class="">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password" autocomplete="new-password">
 
-                                @error('password')
+                                <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong><?php echo e($message); ?></strong>
                                 </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="col form-group mt-2">
-                            <label for="password-confirm" class="ms-3 col-form-label text-md-right">{{ __('Confirm Password') }}<span id="obrigatorio">*</span></label>
+                            <label for="password-confirm" class="ms-3 col-form-label text-md-right"><?php echo e(__('Confirm Password')); ?><span id="obrigatorio">*</span></label>
 
                             <div class="">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">
@@ -78,7 +120,8 @@ use Illuminate\Support\Facades\DB;
                                 <li><a class="dropdown-item" onclick="select(this.id)" id="editor">Editor</a></li>
                             </ul>
                         </div>
-                        {{ __('Dados Pessoais') }}
+                        <?php echo e(__('Dados Pessoais')); ?>
+
 
                     </div>
                     <!-- AUTOR -->
@@ -87,11 +130,25 @@ use Illuminate\Support\Facades\DB;
                         <input type="text" maxlength="12" name="orcid" id="orcid" class="form-control mb-2">
 
                         <label for="" class="ms-3 mb-1">Instituição</label>
-                        @error('instituicao') {{$message}} @enderror
+                        <?php $__errorArgs = ['instituicao'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         <input type="text" name="instituicao" class="form-control mb-2">
 
                         <label for="" class="ms-3 mb-1">Área de preferência<span id="obrigatorio">*</span></label>
-                        @error('area_pref') {{$message}} @enderror
+                        <?php $__errorArgs = ['area_pref'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         <select class="form-control mb-2" name="area_pref" id="area">
                             <option value="" disabled>-</option>
                             <?php
@@ -116,12 +173,26 @@ use Illuminate\Support\Facades\DB;
                                 echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
                             }
                             ?>
-                            <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
+                            <p style="color: red" ;><?php $__errorArgs = ['area_pref'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </select>
 
                         <label for="" class="ms-3 mb-1 mt-2">Data de Contratação<span id="obrigatorio">*</span></label> <br />
                         <input type="date" class="form-control mb-0" placeholder="2001/06/01" name="dataContratacao">
-                        <p style="color: red" ;>@error('dataContratacao') {{$message}} @enderror
+                        <p style="color: red" ;><?php $__errorArgs = ['dataContratacao'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
                     <!-- FIM EDITOR -->
 
@@ -136,7 +207,14 @@ use Illuminate\Support\Facades\DB;
                                 echo '<option value=' . $a->id . '>' . $a->descricaoArea . '</option>';
                             }
                             ?>
-                            <p style="color: red" ;>@error('area_pref') {{$message}} @enderror
+                            <p style="color: red" ;><?php $__errorArgs = ['area_pref'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </select>
                     </div>
                     <!-- FIM AVALIADOR -->
@@ -145,7 +223,14 @@ use Illuminate\Support\Facades\DB;
                         <label for="endereco" class="ms-3 mb-1">Endereço<span id="obrigatorio">*</span></label><br>
                         <input type="address" name="endereco" id="endereco" class="form-control" required>
                     </div>
-                    <p style="color: red" ;>@error('endereco') {{$message}} @enderror
+                    <p style="color: red" ;><?php $__errorArgs = ['endereco'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
 
                     <div class="form-group">
                         <label class="ms-3 mb-1" for="">País de origem<span id="obrigatorio">*</span></label> <br />
@@ -158,13 +243,27 @@ use Illuminate\Support\Facades\DB;
                             }
                             ?>
                         </select>
-                        <p style="color: red" ;>@error('pais') {{$message}} @enderror
+                        <p style="color: red" ;><?php $__errorArgs = ['pais'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
                     <div class="form-group ">
                         <label class="ms-3 mb-1" for="">Telefone<span id="obrigatorio">*</span></label> <br />
                         <input type="text" class="form-control" name="telefone"> <br />
-                        <p style="color: red">@error('telefone') {{$message}} @enderror
+                        <p style="color: red"><?php $__errorArgs = ['telefone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
                     <div class="form-group row mb-5 mt-4">
@@ -216,4 +315,6 @@ use Illuminate\Support\Facades\DB;
 </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\rp\rp4\resources\views/auth/register.blade.php ENDPATH**/ ?>

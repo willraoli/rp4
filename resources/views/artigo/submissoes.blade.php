@@ -28,7 +28,7 @@
                     <td><p class="text-center">{{ $submissao->revista->tituloRevista}}</p></td>
                     <td class="col col-3">
                     @foreach($submissao->artigos as $artigo)                    
-                        <a target="_blank" href="<?php echo url('storage/' . $artigo->caminhoArtigo); ?>">
+                        <a target="_blank" href="{{ asset('storage/' . $artigo->caminhoArtigo); }}">
                             <small><p class="articles mb-1 text-center p-1">{{ $artigo->tituloArtigo }}</br></p></small>    
                         </a>
                     @endforeach
@@ -48,12 +48,12 @@
                     <td><p class="text-center">{{ date('d/m/Y H:i:s', strtotime($submissao->created_at)) }}</p></td>
                     
                     <td class="text-center">
-                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
+                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal-{{ $submissao->id }}">
                             <i class="fa fa-times" style="transition:none !important;" aria-hidden="true"></i>
                         </a>
                     </td>
                     <!-- Modal -->
-                    <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="del-modal-{{ $submissao->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                             <div class="modal-header">
