@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
                         <input type="email" name="email" class="form-control" disabled value="{{ $editor->user->email }}"><br>
                         <label for="">Telefone</label> <br />
                         <input type="tel" class="form-control" name="telefone" value="{{ $editor->user->telefone }}"> <br />
+                        Exemplo: 5551999999999
                         <p style="color: red" ;>@error('telefone') {{$message}} @enderror<p>
                         <label for="">Endereco</label><br>
                         <input type="text" name="endereco" class="form-control" value="{{ $editor->user->endereco }}"><br>

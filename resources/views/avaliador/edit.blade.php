@@ -24,6 +24,7 @@
         <p style="color: red";>@error('endereco') {{$message}} @enderror<p>
         <label for="" >Telefone<span id="obrigatorio">*</span></label><br>
         <input type="number" name="telefone" class="form-control" value="{{ $avaliador->user->telefone }}"><br>
+        Exemplo: 5551999999999
         <p style="color: red";>@error('telefone') {{$message}} @enderror<p>
         <label for="">País de origem<span id="obrigatorio">*</span></label> <br />
             <select class="form-control" name="pais_origem" id="paises" value="{{ $avaliador->user->pais_origem }}"> <br />

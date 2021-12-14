@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\DB;
 
                             <div class="">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-
+                                A senha deve conter no mínimo 8 caracteres
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -164,6 +164,7 @@ use Illuminate\Support\Facades\DB;
                     <div class="form-group ">
                         <label class="ms-3 mb-1" for="">Telefone<span id="obrigatorio">*</span></label> <br />
                         <input type="text" class="form-control" name="telefone"> <br />
+                        Exemplo: 5551999999999
                         <p style="color: red">@error('telefone') {{$message}} @enderror
                     </div>
 

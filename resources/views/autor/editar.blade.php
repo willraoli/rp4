@@ -30,6 +30,7 @@
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Telefone</label><br>
                         <input type="text" name="telefone" value="{{ $autor->user->telefone }}" class="form-control"><br>
+                        Exemplo: 5551999999999
                         <p style="color: red" ;>@error('telefone') {{$message}} @enderror<p>
                     </div>
                     <div class="form-group mb-2">
