@@ -18,8 +18,8 @@ class SubmissaoArtigo extends Migration
             $table->bigInteger('artigo_id')->unsigned();
             $table->timestamps();
             
-            $table->foreign('submissao_id')->references('id')->on('submissao');
-            $table->foreign('artigo_id')->references('id')->on('artigos');
+            $table->foreign('submissao_id')->references('id')->on('submissao')->onDelete('cascade');
+            $table->foreign('artigo_id')->references('id')->on('artigos')->onDelete('cascade');
         
         });
     }

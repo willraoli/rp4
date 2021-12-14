@@ -1,4 +1,4 @@
-
+var limite = 1;
 
 function newAuthor(id, nome){
 
@@ -17,13 +17,14 @@ function newAuthor(id, nome){
 
 function add() {
     var table = document.getElementById("artigos-table");
-    var row = table.insertRow(1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-
-
-    cell1.innerHTML = '<input name="artigo[]" style="border-style:none;" class="form-control form-control-sm" type="file" accept="application/pdf" required>';
-    cell2.innerHTML = '<input name="tituloArtigo[]" style="border-radius: 0% !important;border-color: transparent !important;border-bottom: solid 2px black !important;" class="form-control form-control-sm" type="text" required>';
+    
+    if((table.rows.length - 1) < limite){
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);   
+        cell1.innerHTML = '<input name="artigo[]" style="border-style:none;" class="form-control form-control-sm" type="file" accept="application/pdf" required>';
+        cell2.innerHTML = '<input name="tituloArtigo[]" style="border-radius: 0% !important;border-color: transparent !important;border-bottom: solid 2px black !important;" class="form-control form-control-sm" type="text" required>';
+    }
 }
 
 function del() {
@@ -70,8 +71,9 @@ function searchAuthor(str) {
 }
   
 
-function select(id){
+function select(id, qtd){
     var revista = document.getElementById(id);
+    limite = qtd;
     document.getElementById("revista_id").value = id;
     document.getElementById("pesq").value = revista.innerHTML;
     document.getElementById('revista').innerHTML = "";

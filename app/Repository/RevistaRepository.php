@@ -1,24 +1,36 @@
 <?php 
 namespace App\Repository;
 
+use App\Models\PeriodoChamada;
 use App\Models\Revista;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class RevistaRepository{
    
-    public function create(Request $request){
-       
-        $revista = Revista::create([
-            'editor_id' => $request->editor_id,
-            'area_id' => $request->areas,
-            'tituloRevista' => $request->titulo,
-            'limiteArtigo' => $request->limite,
-            'ISSNRevista' => $request->issn,
-            'periodicidade_id' => $request->periodicidade,
-        ]);
+    public function create(Request $request, $periodos_de_chamada){
+        try{
+            
+            $revista = new Revista();
+            $revista->editor_id        = $request->editor_id;
+            $revista->area_id          = $request->areas;
+            $revista->tituloRevista    = $request->titulo;
+            $revista->limiteArtigo     = $request->limite;
+            $revista->ISSNRevista      = $request->issn;
+            $revista->periodicidade_id = $request->periodicidade;
 
-        return $revista->save();
+            $revista->save();
+            $revista->periodo_chamada()->saveMany($periodos_de_chamada);
+
+            DB::commit();
+            return True;
+        }catch(\Exception $e){
+            DB::rollBack();
+            echo $e;
+        }   
     }
 
    
@@ -27,7 +39,18 @@ class RevistaRepository{
     }
 
     public function queryTitle(String $title){
-        return Revista::where('tituloRevista', 'LIKE', '%'.$title.'%')->get();
+       
+    //    $revistas = Revista::where('tituloRevista', 'LIKE', '%'.$title.'%')->with(['periodo_chamada' => function ($query) {
+    //         $now = Carbon::now()->format('Y-m-d');   
+    //         $query->where('dataInicio', '>=', $now)
+    //                 ->where('dataFinal', '>=', $now)
+    //                     ->where('dataDivulgacao', '>=', $now);
+    //    }])->get();
+       
+
+        $revistas = Revista::where('tituloRevista', 'LIKE', '%'.$title.'%')->get();
+        
+       return $revistas;
     }
 
     public function getByID($id){

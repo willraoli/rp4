@@ -1,6 +1,9 @@
 <!-- Scripts -->
 <script src="{{ asset('js/editorSearch.js') }}" defer></script>
+<script src="{{ asset('js/periodoChamado.js') }}" defer></script>
 
+ <!-- Styles -->
+ <link href="{{ asset('css/select.css') }}" rel="stylesheet" type="text/css">
 
 
 <?php
@@ -36,7 +39,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="issn" class="ms-3">ISSN<span id="obrigatorio">*</span></label><br>
-                        <input type="text" name="issn" id="issn" class="form-control" required>
+                        <input type="text" name="issn" maxlength="8" id="issn" class="form-control" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="limite" class="ms-3">Limite de Artigos<span id="obrigatorio">*</span></label><br>
@@ -69,9 +72,46 @@
                                   }
                             ?>
                         </select>
+                       </div>
                     </div>
-                    </div>
+                    <hr>
+                    <a type="button" class="btn btn-success btn-sm" onclick="add()" >
+                        <i class="fa fa-plus fa-1x" style="transition:none !important;" aria-hidden="true"></i>            
+                    </a>
+                    <a class="btn btn-secondary btn-sm" onclick="del()">
+                        <i class="fa fa-minus fa-1x" style="transition:none !important;" aria-hidden="true"></i>
+                    </a>
+                    <h6 class="text-center" id="obrigatorio"><small>{!! session()->get('ERRO') !!}</small></h6>
+                    <label class="ms-3 mb-2" scope="col">Periodo(s) de Chamado<span id="obrigatorio">* </span></label>
+                    <table id="view-table" style="width: 90px !important; transition:none !important;" class="table table-sm table-borderless">
+                        <thead class="table-dark">
+                            <th class="" scope="col">Data Inicio</th>
+                            <th class="" scope="col">Data Final</th>
+                            <th class="" scope="col">Divulgação</th>
+                            <th class="" scope="col">Avaliações</th>
+   
+                        </thead>
+                        <tbody >
+                            <tr scope="row" >
+    
+                                <td><input type="date" name="dataInicio[]" class="form-control" style="border-radius: 0% !important;
+                                                  border-color: transparent !important;
+                                                  border-bottom: solid 2px black !important;" required></td>    
+                                <td><input type="date" name="dataFinal[]" class="form-control" style="border-radius: 0% !important;
+                                                  border-color: transparent !important;
+                                                  border-bottom: solid 2px black !important;" required></td>      
+                                <td><input type="date" name="dataDivulgacao[]" class="form-control" style="border-radius: 0% !important;
+                                                  border-color: transparent !important;
+                                                  border-bottom: solid 2px black !important;" required></td>      
+                                <td><input type="date" name="dataMaximaAvaliacao[]" class="form-control" style="border-radius: 0% !important;
+                                                  border-color: transparent !important;
+                                                  border-bottom: solid 2px black !important;" required></td>                                                                                                                                                                                
+                            </tr>
 
+
+                        </tbody>
+                    </table>
+                   
                     <div class="row">
                         <div class="col-3 form-group pt-2">
                             <input type="submit" name="submit" class="btn btn-success btn-md" style="color:white;" value="Cadastrar">
@@ -83,6 +123,5 @@
         </div>
     </div>
 </div>
-
 <x-footer/>
 @endsection

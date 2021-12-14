@@ -16,14 +16,12 @@ class ArtigoFinal extends Migration
 
         Schema::create('artigos', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('submissao_id');
             $table->unsignedBigInteger('situacao_id');
             $table->string('tituloArtigo');
             $table->string('caminhoArtigo');
             $table->timestamps();
 
-            $table->foreign('situacao_id')->references('id')->on('situacao');
-            // $table->foreign('submissao_id')->references('id')->on('submissao');
+            $table->foreign('situacao_id')->references('id')->on('situacao')->onDelete('cascade');;
         });
     
     }

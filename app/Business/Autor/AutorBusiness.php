@@ -28,7 +28,7 @@ class AutorBusiness{
 
     public function deleteAutor(Request $request){
        
-        $this->repository = new AutorRepository;
+        $this->repository = new AutorRepository();
         return $this->repository->destroy($request->id);
     }
 

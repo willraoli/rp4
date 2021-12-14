@@ -22,9 +22,9 @@ class Revista extends Migration
             $table->string('ISSNRevista')->unique();
             $table->unsignedBigInteger('periodicidade_id');
 
-            $table->foreign('periodicidade_id')->references('id')->on('periodicidades');
-            $table->foreign('editor_id')->references('id')->on('editors');
-            $table->foreign('area_id')->references('id')->on('areas');
+            $table->foreign('periodicidade_id')->references('id')->on('periodicidades')->onDelete('cascade');
+            $table->foreign('editor_id')->references('id')->on('editors')->onDelete('cascade');
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
         });
     }
 

@@ -20,8 +20,8 @@ class Submissao extends Migration
             $table->bigInteger('revista_id')->unsigned();
             $table->timestamps();
             
-            $table->foreign('autor_id')->references('id')->on('autors');
-            $table->foreign('revista_id')->references('id')->on('revistas');        
+            $table->foreign('autor_id')->references('id')->on('autors')->onDelete('cascade');
+            $table->foreign('revista_id')->references('id')->on('revistas')->onDelete('cascade');
         });
     }
 

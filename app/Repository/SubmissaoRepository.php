@@ -70,6 +70,7 @@ class SubmissaoRepository{
         
         try{
             $submissao = Submissao::findOrFail($id);
+            $submissao->artigos()->delete($submissao);
             $submissao->delete();
         }catch(\Exception $e){
             return False;

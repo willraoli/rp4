@@ -63,10 +63,10 @@ class AutorRepository
         $autor = new Autor();
         $autor = Autor::where('orcid', $id)->first();
         $user = User::findOrFail($autor->user_id);
-
-        $user->delete();
-        return $autor->delete();
+        $autor->delete();
+       return $user->delete();     
     }
+
 
     public function show(){
         return Autor::paginate(10);

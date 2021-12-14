@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group mb-2">
-                       
+                     
                         <label for="autores" class="ms-3" m>Autores<span id="obrigatorio">* <small>{!! session()->get('erro002') !!}</small></span></label><br>
                         
                         <ul id="author" class="list-group list-group-horizontal"></ul>
@@ -45,6 +45,7 @@
                             <th class="" scope="col">Artigo<span id="obrigatorio">* </span> < <small id="obrigatorio">50MB</small></th>
                             <th class="" scope="col">Título<span id="obrigatorio">*</span></th>
                             <th class="" scope="col">
+                                
                                 <a type="button" class="btn btn-success btn-sm" onclick="add()" >
                                     <i class="fa fa-plus fa-1x" style="transition:none !important;" aria-hidden="true"></i>            
                                 </a>

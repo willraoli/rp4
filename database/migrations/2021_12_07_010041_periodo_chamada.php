@@ -21,7 +21,7 @@ class PeriodoChamada extends Migration
             $table->date('dataMaximaAvaliacao');      
             $table->date('dataDivulgacao'); 
            
-            $table->foreign('revista_id')->references('id')->on('revistas');
+            $table->foreign('revista_id')->references('id')->on('revistas')->onDelete('cascade');
         });
     }
 

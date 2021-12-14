@@ -23,13 +23,10 @@ public function createForm(){
 
 public function create(Request $request){
 
-
     if(!empty($request->all())){
         $this->business = new RevistaBusiness;
         $request = $this->business->createRevista($request);
-
-        return $request === True ? redirect()->route('list.revista.mgmt',) : redirect()->route('create.revista.view', 'err');
-
+        return $request === True ? redirect()->route('list.revista.mgmt',) : redirect()->route('create.revista.view')->with('ERRO', $request);
     }else{
          return redirect()->route('create.revista.view', 'err');
     }

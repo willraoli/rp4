@@ -1,7 +1,12 @@
+<!-- Scripts -->
+<script src="{{ asset('js/search.js') }}" defer></script>
+
+ <!-- Styles -->
+ <link href="{{ asset('css/select.css') }}" rel="stylesheet" type="text/css">
 @extends('layouts.app')
 
 @section('content')
-
+<?php $periodos_de_chamado = "";?>
 <div class="container mt-3">
     <h3>Gerenciamento de Revistas</h3>
     <hr>
@@ -17,6 +22,7 @@
                 <th scope="col">ISSN</th>
                 <th scope="col">Limite de Artigos</th>
                 <th scope="col">Área</th>
+                <th scope="col">Período de Chamado</th>
                 <th scope="col">Periodicidade</th>
                 <th class="" scope="col"></th>
                 <th class="" scope="col"></th>
@@ -31,6 +37,7 @@
                     <td>{{ $revista->ISSNRevista }}</td>
                     <td>{{ $revista->limiteArtigo }}</td>
                     <td>{{ $revista->area->descricaoArea }}</td>
+                    <td><a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#chamados-{{ $revista->ISSNRevista }}">Visualizar</a></td>
                     <td>{{ $revista->periodicidade->descricaoPeriodicidade }}</td>
                     
                     <td class="text-center">
@@ -39,36 +46,82 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal">
+                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del-modal-{{ $revista->ISSNRevista }}">
                             <i class="fa fa-trash-o" style="transition:none !important;" aria-hidden="true"></i>
                         </a>
                     </td>
+                    <!-- Chamados Modal -->
+                    <div class="modal fade" id="chamados-{{ $revista->ISSNRevista }}" tabindex="-1" aria-labelledby="modal2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header justify-content-center">
+                                    <h5 class="modal-title text-center" id="modal2">Períodos de Chamado </h5> <br>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <p class="fw-light fs-5">{{ $revista->tituloRevista }}</p>
+                                @foreach($revista->periodo_chamada as $chamado)
+                                    <?php echo $periodos_de_chamado ?>
+                                    <div class="row card rounded shadow m-3 pb-4 pt-4 text-center">                                                                  
+                                        <div class="row d-flex text-center  justify-content-center">
+                                            <label class="col-4 fw-bold fs-10">Data Inicio</label><label class="col-4 fw-bold fs-10">Data Final</label>                                  
+                                            <div class="row justify-content-center text-center">
+                                                <span class="col-4">{{ date('d/m/y', strtotime($chamado->dataInicio)) }}</span>
+                                                <span class="col-4">{{  date('d/m/y', strtotime($chamado->dataFinal)) }}</span> 
+                                            </div>                                
+                                        </div>
+                                        <div class="row d-flex text-center mt-2 justify-content-center">
+                                            <small>
+                                            <span class="col col-4 text-center">
+                                                <span class="fs-10">Divulgado em</span>
+                                                {{ date('d/m/y', strtotime($chamado->dataDivulgacao)) }}
+                                            </span>
+                                            -
+                                            <span class="col col-4 text-center">
+                                                <span class="fs-10">Avaliações até</span>
+                                                {{ date('d/m/y', strtotime($chamado->dataMaximaAvaliacao)) }}
+                                            </span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                @endforeach                           
+                                </div>
+                            </div>
+                        </div>   
+                    </div> 
+                    <!-- Fim Modal -->
+
+                    <!-- Deletar Modal -->
+                    <div class="modal fade" id="del-modal-{{ $revista->ISSNRevista }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo deletar a revista ?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="fw-light fs-5">{{ $revista->tituloRevista }}</p> 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" >
+                                    <a href="{{ route('delete.revista', $revista->id) }}" style="color: white;text-decoration: none;">
+                                    Sim
+                                    </a>    
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- Fim Modal -->
                 </tr>
-                <!-- Modal -->
-                <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo deletar a revista ?</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Título: {{ $revista->tituloRevista }}  <!-- SE TIVER PROBLEMAS COMENTAR ESSA LINHA -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" >
-                                <a href="{{ route('delete.revista', $revista->id) }}" style="color: white;text-decoration: none;">
-                                Sim
-                                </a>    
-                            </button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+
+
+                                       
+                @endforeach                
             </tbody>
         </table>
+     
     </div>
     <x-footer/>
 </div>

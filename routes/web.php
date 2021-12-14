@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +34,9 @@ Route::group(['middleware' => ['role:editor-chefe']], function () {
     Route::get('/revista/excluir/{id}', [App\Http\Controllers\RevistaController::class, 'delete'])->name('delete.revista');
     Route::get('/select/revista/{id}', [App\Http\Controllers\RevistaController::class, 'select'])->name('select.revista');
     Route::get('/search/editor', [App\Service\EditorService::class, 'search'])->name('search.editor');
+    Route::get('/visualizar/chamados', function () {
+        return view('revista/detalhes_chamados');
+    });
 });
 
 
@@ -47,6 +49,8 @@ Route::group(['middleware' => ['role:autor']], function () {
     Route::get('/search/autor', [App\Service\AutorService::class, 'search'])->name('search.autor');
     Route::get('/delete/submissao/{id}', [App\Http\Controllers\ArtigoController::class, 'delete'])->name('delete.submissao');
 });
+
+
 // Editor
 // Controller
 Route::get('/editor/novo/', function () {
@@ -92,9 +96,12 @@ Route::post('/avaliador/excluir/{id}', [App\Repository\AvaliadorRepository::clas
 Route::group(['prefix' => 'autor'], function () {
     Route::view('/cadastro', 'autor.cadastrar')->name('create.autor.view');
     Route::post('/cadastro', [App\Http\Controllers\Autor\AutorController::class, 'create'])->name('cadastro_autor');
+});
+Route::group(['middleware' => ['role:editor-chefe']], function () {
+    Route::group(['prefix' => 'autor'], function () {
     Route::get('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'edit'])->name('edicao_autor');
-    // Route::patch('/editar/{id}', [App\Repository\AutorRepository::class, 'update'])->name('edit.autor');
     Route::post('/editar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'update'])->name('edit.autor');
     Route::get('/deletar/{id}', [App\Http\Controllers\Autor\AutorController::class, 'delete'])->name('exclusao_autor_modal');
     Route::get('/all', [App\Http\Controllers\Autor\AutorController::class, 'manage'])->name('list.autor.mgmt');
+    });
 });

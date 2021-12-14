@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Revista extends Model
 {
     use HasFactory;
@@ -35,5 +36,9 @@ class Revista extends Model
 
     public function submissao(){
         return $this->belongsToMany(Submissao::class);
+    }
+
+    public function periodo_chamada(){
+        return $this->hasMany(PeriodoChamada::class);
     }
 }
