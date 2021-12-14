@@ -64,8 +64,8 @@ class AutorController extends Controller
         $this->business = new AutorBusiness;
         $request = $this->business->updateAutor($request);
 
-        //return redirect()->route('list.autor.mgmt');
-        return view('autor\gerenciar', ['autor' => $autores]);
+        return redirect()->route('list.autor.mgmt');
+        // return view('autor\gerenciar', ['autor' => $autores]);
         
     }
 }
