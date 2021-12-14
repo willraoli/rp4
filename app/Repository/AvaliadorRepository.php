@@ -72,8 +72,8 @@ class AvaliadorRepository
         // $user = User::findOrFail($avaliador->user_id);
 
         $data = request()->validate([
-            'nome' => 'required|max:50|min:3',
-            'endereco' => 'required|max:250',
+            'nome' => 'required|min:3',
+            'endereco' => 'required|max:255|min:10',
             'telefone' => 'required|min:13|max:13',
             'area_pref' => 'nullable',
             'pais_origem' => 'required'

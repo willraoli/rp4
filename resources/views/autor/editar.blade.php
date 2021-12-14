@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="" class="ms-3">Email</label><span id="obrigatorio">*</span><br>
-                        <input type="email" name="email" class="form-control" value="{{ $autor->user->email }}" required><br>
+                        <input type="email" name="email" class="form-control" disabled value="{{ $autor->user->email }}" required><br>
                         <p style="color: red" ;>@error('email') {{$message}} @enderror<p>
                     </div>
                     <!-- <div class="form-group mb-2">

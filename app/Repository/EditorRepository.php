@@ -42,8 +42,8 @@ class EditorRepository
 
         $dados = request()->validate([
             'nome' => 'required|min:3',
-            'endereco' => 'required|max:250',
-            'telefone' => 'required|max:13',
+            'endereco' => 'required|max:255|min:10',
+            'telefone' => 'required|max:13|min:13',
             'area_id' => 'nullable',
             'pais_id' => 'nullable',
         ]);

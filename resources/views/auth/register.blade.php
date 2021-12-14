@@ -145,6 +145,7 @@ use Illuminate\Support\Facades\DB;
                         <label for="endereco" class="ms-3 mb-1">Endereço<span id="obrigatorio">*</span></label><br>
                         <input type="address" name="endereco" id="endereco" class="form-control" required>
                     </div>
+                    <p style="color: red" ;>@error('endereco') {{$message}} @enderror
 
                     <div class="form-group">
                         <label class="ms-3 mb-1" for="">País de origem<span id="obrigatorio">*</span></label> <br />

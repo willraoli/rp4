@@ -17,12 +17,15 @@ use Illuminate\Support\Facades\DB;
                     <div class="form-group mb-2">
                         <label for="">Nome</label><br>
                         <input type="text" name="nome" class="form-control" value="{{ $editor->user->name }}"><br>
+                        <p style="color: red" ;>@error('nome') {{$message}} @enderror<p>
                         <label for="">Email</label><br>
                         <input type="email" name="email" class="form-control" disabled value="{{ $editor->user->email }}"><br>
                         <label for="">Telefone</label> <br />
                         <input type="tel" class="form-control" name="telefone" value="{{ $editor->user->telefone }}"> <br />
+                        <p style="color: red" ;>@error('telefone') {{$message}} @enderror<p>
                         <label for="">Endereco</label><br>
                         <input type="text" name="endereco" class="form-control" value="{{ $editor->user->endereco }}"><br>
+                        <p style="color: red" ;>@error('endereco') {{$message}} @enderror<p>
                         <label for="">País de origem<span id="obrigatorio">*</span></label> <br />
                         <select class="form-control" name="pais_id" id="paises" value="{{ $editor->user->pais_id}}"> <br />
                             <option value="" disabled>-</option>

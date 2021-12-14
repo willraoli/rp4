@@ -24,9 +24,8 @@ class AutorRepository
     public function update(Request $request)
     {
         $request->validate([
-            'nome' => 'required|max:50|min:3',
-            'email' => 'required|max:250',
-            'endereco' => 'required|max:250',
+            'nome' => 'required|min:3',
+            'endereco' => 'required|max:255|min:10',
             'telefone' => 'required|min:13|max:13',
             'area_pref' => 'required',
             'instituicao' => 'required',
@@ -37,7 +36,7 @@ class AutorRepository
         $autor = Autor::where('orcid',$request->id)->first();
 
         $autor->user->name = $request->nome;
-        $autor->user->email = $request->email;
+        //$autor->user->email = $request->email;
         $autor->user->endereco = $request->endereco;
         $autor->user->telefone = $request->telefone;
         $autor->area_id = $request->area_pref;

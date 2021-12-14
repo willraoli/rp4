@@ -11,7 +11,6 @@
                 <th scope="col">Email</th>
                 <th scope="col">Endereço</th>
                 <th scope="col">Telefone</th>
-                <th scope="col">Telefone</th>
                 <th scope="col">Data de criação</th>
                 <th scope="col">Data de atualização</th>
                 <th class="" scope="col">Editar</th>
