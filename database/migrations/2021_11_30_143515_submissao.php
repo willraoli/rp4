@@ -16,11 +16,11 @@ class Submissao extends Migration
         Schema::create('Submissao', function (Blueprint $table) {
             $table->id();
             $table->boolean('finalizado');
-            $table->unsignedBigInteger('autor_id');
+            $table->bigInteger('autor_id');
             $table->unsignedBigInteger('revista_id');
             $table->timestamps();
             
-            $table->foreign('autor_id')->references('id')->on('autors')->onDelete('cascade');
+            $table->foreign('autor_id')->references('orcid')->on('autors')->onDelete('cascade');
             $table->foreign('revista_id')->references('id')->on('revistas')->onDelete('cascade');
         });
     }
