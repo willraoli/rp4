@@ -32,7 +32,7 @@ Depois de ter o repositório clonado, você deve [criar](https://github.com/plat
 - `php artisan permission:create-role editor`
 - `php artisan permission:create-role editor-chefe`
 
-Feito isso, você está pronto para começar a desenvolver! Para começar, é só digitar `php artisan serve` e navegar até o link descrito no terminal.
+Feito isso, você está pronto para desenvolver! Para começar, é só digitar `php artisan serve` e navegar até o link descrito no terminal.
 
 ## Links úteis:
 - [Playlist do projeto no YouTube](https://www.youtube.com/playlist?list=PLCb-PNnEza-rMIRMKW6nJCKdgdlNW9j5q)
