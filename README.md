@@ -22,7 +22,7 @@ php -r "unlink('composer-setup.php');"
 - Instale o [Git](https://git-scm.com/downloads) para poder clonar o repositório
 - Clone o nosso repositório: `git clone https://github.com/willraoli/rp4.git`
 
-Depois de ter o repositório clonado, você deve configurar o arquivo `.env` com suas credenciais e banco de dados. Após isso, navegue até a raiz do diretório e execute os seguintes comandos:
+Depois de ter o repositório clonado, você deve [criar](https://github.com/platformsh-templates/laravel/blob/master/.env.example) e configurar o arquivo `.env` com suas credenciais e banco de dados. Após isso, navegue até a raiz do diretório e execute os seguintes comandos:
 - `composer require laravel/ui`
 - `composer require spatie/laravel-permission`
 - `php artisan ui vue --auth`
